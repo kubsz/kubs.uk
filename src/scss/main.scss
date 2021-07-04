@@ -1,0 +1,52 @@
+body,
+html,
+#__next {
+    height: 100vh;
+    font-family: sans-serif;
+    position: relative;
+}
+
+body {
+    background-color: #222;
+    color: #fff;
+}
+
+.centerbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    @keyframes italic {
+        0%,
+        100% {
+            transform: skewX(5deg);
+        }
+
+        50% {
+            transform: skewX(-5deg);
+        }
+    }
+
+    h1 {
+        font-size: 40px;
+        letter-spacing: 2px;
+        animation: italic 2s infinite;
+        margin-bottom: 0;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        letter-spacing: 10px;
+        word-spacing: 20px;
+
+        color: rgba(255, 255, 255, 0.8);
+
+        &::after,
+        &::before {
+            content: '-';
+            margin: 0 20px;
+        }
+    }
+}
