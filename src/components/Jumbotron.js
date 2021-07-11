@@ -1,6 +1,6 @@
 import SingleInput from './SingleInput';
 
-const JumboTron = (props) => {
+const JumboTron = () => {
     return (
         <section className="jumbotron">
             <div className="jumbotron__main">

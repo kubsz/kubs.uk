@@ -7,7 +7,7 @@ import TwitterIcon from '../assets/svg/socials/twitter.svg';
 import LinkedInIcon from '../assets/svg/socials/linkedin.svg';
 import GithubIcon from '../assets/svg/socials/github.svg';
 
-const Nav = (props) => {
+const Nav = () => {
     return (
         <nav className="nav">
             <div className="nav__inner">
