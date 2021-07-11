@@ -5,7 +5,8 @@
 
     margin-top: $gutter * 2;
 
-    background-color: $col-light-2;
+    background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
+
     border-radius: $radius;
 
     box-shadow: 0 0 74px 10px rgba(56, 50, 124, 0.08);
@@ -13,6 +14,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    overflow: hidden;
 
     &__main {
         flex: 1 1 50%;
@@ -26,37 +29,82 @@
     &__graphic-container {
         padding: 0 5rem;
         align-self: flex-end;
+        position: relative;
+
+        @include respond(1200) {
+            display: none;
+        }
     }
 
     &__graphic {
+        position: relative;
+        z-index: 1;
         display: block;
-        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+        filter: drop-shadow(0 0 30px rgba($col-primary-light, 0.2));
     }
 
     &__top-text {
         display: block;
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 1.4rem;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
+        word-spacing: 0.1rem;
+
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 
         color: $col-primary;
     }
 
     &__heading {
         font-family: 'CircularBold';
-        color: $col-dark-2;
+        color: $col-light-2;
         font-size: 5rem;
         line-height: 1.2;
 
+        @keyframes shadow-animation {
+            0%,
+            100% {
+                text-shadow: 0 0 2rem rgba($col-primary-light, 0);
+            }
+
+            50% {
+                text-shadow: 0 0 4rem rgba($col-primary-light, 0.3);
+            }
+        }
+
         span {
             color: $col-primary;
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    animation: shadow-animation 8s infinite 2s * $i;
+                }
+            }
         }
     }
 
     &__text {
         font-size: 1.8rem;
         margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    &__asset {
+        position: absolute;
+        background-color: $col-primary;
+
+        &--line {
+            width: 2rem;
+            height: 0.2rem;
+            border-radius: 0.2rem;
+        }
+
+        &--circle {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+        }
     }
 }
