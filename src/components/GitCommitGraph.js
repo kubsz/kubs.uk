@@ -6,7 +6,8 @@ const GitCommitGraph = (props) => {
                 gridTemplateRows: `repeat(${props.rows}, ${props.boxSize})`,
                 gridTemplateColumns: `repeat(${props.columns}, ${props.boxSize})`,
                 gridGap: props.gap || '.5rem',
-                width: props.width || 'auto'
+                width: props.width || 'auto',
+                height: props.height || 'auto'
             }}
         >
             {props.children}

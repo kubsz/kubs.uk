@@ -1,3 +1,13 @@
+// Generated using:
+
+// const randomNumbers = [...Array(50)].map((x) => ({
+//     top: Math.random().toFixed(2) * 500 - 250,
+//     left: Math.random().toFixed(2) * 500 - 300,
+//     rotate: Math.random().toFixed(2) * 360,
+//     opacity: Math.random().toFixed(2) * 1,
+//     size: Math.random().toFixed(2) * 1
+// }));
+
 const randomNumbers = [
     {
         top: 40,

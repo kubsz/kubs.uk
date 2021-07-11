@@ -16,19 +16,7 @@
 
     overflow: hidden;
 
-    @keyframes flip-in {
-        0% {
-            transform: rotateX(-90deg);
-            opacity: 0;
-        }
-
-        100% {
-            transform: rotateX(0);
-            opacity: 1;
-        }
-    }
-
-    animation: flip-in 0.7s $timing-function-elastic;
+    animation: flip-in 0.8s $timing-function-elastic;
     transform-origin: top center;
 
     &__main {
@@ -44,6 +32,10 @@
         padding: 0 5rem;
         align-self: flex-end;
         position: relative;
+
+        & > div:first-of-type {
+            display: block !important;
+        }
 
         @include respond(1200) {
             display: none;
@@ -71,23 +63,13 @@
         color: $col-light-1;
         text-align: center;
 
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(-7px);
-            }
-            50% {
-                transform: translateY(0);
-            }
-        }
-
-        &:nth-of-type(1) {
+        &:nth-of-type(2) {
             top: 45%;
             right: 8%;
             animation: float 10s infinite ease-in-out 5s;
         }
 
-        &:nth-of-type(2) {
+        &:nth-of-type(3) {
             top: 60%;
             left: 5%;
             animation: float 10s infinite ease-in-out;
@@ -126,22 +108,10 @@
     }
 
     &__heading {
-        // font-family: 'CircularBold', sans-serif;
         font-weight: 700;
         color: $col-light-2;
         font-size: 5rem;
         line-height: 1.2;
-
-        @keyframes shadow-animation {
-            0%,
-            100% {
-                text-shadow: 0 0 2rem rgba($col-primary-light, 0);
-            }
-
-            50% {
-                text-shadow: 0 0 4rem rgba($col-primary-light, 0.3);
-            }
-        }
 
         span {
             color: $col-primary-light;

@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+
+import Image from 'next/image';
+
 import SingleInput from './SingleInput';
 
 import GitCommitGraph from './GitCommitGraph';
@@ -8,15 +11,12 @@ import commits from '../data/commits';
 
 const Jumbotron = () => {
     const imageContainerRef = useRef(null);
-    const imageRef = useRef(null);
 
     const [imageRect, setImageRect] = useState({ center: {} });
 
     useEffect(() => {
         const containerRect = imageContainerRef.current.getBoundingClientRect();
-        const rect = imageRef.current.getBoundingClientRect();
-
-        console.log(containerRect, rect);
+        const rect = imageContainerRef.current.querySelector('img').getBoundingClientRect();
 
         let obj = {
             left: rect.left - containerRect.left,
@@ -35,7 +35,7 @@ const Jumbotron = () => {
             <div className="jumbotron__main">
                 <span className="jumbotron__top-text">UI/UX Design</span>
                 <h1 className="jumbotron__heading">
-                    Building <span>Fun</span>, <span>Creative</span>, <span>Innovative</span> User Interfaces
+                    Building <span>Fun</span>, <span>Creative</span> and <span>Innovative</span> User Interfaces
                 </h1>
                 <p className="jumbotron__text">
                     I have a profound passion for web development, specialising in react.js, UI/UX principles & SEO optimization. Dismissing
@@ -44,7 +44,14 @@ const Jumbotron = () => {
                 <SingleInput placeholder="Email Address" name="email" buttonText="Connect With Me" />
             </div>
             <div ref={imageContainerRef} className="jumbotron__graphic-container">
-                <img ref={imageRef} className="jumbotron__graphic" src="/me.png" alt="Who's that good looking guy?" />
+                <Image
+                    unoptimized={true}
+                    className="jumbotron__graphic"
+                    src="/me.png"
+                    alt="Who's that good looking guy?"
+                    width="433"
+                    height="410"
+                />
                 <div className="jumbotron__info-box">
                     <span>47</span>
                     <p>Completed Projects</p>
@@ -66,7 +73,7 @@ const Jumbotron = () => {
                                   key={i}
                                   className={`jumbotron__asset jumbotron__asset--${i % 2 ? 'line' : 'circle'}`}
                                   style={{
-                                      top: `${imageRect.center.y + Math.floor(rd.top)}px`,
+                                      top: `${imageRect.center.y + Math.floor(rd.top) + 60}px`,
                                       left: `${imageRect.center.x + Math.floor(rd.left)}px`,
                                       transform: `rotate(${rd.rotate}deg)`,
                                       opacity: i % 2 ? rd.opacity + 0.3 : rd.opacity,
