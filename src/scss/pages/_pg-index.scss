@@ -1,0 +1,40 @@
+@use '../abstracts' as *;
+
+.pg-index {
+    &__about {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__about-top-text {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: $col-light-4;
+    }
+
+    &__about-heading-container {
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+    }
+
+    &__about-heading {
+        font-size: 3.2rem;
+    }
+
+    &__about-icon-container {
+        padding: 1.5rem;
+        border-radius: 50%;
+        background-color: $col-primary-light;
+        margin-right: 2rem;
+    }
+
+    &__about-icon {
+        width: 2rem;
+        height: 2rem;
+        fill: $col-light-1;
+        display: block;
+    }
+}

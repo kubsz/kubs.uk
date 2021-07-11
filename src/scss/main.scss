@@ -4,6 +4,9 @@
 
 @use './layout/nav';
 @use './layout/footer';
+@use './layout/section';
+
+@use './pages/pg-index';
 
 @use './components/jumbotron';
 @use './components/git-commit-graph';

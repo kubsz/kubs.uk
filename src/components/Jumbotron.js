@@ -35,13 +35,10 @@ const Jumbotron = () => {
             <div className="jumbotron__main">
                 <span className="jumbotron__top-text">UI/UX Design</span>
                 <h1 className="jumbotron__heading">
-                    Building <span>Fun</span>, <span>Creative</span> and <span>Innovative</span> User Interfaces
+                    Converting <span>Complex</span> Problems into <span>Beautiful</span>, <span>Intuitive</span> Designs
                 </h1>
-                <p className="jumbotron__text">
-                    I have a profound passion for web development, specialising in react.js, UI/UX principles & SEO optimization. Dismissing
-                    the boring nerdy stuff, I also love music, travelling, and lifting weights!
-                </p>
-                <SingleInput placeholder="Email Address" name="email" buttonText="Connect With Me" />
+                <p className="jumbotron__text">Full stack web developer speciailising in react.js, based in the UK.</p>
+                <SingleInput placeholder="Email Address" name="email" buttonText="Lets Chat!" />
             </div>
             <div ref={imageContainerRef} className="jumbotron__graphic-container">
                 <Image
@@ -54,7 +51,7 @@ const Jumbotron = () => {
                 />
                 <div className="jumbotron__info-box">
                     <span>47</span>
-                    <p>Completed Projects</p>
+                    <p>Projects Completed</p>
                 </div>
                 <div className="jumbotron__info-box">
                     <span>237</span>

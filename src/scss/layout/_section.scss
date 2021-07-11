@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+.section {
+    padding: 3rem 0;
+    position: relative;
+
+    margin: 12rem 0;
+
+    &--dark {
+        background-color: $col-dark-2;
+        color: $col-light-2;
+    }
+
+    &__wave {
+        position: absolute;
+        bottom: 100%;
+        fill: $col-light-1;
+        transform: scaleY(0.3) translateY(3px);
+        transform-origin: bottom;
+    }
+
+    &--dark &__wave path {
+        background-color: $col-dark-2;
+    }
+
+    &__margin {
+        @include margin(1400);
+    }
+}
