@@ -1,10 +1,10 @@
-import JumboTron from '../components/Jumbotron';
+import Jumbotron from '../components/Jumbotron';
 import Layout from '../components/Layout';
 
 const Index = () => {
     return (
         <Layout>
-            <JumboTron />
+            <Jumbotron />
         </Layout>
     );
 };

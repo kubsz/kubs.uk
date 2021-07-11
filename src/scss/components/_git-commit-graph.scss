@@ -1,0 +1,12 @@
+@use '../abstracts' as *;
+
+.git-commit-graph {
+    display: grid;
+    align-content: start;
+    margin: 0 auto;
+
+    &__box {
+        background-color: $col-primary;
+        border-radius: 0.2rem;
+    }
+}

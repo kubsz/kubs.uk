@@ -37,3 +37,11 @@ body {
 
     margin: 0;
 }
+
+.main {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: $gutter;
+
+    perspective: 2000px;
+}

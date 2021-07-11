@@ -4,7 +4,7 @@
     display: flex;
 
     &__input {
-        background-color: $col-light-3;
+        background-color: $col-light-2;
         box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.02);
         padding: 1.5rem;
         font-size: 1.5rem;
@@ -14,7 +14,7 @@
         color: $col-dark-2;
 
         border-radius: $radius;
-
+        box-shadow: 0 0 30px 10px rgba($col-primary-light, 0.1);
         &::-webkit-input-placeholder {
             color: rgba(0, 0, 0, 0.6);
         }
@@ -22,11 +22,16 @@
 
     &__button {
         background-color: $col-primary;
-        color: $col-light-2;
-        font-size: 1.3rem;
+        color: $col-light-1;
+        font-size: 1.4rem;
         padding: 1.5rem;
         border-radius: $radius;
 
         cursor: pointer;
+        transition: 0.1s ease;
+
+        &:hover {
+            background-color: lighten($col-primary, 5%);
+        }
     }
 }

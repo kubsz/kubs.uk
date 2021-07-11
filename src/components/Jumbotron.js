@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import SingleInput from './SingleInput';
 
-const JumboTron = () => {
+import GitCommitGraph from './GitCommitGraph';
+
+import randomNumbers from '../data/randomNumbers';
+import commits from '../data/commits';
+
+const Jumbotron = () => {
     const imageContainerRef = useRef(null);
     const imageRef = useRef(null);
 
@@ -25,7 +30,6 @@ const JumboTron = () => {
         setImageRect(obj);
     }, []);
 
-    console.log(imageRect);
     return (
         <section className="jumbotron">
             <div className="jumbotron__main">
@@ -41,20 +45,33 @@ const JumboTron = () => {
             </div>
             <div ref={imageContainerRef} className="jumbotron__graphic-container">
                 <img ref={imageRef} className="jumbotron__graphic" src="/me.png" alt="Who's that good looking guy?" />
+                <div className="jumbotron__info-box">
+                    <span>47</span>
+                    <p>Completed Projects</p>
+                </div>
+                <div className="jumbotron__info-box">
+                    <span>237</span>
+                    <p>Yearly Git Commits</p>
+                    <GitCommitGraph rows={2} columns={6} boxSize="1.2rem" gap=".4rem" width="9.3rem">
+                        {commits.map((opacity, i) => (
+                            <div key={i} className="git-commit-graph__box" style={{ opacity }} />
+                        ))}
+                    </GitCommitGraph>
+                </div>
                 {imageRect
-                    ? [...Array(50)].map((x, i) => {
-                          const circleSize = Math.random() + 1;
+                    ? randomNumbers.map((rd, i) => {
+                          const circleSize = rd.size + 1;
                           return (
                               <span
                                   key={i}
                                   className={`jumbotron__asset jumbotron__asset--${i % 2 ? 'line' : 'circle'}`}
                                   style={{
-                                      top: `${imageRect.center.y + Math.floor(Math.random() * 500 - 250)}px`,
-                                      left: `${imageRect.center.x + Math.floor(Math.random() * 500 - 300)}px`,
-                                      transform: `rotate(${Math.random() * 360}deg)`,
-                                      opacity: i % 2 ? Math.random() + 0.3 : Math.random() - 0.4,
-                                      width: i % 2 ? `${Math.random() + 1.5}rem` : `${circleSize}rem`,
-                                      height: i % 2 ? `${Math.random() / 5 + 0.15}rem` : `${circleSize}rem`
+                                      top: `${imageRect.center.y + Math.floor(rd.top)}px`,
+                                      left: `${imageRect.center.x + Math.floor(rd.left)}px`,
+                                      transform: `rotate(${rd.rotate}deg)`,
+                                      opacity: i % 2 ? rd.opacity + 0.3 : rd.opacity,
+                                      width: i % 2 ? `${rd.size + 1.5}rem` : `${circleSize}rem`,
+                                      height: i % 2 ? `${rd.size / 5 + 0.15}rem` : `${circleSize}rem`
                                   }}
                               />
                           );
@@ -65,4 +82,4 @@ const JumboTron = () => {
     );
 };
 
-export default JumboTron;
+export default Jumbotron;

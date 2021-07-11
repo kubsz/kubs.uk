@@ -2,8 +2,7 @@
 
 .jumbotron {
     @include margin(1400);
-
-    margin-top: $gutter * 2;
+    margin: $gutter auto 0 auto;
 
     background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
 
@@ -16,6 +15,21 @@
     align-items: center;
 
     overflow: hidden;
+
+    @keyframes flip-in {
+        0% {
+            transform: rotateX(-90deg);
+            opacity: 0;
+        }
+
+        100% {
+            transform: rotateX(0);
+            opacity: 1;
+        }
+    }
+
+    animation: flip-in 0.7s $timing-function-elastic;
+    transform-origin: top center;
 
     &__main {
         flex: 1 1 50%;
@@ -43,6 +57,60 @@
         filter: drop-shadow(0 0 30px rgba($col-primary-light, 0.2));
     }
 
+    &__info-box {
+        position: absolute;
+        z-index: 2;
+        padding: 1.5rem 2.5rem;
+
+        background-color: rgba(lighten($col-primary, 30%), 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: $radius * 3;
+
+        box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+
+        color: $col-light-1;
+        text-align: center;
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(-7px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+        }
+
+        &:nth-of-type(1) {
+            top: 45%;
+            right: 8%;
+            animation: float 10s infinite ease-in-out 5s;
+        }
+
+        &:nth-of-type(2) {
+            top: 60%;
+            left: 5%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        span {
+            font-size: 2.4rem;
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+            font-weight: 200;
+            margin-top: 0.25rem;
+        }
+
+        .git-commit-graph {
+            margin-top: 0.75rem;
+        }
+    }
+
     &__top-text {
         display: block;
         text-transform: uppercase;
@@ -52,13 +120,14 @@
         letter-spacing: 3px;
         word-spacing: 0.1rem;
 
-        text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 
-        color: $col-primary;
+        color: $col-primary-light;
     }
 
     &__heading {
-        font-family: 'CircularBold';
+        // font-family: 'CircularBold', sans-serif;
+        font-weight: 700;
         color: $col-light-2;
         font-size: 5rem;
         line-height: 1.2;
