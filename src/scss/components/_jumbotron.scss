@@ -75,7 +75,7 @@
         }
 
         span {
-            color: $col-primary;
+            color: $col-primary-light;
 
             @for $i from 1 through 3 {
                 &:nth-of-type(#{$i}) {
