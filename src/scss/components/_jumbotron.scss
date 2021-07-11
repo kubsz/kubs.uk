@@ -1,0 +1,62 @@
+@use '../abstracts' as *;
+
+.jumbotron {
+    @include margin(1400);
+
+    margin-top: $gutter * 2;
+
+    background-color: $col-light-2;
+    border-radius: $radius;
+
+    box-shadow: 0 0 74px 10px rgba(56, 50, 124, 0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__main {
+        flex: 1 1 50%;
+        padding: $gutter * 2 $gutter * 1.5;
+
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-gap: $gutter / 2;
+    }
+
+    &__graphic-container {
+        padding: 0 5rem;
+        align-self: flex-end;
+    }
+
+    &__graphic {
+        display: block;
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    }
+
+    &__top-text {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+
+        color: $col-primary;
+    }
+
+    &__heading {
+        font-family: 'CircularBold';
+        color: $col-dark-2;
+        font-size: 5rem;
+        line-height: 1.2;
+
+        span {
+            color: $col-primary;
+        }
+    }
+
+    &__text {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+}

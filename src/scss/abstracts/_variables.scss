@@ -1,0 +1,19 @@
+$col-primary: #5e3aef;
+$col-secondary: #22ac3b;
+$col-tertiary: #22ac3b;
+
+$col-primary-light: lighten($col-primary, 10%);
+$col-secondary-light: lighten($col-secondary, 10%);
+$col-tertiary-light: lighten($col-tertiary, 10%);
+
+$col-light-1: #fff;
+$col-light-2: #fbfbfd;
+$col-light-3: #eee;
+
+$col-dark-1: #101322;
+$col-dark-2: #0f1221;
+$col-dark-3: #5b5675;
+
+$gutter: 3rem;
+
+$radius: 0.3rem;

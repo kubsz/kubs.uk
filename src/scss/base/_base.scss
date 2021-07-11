@@ -1,0 +1,39 @@
+@use '../abstracts' as *;
+
+@font-face {
+    font-family: 'Circular';
+    src: url('/fonts/CircularStd-Book.ttf');
+}
+@font-face {
+    font-family: 'CircularBold';
+    src: url('/fonts/CircularStd-Bold.ttf');
+}
+@font-face {
+    font-family: 'CircularBlack';
+    src: url('/fonts/CircularStd-Black.ttf');
+}
+
+html {
+    //defines 1rem as 10px
+    font-size: 62.5%;
+
+    @include respond(1200) {
+        font-size: 56.25%;
+    }
+    @include respond(992) {
+        font-size: 50%;
+    }
+    @include respond(576) {
+        font-size: 45%;
+    }
+}
+
+body {
+    background-color: $col-light-2 !important;
+    color: $col-dark-1;
+
+    font-size: 1.6rem;
+    font-family: 'Circular';
+
+    margin: 0;
+}
