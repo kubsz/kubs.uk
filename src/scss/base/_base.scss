@@ -42,7 +42,7 @@ body {
     display: grid;
     grid-template-rows: 1fr;
     grid-gap: $gutter * 2;
-    margin: $gutter 0;
+    margin-top: $gutter;
 
     perspective: 2000px;
 }

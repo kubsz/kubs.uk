@@ -1,2 +1,90 @@
+@use '../abstracts' as *;
+
 .footer {
+    padding: $gutter * 1.5;
+
+    background-color: $col-light-1;
+    box-shadow: -10px 10px 40px 0 rgba(56, 50, 124, 0.08);
+
+    &__inner {
+        @include margin(1600);
+        margin: 0 auto 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: $gutter;
+    }
+
+    &__head {
+        text-align: center;
+    }
+
+    &__heading {
+        font-family: 'CircularBold', sans-serif;
+        font-weight: 700;
+        font-size: 2.4rem;
+        color: rgba($col-dark-2, 0.9);
+
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        word-spacing: 0.5rem;
+
+        &::after {
+            content: '';
+            display: block;
+            margin: 2.5rem auto 0 auto;
+            width: 14rem;
+            height: 0.4rem;
+            background-color: $col-primary;
+            border-radius: 0.2rem;
+        }
+    }
+
+    &__link-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: $gutter;
+
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    &__link-item {
+    }
+
+    &__link {
+    }
+
+    &__link-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    &__link-heading {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 1.4rem;
+        margin: 1rem 0;
+    }
+
+    &__dummy-link {
+        display: inline-block;
+        color: $col-primary;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+
+        svg {
+            width: 0.8rem;
+            margin-left: 0.5rem;
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.section--dark + .footer {
+    background-color: $col-dark-2;
 }
