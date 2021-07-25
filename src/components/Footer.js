@@ -7,6 +7,13 @@ import DashboardIcon from '../assets/svg/flowchart.svg';
 import BiographyIcon from '../assets/svg/learning.svg';
 import ContactIcon from '../assets/svg/design-tools.svg';
 
+import TwitterIcon from '../assets/svg/socials/twitter.svg';
+import LinkedInIcon from '../assets/svg/socials/linkedin.svg';
+import GithubIcon from '../assets/svg/socials/github.svg';
+
+import EmailIcon from '../assets/svg/email-fill.svg';
+import NavLink from './NavLink';
+
 const Footer = () => {
     const links = [
         {
@@ -37,9 +44,9 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer__inner">
-                <div className="footer__head">
+                {/* <div className="footer__head">
                     <h3 className="footer__heading">Just Beginning my Journey</h3>
-                </div>
+                </div> */}
                 <div className="footer__main">
                     <ul className="footer__link-list">
                         {links.map((link, i) => (
@@ -59,7 +66,31 @@ const Footer = () => {
                         ))}
                     </ul>
                 </div>
-                <div className="footer__lower">{/* email */}</div>
+                <div className="footer__lower">
+                    <div className="footer__lower-top">
+                        <div className="footer__lower-section">
+                            <h5 className="footer__lower-heading">Contact Me</h5>
+                            <div className="footer__email">
+                                <a href="mailto:me@kubs.uk">me@kubs.uk</a>
+                                <EmailIcon />
+                            </div>
+                        </div>
+                        <div className="footer__lower-section">
+                            <h5 className="footer__lower-heading">Follow my Socials</h5>
+                            <ul className="footer__social-list">
+                                <li className="footer__social-item">
+                                    <NavLink label={<TwitterIcon />} href="/" icon />
+                                </li>
+                                <li className="footer__social-item">
+                                    <NavLink label={<LinkedInIcon />} href="/" icon />
+                                </li>
+                                <li className="footer__social-item">
+                                    <NavLink label={<GithubIcon />} href="/" icon />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
     );

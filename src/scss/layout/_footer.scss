@@ -4,7 +4,7 @@
     padding: $gutter * 1.5;
 
     background-color: $col-light-1;
-    box-shadow: -10px 10px 40px 0 rgba(56, 50, 124, 0.08);
+    box-shadow: -10px -10px 40px 0 rgba(56, 50, 124, 0.38);
 
     &__inner {
         @include margin(1600);
@@ -22,22 +22,19 @@
     &__heading {
         font-family: 'CircularBold', sans-serif;
         font-weight: 700;
-        font-size: 2.4rem;
+        font-size: 1.6rem;
         color: rgba($col-dark-2, 0.9);
 
         text-transform: uppercase;
         letter-spacing: 5px;
         word-spacing: 0.5rem;
 
-        &::after {
-            content: '';
-            display: block;
-            margin: 2.5rem auto 0 auto;
-            width: 14rem;
-            height: 0.4rem;
-            background-color: $col-primary;
-            border-radius: 0.2rem;
-        }
+        background-color: $col-dark-2;
+        color: #fff;
+
+        display: inline-block;
+        padding: $gutter / 2 $gutter;
+        border-radius: $radius;
     }
 
     &__link-list {
@@ -53,11 +50,23 @@
     }
 
     &__link {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1.5rem;
+
+        padding: $gutter;
+        border-radius: $radius;
+
+        transition: 0.15s ease;
+
+        &:hover {
+            background-color: rgba($col-dark-2, 0.07);
+        }
     }
 
     &__link-icon {
-        width: 3rem;
-        height: 3rem;
+        width: 2.4rem;
+        height: 2.4rem;
     }
 
     &__link-heading {
@@ -65,7 +74,11 @@
         letter-spacing: 1px;
         font-weight: 700;
         font-size: 1.4rem;
-        margin: 1rem 0;
+    }
+
+    &__link-text {
+        font-size: 1.3rem;
+        color: $col-dark-3;
     }
 
     &__dummy-link {
@@ -74,7 +87,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: 700;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-top: 1rem;
 
         svg {
@@ -82,6 +95,89 @@
             margin-left: 0.5rem;
             transform: rotate(90deg);
         }
+    }
+
+    &__lower {
+        padding: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__lower-top {
+        padding: 3rem 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__email {
+        display: flex;
+        align-items: stretch;
+        background-image: linear-gradient(to bottom left, lighten($col-dark-2, 10%), lighten($col-dark-2, 20%));
+        border-radius: $radius;
+
+        min-width: 24rem;
+
+        svg {
+            width: 1.6rem;
+            fill: rgba(255, 255, 255, 0.7);
+            display: block;
+            padding: 1.2rem;
+            box-sizing: content-box;
+            transition: 0.1s ease;
+        }
+
+        a {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-left: 1px dashed rgba(255, 255, 255, 0.075);
+            padding: 1.2rem;
+
+            order: 1;
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.4rem;
+            // text-transform: uppercase;
+            // font-weight: 400;
+            // letter-spacing: 2px;
+
+            transition: 0.1s ease;
+
+            &:hover {
+                color: $col-light-1;
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+        a:hover + svg {
+            fill: $col-light-1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    &__lower-section {
+    }
+
+    &__lower-heading {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: $col-dark-2;
+    }
+
+    &__social-list {
+        display: flex;
+    }
+
+    &__social-item {
+        position: relative;
     }
 }
 
