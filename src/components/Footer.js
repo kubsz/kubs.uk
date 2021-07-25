@@ -13,6 +13,7 @@ import GithubIcon from '../assets/svg/socials/github.svg';
 
 import EmailIcon from '../assets/svg/email-fill.svg';
 import NavLink from './NavLink';
+import TooltipTrigger from './TooltipTrigger';
 
 const Footer = () => {
     const links = [
@@ -92,7 +93,11 @@ const Footer = () => {
                     </div>
                     <div className="footer__lower-bottom">
                         <p className="footer__copyright">
-                            Designed and developed with love by Kubs &copy; {new Date().getFullYear()}. All rights reserved.
+                            Designed and developed with love by Kubs &copy;{' '}
+                            <TooltipTrigger width="22rem" code content="new Date().getFullYear()">
+                                {new Date().getFullYear()}
+                            </TooltipTrigger>
+                            . All rights reserved.
                         </p>
                     </div>
                 </div>

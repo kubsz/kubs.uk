@@ -22,6 +22,18 @@
     }
 }
 
+@keyframes tooltip-in {
+    0% {
+        opacity: 0;
+        transform: translateY(calc(-100% - 6px));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+}
+
 @keyframes shadow-animation {
     0%,
     100% {

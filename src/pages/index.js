@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import Jumbotron from '../components/Jumbotron';
+import TooltipTrigger from '../components/TooltipTrigger';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 
@@ -23,6 +24,18 @@ const Index = () => {
                             </div>
                             <h2 className="pg-index__about-heading">A Little Bit About Me</h2>
                         </div>
+                        <p>
+                            I have a profound passion for web development, specialising in react.js, UI/UX principles & SEO optimization.
+                            Dismissing the boring nerdy stuff, I also love music, travelling, and lifting weights! Get in touch with me at
+                            me@kubs.uk.
+                        </p>
+                        <p>
+                            I have been developing websites for{' '}
+                            <TooltipTrigger width="28rem" code content="new Date().getFullYear() - 2015">
+                                {new Date().getFullYear() - 2015}
+                            </TooltipTrigger>{' '}
+                            years
+                        </p>
                     </div>
                 </div>
             </Section>

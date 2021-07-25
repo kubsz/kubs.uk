@@ -4,6 +4,12 @@
     &__about {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+
+        p {
+            color: $col-light-4;
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
     }
 
     &__about-top-text {

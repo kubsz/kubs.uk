@@ -58,7 +58,7 @@
         border-radius: $radius * 2;
 
         background-color: #fff;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 
         transition: 0.2s ease;
 
@@ -123,7 +123,7 @@
 
     &__lower-top {
         padding: 3rem 0;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
         display: flex;
         justify-content: space-between;
@@ -133,14 +133,16 @@
     &__email {
         display: flex;
         align-items: stretch;
-        background-image: linear-gradient(to bottom left, lighten($col-dark-2, 10%), lighten($col-dark-2, 20%));
         border-radius: $radius;
+
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 
         min-width: 24rem;
 
         svg {
             width: 1.6rem;
-            fill: rgba(255, 255, 255, 0.7);
+            fill: rgba(0, 0, 0, 0.6);
             display: block;
             padding: 1.2rem;
             box-sizing: content-box;
@@ -148,8 +150,7 @@
         }
 
         a {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-left: 1px dashed rgba(255, 255, 255, 0.075);
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
             padding: 1.2rem;
 
             order: 1;
@@ -158,22 +159,19 @@
             display: flex;
             align-items: center;
 
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(0, 0, 0, 0.7);
             font-size: 1.4rem;
-            // text-transform: uppercase;
-            // font-weight: 400;
-            // letter-spacing: 2px;
 
             transition: 0.1s ease;
 
             &:hover {
                 color: $col-light-1;
-                background-color: rgba(255, 255, 255, 0.15);
+                background-color: $col-primary;
             }
         }
         a:hover + svg {
             fill: $col-light-1;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: darken($col-primary, 5%);
         }
     }
 

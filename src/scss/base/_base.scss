@@ -46,3 +46,10 @@ body {
 
     perspective: 2000px;
 }
+
+.root__overlay {
+    position: fixed;
+    z-index: 9999;
+
+    top: 0;
+}

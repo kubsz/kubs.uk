@@ -16,7 +16,7 @@
 
     overflow: hidden;
 
-    animation: flip-in 0.8s $timing-function-elastic;
+    animation: tooltip-in 0.4s $timing-function-elastic;
     transform-origin: top center;
 
     &__main {
