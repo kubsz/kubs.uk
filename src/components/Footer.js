@@ -76,7 +76,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="footer__lower-section">
-                            <h5 className="footer__lower-heading">Follow my Socials</h5>
+                            <h5 className="footer__lower-heading">Keep up with me</h5>
                             <ul className="footer__social-list">
                                 <li className="footer__social-item">
                                     <NavLink label={<TwitterIcon />} href="/" icon />
@@ -89,6 +89,11 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                    <div className="footer__lower-bottom">
+                        <p className="footer__copyright">
+                            Designed and developed with love by Kubs &copy; {new Date().getFullYear()}. All rights reserved.
+                        </p>
                     </div>
                 </div>
             </div>
