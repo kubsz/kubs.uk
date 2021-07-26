@@ -9,9 +9,11 @@
 
     border-radius: $radius;
 
-    transition: 0.2s ease;
+    // transition: 0.2s ease;
 
-    animation: tooltip-in 0.4s $timing-function-elastic;
+    pointer-events: none;
+
+    // animation: tooltip-in 0.4s $timing-function-elastic;
     transform-origin: top center;
 
     &--exit {

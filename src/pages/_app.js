@@ -1,13 +1,7 @@
 import '../scss/main.scss';
 
-import { TooltipProvider } from '../context/Tooltip';
-
 const App = ({ Component, pageProps }) => {
-    return (
-        <TooltipProvider>
-            <Component {...pageProps} />
-        </TooltipProvider>
-    );
+    return <Component {...pageProps} />;
 };
 
 export default App;

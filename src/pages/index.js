@@ -32,7 +32,7 @@ const Index = () => {
                         <p>
                             I have been developing websites for{' '}
                             <TooltipTrigger width="27rem" code content="new Date().getFullYear() - 2015">
-                                {new Date().getFullYear() - 2015}
+                                {`{${new Date().getFullYear() - 2015}}`}
                             </TooltipTrigger>{' '}
                             years
                         </p>

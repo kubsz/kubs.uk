@@ -94,8 +94,8 @@ const Footer = () => {
                     <div className="footer__lower-bottom">
                         <p className="footer__copyright">
                             Designed and developed with love by Kubs &copy;{' '}
-                            <TooltipTrigger width="22rem" code content="new Date().getFullYear()">
-                                {new Date().getFullYear()}
+                            <TooltipTrigger width="21.5rem" code content="new Date().getFullYear()">
+                                {`{${new Date().getFullYear()}}`}
                             </TooltipTrigger>
                             . All rights reserved.
                         </p>
