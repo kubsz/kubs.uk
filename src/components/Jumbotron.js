@@ -8,7 +8,7 @@ import GitCommitGraph from './GitCommitGraph';
 
 import randomNumbers from '../data/randomNumbers';
 import commits from '../data/commits';
-import TooltipTrigger from './TooltipTrigger';
+// import TooltipTrigger from './TooltipTrigger';
 
 const Jumbotron = () => {
     const imageContainerRef = useRef(null);
@@ -56,9 +56,9 @@ const Jumbotron = () => {
                 </div>
                 <div className="jumbotron__info-box">
                     <span>
-                        <TooltipTrigger code content="await fetch('/api/git-commits').then(res => res.json())}">
-                            {273}
-                        </TooltipTrigger>
+                        {/* <TooltipTrigger code content="await fetch('/api/git-commits').then(res => res.json())}"> */}
+                        {273}
+                        {/* </TooltipTrigger> */}
                     </span>
                     <p>Yearly Git Commits</p>
                     <GitCommitGraph rows={2} columns={6} boxSize="1.2rem" gap=".4rem" width="9.3rem">

@@ -4,11 +4,11 @@ import { TooltipContext } from '../context/Tooltip';
 
 import { createPortal } from 'react-dom';
 
-const Tooltip = (props) => {
+const Tooltip = () => {
     const [tooltipMounted, setTooltipMounted] = useState(false);
     const [classes, setClasses] = useState(null);
 
-    let { tooltipContent, handleTooltip, tooltip } = useContext(TooltipContext);
+    let { tooltipContent, tooltip } = useContext(TooltipContext);
 
     useEffect(() => {
         if (!tooltip && tooltipMounted) {

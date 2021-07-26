@@ -9,7 +9,7 @@ const TooltipTrigger = (props) => {
 
     const triggerRef = useRef(null);
 
-    const handleMouseEnter = (e) => {
+    const handleMouseEnter = () => {
         handleTooltip(
             <SyntaxHighlighter language="javascript" style={tomorrow}>
                 {props.content}
