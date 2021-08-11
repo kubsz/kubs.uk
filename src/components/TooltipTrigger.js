@@ -11,7 +11,6 @@ const TooltipTrigger = (props) => {
     const offset = 15;
 
     const handleMouseEnter = (e) => {
-        console.log(e);
         setPosition({
             top: e.clientY - offset,
             left: e.clientX + offset
@@ -25,7 +24,7 @@ const TooltipTrigger = (props) => {
     return (
         <>
             <span
-                className="tooltip__trigger"
+                className={props.className || 'tooltip__trigger'}
                 onMouseEnter={handleMouseEnter}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}

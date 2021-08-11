@@ -5,6 +5,12 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
+        @include respond(1400) {
+            grid-template-columns: 100%;
+            grid-gap: $gutter;
+            width: 100%;
+        }
+
         p {
             color: $col-light-4;
             font-weight: 400;
@@ -42,5 +48,16 @@
         height: 2rem;
         fill: $col-light-1;
         display: block;
+    }
+
+    &__about-technology-list {
+        display: flex;
+        flex-flow: row wrap;
+        margin: -0.5rem;
+        margin-top: $gutter / 2;
+
+        & > li {
+            margin: 0.5rem;
+        }
     }
 }

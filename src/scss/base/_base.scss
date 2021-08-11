@@ -38,6 +38,10 @@ body {
     margin: 0;
 }
 
+.root {
+    overflow-x: hidden;
+}
+
 .main {
     display: grid;
     grid-template-rows: 1fr;
@@ -45,6 +49,8 @@ body {
     margin-top: $gutter;
 
     perspective: 2000px;
+
+    width: 100%;
 }
 
 .root__overlay {

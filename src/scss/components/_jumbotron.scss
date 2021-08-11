@@ -2,6 +2,7 @@
 
 .jumbotron {
     @include margin(1400);
+    max-width: 100%;
     margin: $gutter auto 0 auto;
 
     background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
@@ -19,16 +20,26 @@
     animation: flip-in 0.8s $timing-function-elastic;
     transform-origin: top center;
 
+    @include respond(1200) {
+        width: calc(100vw - #{$gutter * 2});
+        margin: 0 auto;
+    }
+
     &__main {
-        flex: 1 1 50%;
+        flex: 1 1 auto;
         padding: $gutter * 2 $gutter * 1.5;
 
         display: grid;
         grid-template-rows: 1fr;
         grid-gap: $gutter / 2;
+
+        @include respond(1200) {
+            flex: 1;
+        }
     }
 
     &__graphic-container {
+        flex: 1 1 50%;
         padding: 0 5rem;
         align-self: flex-end;
         position: relative;

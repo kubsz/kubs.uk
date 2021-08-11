@@ -6,6 +6,10 @@
     background-color: $col-light-1;
     box-shadow: -10px -10px 40px 0 rgba(56, 50, 124, 0.38);
 
+    @include respond(992) {
+        padding: $gutter;
+    }
+
     &__inner {
         @include margin(1600);
         margin: 0 auto 0 auto;
@@ -13,6 +17,11 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-gap: $gutter;
+
+        @include respond(992) {
+            width: 100%;
+            max-width: unset;
+        }
     }
 
     &__head {
@@ -39,10 +48,8 @@
 
     &__link-list {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: $gutter;
-
-        width: 1000px;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: $gutter / 2;
         margin: 0 auto;
     }
 
@@ -83,7 +90,7 @@
     }
 
     &__link-text {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         color: $col-dark-3;
         transition: 0.2s ease;
     }
@@ -115,7 +122,7 @@
     }
 
     &__lower {
-        padding: 1.5rem 1.5rem 0 1.5rem;
+        // padding: 1.5rem 1.5rem 0 1.5rem;
 
         display: flex;
         flex-direction: column;
@@ -159,6 +166,8 @@
             display: flex;
             align-items: center;
 
+            border-radius: 0 $radius $radius 0;
+
             color: rgba(0, 0, 0, 0.7);
             font-size: 1.4rem;
 
@@ -172,6 +181,8 @@
         a:hover + svg {
             fill: $col-light-1;
             background-color: darken($col-primary, 5%);
+
+            border-radius: $radius 0 0 $radius;
         }
     }
 

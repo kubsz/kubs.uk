@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+.technology {
+    display: flex;
+    align-items: center;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+    svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-right: 0.7rem;
+        display: block;
+    }
+
+    span {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+}

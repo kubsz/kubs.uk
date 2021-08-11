@@ -25,5 +25,8 @@
 
     &__margin {
         @include margin(1400);
+        @include respond(1500) {
+            width: 100%;
+        }
     }
 }

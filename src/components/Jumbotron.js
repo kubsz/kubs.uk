@@ -56,7 +56,12 @@ const Jumbotron = () => {
                 </div>
                 <div className="jumbotron__info-box">
                     <span>
-                        <TooltipTrigger code content="await fetch('/api/git-commits').then(res => res.json())}" width="40rem">
+                        <TooltipTrigger
+                            className="jumbotron__info-tooltip"
+                            code
+                            content="await fetch('/api/git-commits').then(res => res.json())}"
+                            width="40rem"
+                        >
                             {273}
                         </TooltipTrigger>
                     </span>
