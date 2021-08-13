@@ -40,7 +40,7 @@ const Index = () => {
                             </TooltipTrigger>{' '}
                             years ago, I have picked up many different front-end and back-end technologies, but always seemed to be drawn to
                             front-end development. As showcased in{' '}
-                            <Link href="/my-work">
+                            <Link href="/projects">
                                 <a className="link">my work</a>
                             </Link>
                             , my beloved tool is{' '}

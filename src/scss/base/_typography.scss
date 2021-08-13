@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+h1 {
+    font-size: 6rem;
+    margin-bottom: $gutter;
+}
+
+p {
+    font-size: 1.4rem;
+    margin: 0;
+}

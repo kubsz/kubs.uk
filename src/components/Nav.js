@@ -24,10 +24,10 @@ const Nav = () => {
                             <NavLink label="My Work" href="/projects" />
                         </li>
                         <li className="nav__link-item">
-                            <NavLink label="Dashboard" href="/" />
+                            <NavLink label="Dashboard" href="/dashboard" />
                         </li>
                         <li className="nav__link-item">
-                            <NavLink label="Blog" href="/" />
+                            <NavLink label="Blog" href="/blog" />
                         </li>
                     </ul>
                 </div>

@@ -3,7 +3,6 @@
 .tooltip {
     position: absolute;
     width: auto;
-    background-color: blue;
     transform: translateY(-100%);
     margin-bottom: $gutter / 2;
 
@@ -46,7 +45,7 @@
     }
 
     &__trigger {
-        color: $col-primary-light;
+        color: $col-secondary;
 
         // text-decoration: underline;
         // text-decoration-style: dotted;

@@ -1,0 +1,9 @@
+@use '../abstracts'as *;
+
+.pg-blog {
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: $gutter * 1.5;
+    }
+}

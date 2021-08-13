@@ -1,15 +1,20 @@
 @use './abstracts/normalize';
 
 @use './base/base';
+@use './base/typography';
 
 @use './layout/nav';
 @use './layout/footer';
 @use './layout/section';
 
 @use './pages/pg-index';
+@use './pages/pg-blog';
 
 @use './components/jumbotron';
 @use './components/git-commit-graph';
 @use './components/single-input';
 @use './components/tooltip';
 @use './components/technology';
+@use './components/blog-card';
+@use './components/btn';
+@use './components/badge';

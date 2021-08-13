@@ -1,17 +1,17 @@
 @use '../abstracts' as *;
 
-@font-face {
-    font-family: 'Circular';
-    src: url('/fonts/CircularStd-Book.ttf'), format('truetype');
-}
-@font-face {
-    font-family: 'CircularBold';
-    src: url('/fonts/CircularStd-Bold.ttf'), format('truetype');
-}
-@font-face {
-    font-family: 'CircularBlack';
-    src: url('/fonts/CircularStd-Black.ttf'), format('truetype');
-}
+// @font-face {
+//     font-family: 'Circular';
+//     src: url('/fonts/CircularStd-Book.ttf'), format('truetype');
+// }
+// @font-face {
+//     font-family: 'CircularBold';
+//     src: url('/fonts/CircularStd-Bold.ttf'), format('truetype');
+// }
+// @font-face {
+//     font-family: 'CircularBlack';
+//     src: url('/fonts/CircularStd-Black.ttf'), format('truetype');
+// }
 
 html {
     //defines 1rem as 10px
@@ -40,7 +40,7 @@ body {
     color: $col-dark-1;
 
     font-size: 1.6rem;
-    font-family: 'Circular', sans-serif;
+    font-family: 'Lato', sans-serif;
 
     margin: 0;
 }

@@ -65,7 +65,7 @@
     &__link {
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: 1.5rem;
+        grid-gap: 1rem;
 
         padding: $gutter;
         border-radius: $radius * 2;
@@ -86,13 +86,14 @@
         width: 2.4rem;
         height: 2.4rem;
         fill: currentColor;
+        margin-bottom: 0.5rem;
     }
 
     &__link-heading {
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-weight: 700;
-        font-size: 1.4rem;
+        font-weight: 900;
+        font-size: 1.3rem;
     }
 
     &__link-text {
