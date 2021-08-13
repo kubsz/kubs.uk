@@ -6,8 +6,4 @@ const Badge = ({ style, children }) => {
     );
 };
 
-Badge.defaultProps = {
-    color: 'default'
-};
-
 export default Badge;

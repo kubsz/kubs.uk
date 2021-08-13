@@ -4,7 +4,7 @@
     &__about {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        margin: $gutter 0;
+        margin: $gutter 0 0 0;
 
         @include respond(1400) {
             grid-template-columns: 100%;
