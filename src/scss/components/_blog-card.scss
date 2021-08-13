@@ -27,9 +27,13 @@
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
 
             transition: transform 0.2s ease;
+
+            @include respond(992) {
+                width: 22rem;
+            }
         }
 
-        &:hover {
+        @at-root a#{&}:hover {
             filter: brightness(1.2);
 
             svg {

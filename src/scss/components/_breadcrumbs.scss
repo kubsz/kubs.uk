@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+.breadcrumbs {
+    @include margin(1400);
+    margin: $gutter auto 0 auto;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        margin: 0 -1rem;
+    }
+
+    &__item {
+        margin: 0 1rem;
+        display: flex;
+        align-items: center;
+        height: 3rem;
+
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+
+        svg {
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    &__home {
+        color: $col-primary !important;
+        font-size: 16px;
+    }
+
+    &__link {
+        margin-right: 1.5rem;
+        color: $col-primary;
+        font-weight: 700;
+
+        &:hover {
+            &,
+            svg {
+                color: $col-primary-light !important;
+            }
+        }
+    }
+}

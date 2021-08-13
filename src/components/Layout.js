@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import Breadcrumb from './Breadcrumbs';
 import Footer from './Footer';
 import Nav from './Nav';
 
-const Layout = ({ harshFooterShadow, children, title }) => {
+const Layout = ({ harshFooterShadow, children, title, crumbs }) => {
     return (
         <div className="root">
             <Head>
@@ -10,6 +11,7 @@ const Layout = ({ harshFooterShadow, children, title }) => {
             </Head>
             <div className="root__overlay" id="root__overlay"></div>
             <Nav />
+            {crumbs && crumbs.length ? <Breadcrumb crumbs={crumbs} /> : null}
             <main className="main">{children}</main>
             <Footer harshShadow={harshFooterShadow} />
         </div>

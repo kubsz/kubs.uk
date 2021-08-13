@@ -6,4 +6,14 @@
         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
         grid-gap: $gutter * 1.5;
     }
+
+    &__content {
+        width: 800px;
+        margin: 5rem auto;
+        max-width: 100%;
+
+        p {
+            font-size: 1.8rem;
+        }
+    }
 }
