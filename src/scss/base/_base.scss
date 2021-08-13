@@ -1,18 +1,5 @@
 @use '../abstracts' as *;
 
-// @font-face {
-//     font-family: 'Circular';
-//     src: url('/fonts/CircularStd-Book.ttf'), format('truetype');
-// }
-// @font-face {
-//     font-family: 'CircularBold';
-//     src: url('/fonts/CircularStd-Bold.ttf'), format('truetype');
-// }
-// @font-face {
-//     font-family: 'CircularBlack';
-//     src: url('/fonts/CircularStd-Black.ttf'), format('truetype');
-// }
-
 html {
     //defines 1rem as 10px
     font-size: 62.5%;
@@ -43,6 +30,7 @@ body {
     font-family: 'Lato', sans-serif;
 
     margin: 0;
+    overflow-y: scroll;
 }
 
 body,
