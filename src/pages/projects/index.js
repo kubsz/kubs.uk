@@ -1,7 +1,7 @@
 import Layout from '../../components/Layout';
 import Section from '../../components/Section';
 
-const ProjectIndex = (props) => {
+const ProjectIndex = () => {
     return (
         <Layout>
             <Section>
