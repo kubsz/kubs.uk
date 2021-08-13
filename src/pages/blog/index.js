@@ -150,7 +150,6 @@ const Blog = () => {
         <Layout>
             <Section>
                 <div className="pg-blog">
-                    <h1>Blog</h1>
                     <ul className="pg-blog__container">
                         {blogs.map((blog, i) => (
                             <BlogCard key={i} data={blog} />
