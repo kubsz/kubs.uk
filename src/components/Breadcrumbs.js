@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { MdChevronRight } from 'react-icons/md';
-import { TiHome } from 'react-icons/Ti';
+import { TiHome } from 'react-icons/ti';
 
 const Breadcrumbs = ({ crumbs }) => {
     if (!crumbs.length) return null;
