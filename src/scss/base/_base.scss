@@ -28,6 +28,13 @@ html {
     }
 }
 
+html,
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     background-color: $col-light-2 !important;
     color: $col-dark-1;
@@ -38,6 +45,15 @@ body {
     margin: 0;
 }
 
+body,
+#__next,
+.root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
 .root {
     overflow-x: hidden;
 }
@@ -46,11 +62,16 @@ body {
     display: grid;
     grid-template-rows: 1fr;
     grid-gap: $gutter * 2;
-    margin-top: $gutter;
 
     perspective: 2000px;
 
     width: 100%;
+
+    flex: 1;
+
+    @include respond(992) {
+        grid-gap: $gutter;
+    }
 }
 
 .root__overlay {

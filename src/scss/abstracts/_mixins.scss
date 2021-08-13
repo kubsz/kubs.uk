@@ -8,7 +8,7 @@
 
 @mixin margin($size) {
     width: $size * 1px;
-    margin: $gutter auto;
+    margin: 0 auto;
     max-width: calc(100% - (#{$gutter * 2}));
 }
 

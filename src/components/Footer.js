@@ -15,7 +15,7 @@ import EmailIcon from '../assets/svg/email-fill.svg';
 import NavLink from './NavLink';
 import TooltipTrigger from './TooltipTrigger';
 
-const Footer = () => {
+const Footer = ({ harshShadow }) => {
     const links = [
         {
             label: 'My Projects',
@@ -43,7 +43,7 @@ const Footer = () => {
         }
     ];
     return (
-        <footer className="footer">
+        <footer className={`footer${harshShadow ? ' footer--harsh-shadow' : ''}`}>
             <div className="footer__inner">
                 {/* <div className="footer__head">
                     <h3 className="footer__heading">Just Beginning my Journey</h3>

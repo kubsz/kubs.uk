@@ -5,46 +5,15 @@ import Jumbotron from '../components/Jumbotron';
 import TooltipTrigger from '../components/TooltipTrigger';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
+import TechnologyItem from '../components/TechnologyItem';
 
 import PencilIcon from '../assets/svg/pencil.svg';
 
-import ReactIcon from '../assets/svg/technologies/react-logo.svg';
-import JavascriptLogo from '../assets/svg/technologies/js.svg';
-import NodeLogo from '../assets/svg/technologies/node.svg';
-import NextJSLogo from '../assets/svg/technologies/next.svg';
-import VercelLogo from '../assets/svg/technologies/vercel.svg';
+import technologies from '../data/technologies';
 
 const Index = () => {
-    const technologies = [
-        {
-            name: 'React.js',
-            image: <ReactIcon />,
-            color: '#61dafb'
-        },
-        {
-            name: 'JavaScript',
-            image: <JavascriptLogo />,
-            color: '#f7df1e'
-        },
-        {
-            name: 'Node',
-            image: <NodeLogo />,
-            color: '#75ac64'
-        },
-        {
-            name: 'Next.js',
-            image: <NextJSLogo />,
-            color: '#0070f3'
-        },
-        {
-            name: 'Vercel',
-            image: <VercelLogo />,
-            color: '#000000'
-        }
-    ];
-
     return (
-        <Layout>
+        <Layout harshFooterShadow={true}>
             <Jumbotron />
             <Section dark wave>
                 <div className="pg-index__about">
@@ -76,29 +45,17 @@ const Index = () => {
                             </Link>
                             , my beloved tool is{' '}
                             <TooltipTrigger
-                                width="27rem"
+                                width="30rem"
                                 code
                                 content="projects.reduce((a, b, i, arr) => (arr.filter(v => v === a).length >= arr.filter(v => v === b).length ? a.language : b.language), null)"
                             >
-                                {`react.js`}
+                                {`{react.js}`}
                             </TooltipTrigger>
                             , but I also have significant experience with other languages and technologies listed below.
                         </p>
                         <ul className="pg-index__about-technology-list">
-                            {[...technologies, ...technologies, ...technologies].map((tech) => (
-                                <li key={tech.name}>
-                                    <a
-                                        className="technology"
-                                        style={{
-                                            backgroundColor: `${tech.color}33`,
-                                            border: `1px solid ${tech.color}3d`,
-                                            color: tech.color
-                                        }}
-                                    >
-                                        {tech.image}
-                                        <span>{tech.name}</span>
-                                    </a>
-                                </li>
+                            {technologies.map((tech) => (
+                                <TechnologyItem key={tech.name} data={tech} />
                             ))}
                         </ul>
                     </div>

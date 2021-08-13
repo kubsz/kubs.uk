@@ -7,11 +7,14 @@
     padding: 0.5rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 
+    transition: 0.1s ease;
+
     svg {
-        width: 1.6rem;
-        height: 1.6rem;
+        width: 1.4rem;
+        height: 1.4rem;
         margin-right: 0.7rem;
         display: block;
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, 05));
     }
 
     span {

@@ -4,7 +4,13 @@
     padding: 3rem 0;
     position: relative;
 
-    margin: 12rem 0 0 0;
+    &--wave {
+        margin: 8rem 0 0 0;
+
+        @include respond(992) {
+            margin: 0;
+        }
+    }
 
     &--dark {
         background-color: $col-dark-2;
@@ -17,6 +23,10 @@
         fill: $col-light-1;
         transform: scaleY(0.3) translateY(3px);
         transform-origin: bottom;
+
+        @include respond(992) {
+            display: none;
+        }
     }
 
     &--dark &__wave path {

@@ -1,13 +1,13 @@
 import Footer from './Footer';
 import Nav from './Nav';
 
-const Layout = (props) => {
+const Layout = ({ harshFooterShadow, children }) => {
     return (
         <div className="root">
             <div className="root__overlay" id="root__overlay"></div>
             <Nav />
-            <main className="main">{props.children}</main>
-            <Footer />
+            <main className="main">{children}</main>
+            <Footer harshShadow={harshFooterShadow} />
         </div>
     );
 };

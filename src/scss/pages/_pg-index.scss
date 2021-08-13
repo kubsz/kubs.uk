@@ -4,6 +4,7 @@
     &__about {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin: $gutter 0;
 
         @include respond(1400) {
             grid-template-columns: 100%;
@@ -15,6 +16,12 @@
             color: $col-light-4;
             font-weight: 400;
             font-size: 1.8rem;
+        }
+    }
+
+    &__about-graphic {
+        @include respond(1400) {
+            display: none;
         }
     }
 

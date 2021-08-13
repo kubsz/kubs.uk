@@ -21,7 +21,7 @@ const Nav = () => {
                 <div className="nav__main">
                     <ul className="nav__link-list">
                         <li className="nav__link-item">
-                            <NavLink label="My Work" href="/" />
+                            <NavLink label="My Work" href="/projects" />
                         </li>
                         <li className="nav__link-item">
                             <NavLink label="Dashboard" href="/" />
