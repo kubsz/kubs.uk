@@ -32,7 +32,7 @@ const BlogCard = ({ data }) => {
                 </Link>
                 <p className="blog-card__description">{data.description}</p>
                 {data.horizontal ? (
-                    <Button className="blog-card__button" href={data.slug}>
+                    <Button className="blog-card__button" href={`/blog/${data.slug}`}>
                         Read More
                     </Button>
                 ) : null}

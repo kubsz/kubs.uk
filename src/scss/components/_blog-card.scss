@@ -5,6 +5,11 @@
         display: flex;
         align-items: center;
         grid-column: 1 / -1;
+
+        @include respond(992) {
+            flex-direction: column;
+            align-items: stretch;
+        }
     }
     &__graphic {
         width: 100%;
@@ -38,6 +43,12 @@
         height: 400px;
         width: auto;
         margin-right: $gutter;
+
+        @include respond(992) {
+            height: auto;
+            padding: 10rem;
+            margin-right: 0;
+        }
 
         svg {
             width: 25rem;

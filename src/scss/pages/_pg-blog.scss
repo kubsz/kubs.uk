@@ -3,7 +3,7 @@
 .pg-blog {
     &__container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
         grid-gap: $gutter * 1.5;
     }
 }
