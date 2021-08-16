@@ -1,18 +1,33 @@
 import { createClient } from '@supabase/supabase-js';
+import { formatDistance } from 'date-fns';
+import useSWR from 'swr';
 import Layout from '../../components/Layout';
 import Section from '../../components/Section';
 
-const DashboardIndex = ({ health }) => {
-    console.log(health[0]);
+const fetcher = (query) => {
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_KEY;
+
+    const supabase = createClient(query, supabaseKey);
+
+    return supabase.from('health').select('data').order('id', { ascending: false }).limit(1);
+};
+
+const DashboardIndex = (props) => {
+    const { data, error } = useSWR(process.env.NEXT_PUBLIC_SUPABASE_URL, fetcher);
+
+    if (!data) return <p>loading...</p>;
+
+    const health = data.data[0].data;
+    console.log(health);
     return (
         <Layout>
             <Section>
-                {health.map((obj) => (
+                {Object.keys(health).map((obj) => (
                     <>
-                        <h3 key={obj.name}>{obj.name}:</h3>
-                        {obj.data.map((x, i) => (
+                        <h3 key={health[obj].name}>{health[obj].name}:</h3>
+                        {health[obj].data.map((x, i) => (
                             <p key={i}>
-                                <strong>{x.date}: </strong>
+                                <strong>{formatDistance(new Date(x.date), new Date(), { addSuffix: true })}: </strong>
                                 {x.qty}
                             </p>
                         ))}
@@ -37,8 +52,8 @@ export const getStaticProps = async () => {
 
     return {
         props: {
-            health: health[0].data
+            health: health[health.length - 1].data
         },
-        revalidate: 10
+        revalidate: 60
     };
 };

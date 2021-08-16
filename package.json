@@ -11,7 +11,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^1.21.3",
     "axios": "^0.21.1",
-    "date-fns": "^2.22.1",
+    "date-fns": "^2.23.0",
     "js-base64": "^3.6.1",
     "next": "11.0.1",
     "next-react-svg": "^1.1.3",
