@@ -4,7 +4,6 @@ import { createClient } from '@supabase/supabase-js';
 import { decode } from 'js-base64';
 
 const handler = async (req, res) => {
-    console.log(req.body);
     const body = req.body.data;
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -12,10 +11,61 @@ const handler = async (req, res) => {
 
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const response = await supabase.from('health').insert({ data: body.metrics });
-    console.log('successfully updated health data');
+    // DELETE ALL
+    // const x = await supabase.from('entry').delete();
+    // return res.status(200).json({ status: 'success' });
+
+    const { data: refs, error } = await supabase.from('entry_ref').select('id, name, ref');
+
+    let inserts = [];
+    for (const obj of body.metrics) {
+        // console.log(obj);
+        const { id, ref } = refs.find((x) => x.ref === obj.name);
+
+        switch (ref) {
+            case 'sleep_analysis':
+                const sleepRecords = obj.data.map((sleepSession) => ({
+                    sleepDuration: sleepSession.inBed,
+                    sleepStart: sleepSession.sleepStart,
+                    sleepEnd: sleepSession.sleepEnd,
+                    date: sleepSession.date
+                }));
+
+                for (const sleep of sleepRecords) {
+                    inserts.push({
+                        ref: id,
+                        data: null,
+                        date: sleep.date,
+                        extra_data: sleep
+                    });
+                }
+                break;
+            default:
+                for (const entry of obj.data) {
+                    // console.log(entry);
+                    inserts.push({
+                        ref: id,
+                        data: entry.qty,
+                        date: entry.date
+                    });
+                }
+                break;
+        }
+    }
+
+    console.log('sent request');
+    const response = await supabase.from('entry').insert(inserts);
+    console.log(response);
 
     res.status(200).json({ status: 'success' });
+};
+
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '10mb'
+        }
+    }
 };
 
 export default handler;

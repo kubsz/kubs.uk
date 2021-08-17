@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createClient } from '@supabase/supabase-js';
 import { formatDistance } from 'date-fns';
 import useSWR from 'swr';
@@ -9,51 +11,37 @@ const fetcher = (query) => {
 
     const supabase = createClient(query, supabaseKey);
 
-    return supabase.from('health').select('data').order('id', { ascending: false }).limit(1);
+    return supabase.from('entry_ref').select('name, unit, ref, entry ( ref, data, date ) ');
 };
 
-const DashboardIndex = (props) => {
+const DashboardIndex = () => {
     const { data, error } = useSWR(process.env.NEXT_PUBLIC_SUPABASE_URL, fetcher);
 
     if (!data) return <p>loading...</p>;
 
-    const health = data.data[0].data;
-    console.log(health);
+    const weight = data.data.find((x) => x.ref === 'weight_body_mass');
     return (
         <Layout>
             <Section>
-                {Object.keys(health).map((obj) => (
-                    <>
-                        <h3 key={health[obj].name}>{health[obj].name}:</h3>
-                        {health[obj].data.map((x, i) => (
-                            <p key={i}>
-                                <strong>{formatDistance(new Date(x.date), new Date(), { addSuffix: true })}: </strong>
-                                {x.qty}
-                            </p>
-                        ))}
-                    </>
-                ))}
+                <h1>My Bodyweight</h1>
+                <div className="pg-dashboard">
+                    {[...weight.entry].reverse().map((entry, i) => (
+                        <div key={i} className="pg-dashboard__row">
+                            <div className="pg-dashboard__column">
+                                <strong>Date: </strong>
+                                {formatDistance(new Date(entry.date), new Date(), { addSuffix: true })}
+                            </div>
+                            <div className="pg-dashboard__column">
+                                <strong>Weight: </strong>
+                                {entry.data.toFixed(2)}
+                                {weight.unit}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </Section>
         </Layout>
     );
 };
 
 export default DashboardIndex;
-
-/* eslint-disable */
-
-export const getStaticProps = async () => {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SECRET_KEY;
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    let { data: health, error } = await supabase.from('health').select('data');
-
-    return {
-        props: {
-            health: health[health.length - 1].data
-        },
-        revalidate: 60
-    };
-};
