@@ -50,11 +50,14 @@ const DashboardIndex = () => {
             <Section>
                 <h1>My Bodyweight</h1>
                 <LineChart
-                    data={[...entries].splice(1, 30).map((entry) => ({
-                        group: 'xxxx',
-                        date: format(new Date(entry.date), 'MM-dd-yyyy'),
-                        value: entry.data
-                    }))}
+                    data={[...entries]
+                        .reverse()
+                        .splice(1, 30)
+                        .map((entry) => ({
+                            group: 'xxxx',
+                            date: format(new Date(entry.date), 'MM-dd-yyyy'),
+                            value: entry.data
+                        }))}
                     options={{
                         resizable: true,
                         zoomBar: true,
