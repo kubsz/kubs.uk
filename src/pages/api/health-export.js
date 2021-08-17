@@ -40,6 +40,23 @@ const handler = async (req, res) => {
                     });
                 }
                 break;
+            case 'heart_rate':
+                const heartRateRecords = obj.data.map((heartRate) => ({
+                    min: heartRate.Min,
+                    max: heartRate.Max,
+                    avg: heartRate.Avg,
+                    date: heartRate.date
+                }));
+
+                for (const heartRate of heartRateRecords) {
+                    inserts.push({
+                        ref: id,
+                        data: null,
+                        date: heartRate.date,
+                        extra_data: heartRate
+                    });
+                }
+                break;
             default:
                 for (const entry of obj.data) {
                     // console.log(entry);

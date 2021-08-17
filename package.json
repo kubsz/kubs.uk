@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@carbon/charts": "0.43.0",
+    "@carbon/charts-react": "^0.39.1",
     "@supabase/supabase-js": "^1.21.3",
     "axios": "^0.21.1",
+    "carbon-components": "^10.41.0",
+    "d3": "5.0.0",
     "date-fns": "^2.23.0",
     "js-base64": "^3.6.1",
     "next": "11.0.1",
