@@ -15,7 +15,7 @@ const fetcher = (query) => {
 
     const supabase = createClient(query, supabaseKey);
 
-    return supabase.from('entry_ref').select('name, unit, ref, entry ( ref, data, date ) ');
+    return supabase.from('entry_ref').select('name, unit, ref, entry ( ref, data, date ) ').limit(9999, { foreignTable: 'entry' });
 };
 
 const DashboardIndex = () => {
@@ -43,8 +43,8 @@ const DashboardIndex = () => {
                 label: entryRef.name,
                 data: entriesInPeriod.map((x) => x.data && x.data.toFixed(2)),
                 fill: false,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)'
+                backgroundColor: 'blue',
+                borderColor: 'rgba(0, 0, 132, 0.2)'
             }
         ]
     };
