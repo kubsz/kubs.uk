@@ -22,11 +22,14 @@ const DashboardIndex = () => {
     const { data, error } = useSWR(process.env.NEXT_PUBLIC_SUPABASE_URL, fetcher);
 
     const [period, setPeriod] = useState(30);
+    const [type, setType] = useState('weight_body_mass');
 
     if (!data) return <p>loading...</p>;
 
-    const weight = data.data.find((x) => x.ref === 'weight_body_mass');
-    const entries = weight.entry;
+    console.log(data.data);
+
+    const entryRef = data.data.find((x) => x.ref === type);
+    const entries = entryRef.entry;
 
     const periodStart = new Date();
     periodStart.setDate(periodStart.getDate() - period);
@@ -37,8 +40,8 @@ const DashboardIndex = () => {
         labels: entriesInPeriod.map((x) => format(new Date(x.date), 'dd LLLL, yyyy')),
         datasets: [
             {
-                label: 'Weight',
-                data: entriesInPeriod.map((x) => x.data.toFixed(2)),
+                label: entryRef.name,
+                data: entriesInPeriod.map((x) => x.data && x.data.toFixed(2)),
                 fill: false,
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgba(255, 99, 132, 0.2)'
@@ -58,27 +61,72 @@ const DashboardIndex = () => {
         }
     };
 
+    const choices = [...data.data]
+        .filter((x) => x.entry.length)
+        .map((x) => ({
+            ref: x.ref,
+            name: x.name
+        }));
+    console.log(choices);
+
     return (
         <Layout>
             <Section>
-                <h1>My Bodyweight</h1>
-                <button onClick={() => setPeriod(7)} style={{ backgroundColor: period === 7 ? 'red' : 'green' }}>
+                {choices.map((choice) => (
+                    <button
+                        className="btn btn--active"
+                        onClick={() => setType(choice.ref)}
+                        style={type === choice.ref ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                    >
+                        {choice.name}
+                    </button>
+                ))}
+                <button
+                    className="btn btn--active"
+                    onClick={() => setType('lean_body_mass')}
+                    style={type === 'lean_body_mass' ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                >
+                    Lean Body Mass
+                </button>
+                <h2>{entryRef.name}</h2>
+                <br />
+                <button
+                    className="btn btn--active"
+                    onClick={() => setPeriod(7)}
+                    style={period === 7 ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                >
                     7 days
                 </button>
-                <button onClick={() => setPeriod(30)} style={{ backgroundColor: period === 30 ? 'red' : 'green' }}>
+                <button
+                    className="btn btn--active"
+                    onClick={() => setPeriod(30)}
+                    style={period === 30 ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                >
                     30 days
                 </button>
-                <button onClick={() => setPeriod(90)} style={{ backgroundColor: period === 90 ? 'red' : 'green' }}>
+                <button
+                    className="btn btn--active"
+                    onClick={() => setPeriod(90)}
+                    style={period === 90 ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                >
                     3 months
                 </button>
-                <button onClick={() => setPeriod(365)} style={{ backgroundColor: period === 365 ? 'red' : 'green' }}>
+                <button
+                    className="btn btn--active"
+                    onClick={() => setPeriod(365)}
+                    style={period === 365 ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                >
                     1 year
                 </button>
-                <button onClick={() => setPeriod(null)} style={{ backgroundColor: period === null ? 'red' : 'green' }}>
+                <button
+                    className="btn btn--active"
+                    onClick={() => setPeriod(null)}
+                    style={period === null ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
+                >
                     All Time
                 </button>
                 <Line data={chartData} options={options} />
-                <div className="pg-dashboard">
+                {/* <div className="pg-dashboard">
                     {[...entries].reverse().map((entry, i) => (
                         <div key={i} className="pg-dashboard__row">
                             <div className="pg-dashboard__column">
@@ -88,11 +136,11 @@ const DashboardIndex = () => {
                             <div className="pg-dashboard__column">
                                 <strong>Weight: </strong>
                                 {entry.data.toFixed(2)}
-                                {weight.unit}
+                                {entryRef.unit}
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
             </Section>
         </Layout>
     );
