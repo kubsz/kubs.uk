@@ -81,13 +81,6 @@ const DashboardIndex = () => {
                         {choice.name}
                     </button>
                 ))}
-                <button
-                    className="btn btn--active"
-                    onClick={() => setType('lean_body_mass')}
-                    style={type === 'lean_body_mass' ? {} : { color: '#000', backgroundColor: 'rgba(0,0,0,.1)' }}
-                >
-                    Lean Body Mass
-                </button>
                 <h2>{entryRef.name}</h2>
                 <br />
                 <button
