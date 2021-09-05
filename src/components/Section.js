@@ -1,10 +1,14 @@
 import Wave from '../assets/svg/wave.svg';
 
-const Section = (props) => {
+const Section = ({ children, theme, wave, className, noPadding }) => {
     return (
-        <div className={`section${props.dark ? ' section--dark' : ''}${props.wave ? ' section--wave' : ''}`}>
-            {props.wave ? <Wave className="section__wave" /> : null}
-            <div className="section__margin">{props.children}</div>
+        <div
+            className={`section${noPadding ? ' section--no-padding' : ''}${theme ? ` section--${theme}` : ''}${
+                wave ? ' section--wave' : ''
+            }`}
+        >
+            {wave ? <Wave className="section__wave" /> : null}
+            <div className={`section__margin${className ? ` ${className}` : ''}`}>{children}</div>
         </div>
     );
 };

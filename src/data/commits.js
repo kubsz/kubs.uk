@@ -1,3 +1,3 @@
-const commits = [0.3, 0.6, 0.7, 0.8, 1, 0.6, 0.3, 0.4, 0.7, 0.7, 0.2, 0.5];
+const commits = Array.from(Array(12).keys()).map(() => Math.floor(Math.random() * 10) / 10);
 
 export default commits;

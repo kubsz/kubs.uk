@@ -12,9 +12,18 @@
         }
     }
 
+    &--no-padding {
+        padding: 0;
+    }
+
     &--dark {
         background-color: $col-dark-2;
         color: $col-light-2;
+    }
+
+    &--light {
+        background-color: $col-light-1;
+        color: $col-dark-2;
     }
 
     &__wave {

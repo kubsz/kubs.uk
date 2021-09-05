@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
 import { createClient } from '@supabase/supabase-js';
-import { formatDistance, format, isBefore } from 'date-fns';
+import { format, isBefore } from 'date-fns';
 import useSWR from 'swr';
 import Layout from '../../components/Layout';
 import Section from '../../components/Section';

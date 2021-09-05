@@ -15,7 +15,7 @@ const Index = () => {
     return (
         <Layout harshFooterShadow={true}>
             <Jumbotron />
-            <Section dark wave>
+            <Section theme="dark" wave>
                 <div className="pg-index__about">
                     <div className="pg-index__about-graphic">
                         <Image src="/graphic.png" height={378.5} width={600} />

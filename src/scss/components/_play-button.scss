@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.play-button {
+    padding: 1.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+
+    svg {
+        display: block;
+        fill: $col-primary;
+    }
+}

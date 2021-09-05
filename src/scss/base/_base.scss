@@ -60,6 +60,10 @@ body,
     @include respond(992) {
         grid-gap: $gutter;
     }
+
+    &--no-gaps {
+        grid-gap: 0;
+    }
 }
 
 .root__overlay {

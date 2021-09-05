@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+.pg-listening {
+    &__header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: $gutter * 2;
+        padding: $gutter * 1.5 0;
+    }
+
+    &__header-image-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__header-image {
+        display: block;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+    }
+
+    &__header-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &__header-title {
+        margin-bottom: 0;
+        margin-top: 1rem;
+    }
+    &__header-subtitle {
+        margin-bottom: 2rem;
+
+        color: $col-dark-3;
+        font-size: 2rem;
+    }
+
+    &__body {
+        min-height: 100vh;
+    }
+}
