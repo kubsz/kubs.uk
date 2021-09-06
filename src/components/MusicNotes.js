@@ -20,7 +20,7 @@ const MusicNotes = () => {
                 transform: `rotate(${Math.random() * 360}deg)`,
                 left: `${Math.random() * 200 - 50}%`,
                 top: `${Math.random() * 120 - 10}%`,
-                opacity: `<div className="0"></div>${Math.floor(Math.random() * 1000) + 5}`
+                opacity: `.0${Math.floor(Math.random() * 1000) + 5}`
             },
             className: 'music-notes__note',
             size: `${Math.random() * 20 + 1}rem`,

@@ -1,0 +1,39 @@
+@use '../abstracts' as *;
+
+.song-card {
+    display: flex;
+    flex-direction: column;
+
+    &__image-container {
+        width: 100%;
+        border-radius: $radius * 2;
+        overflow: hidden;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    }
+
+    &--rounded &__image-container {
+        border-radius: 3rem !important;
+    }
+
+    &__image {
+        width: 100%;
+        display: block;
+    }
+
+    &__main {
+        text-align: center;
+        margin-top: $gutter / 2;
+    }
+
+    &__name {
+        font-weight: 700;
+        word-spacing: 0.2rem;
+
+        font-size: 1.6rem;
+    }
+
+    &__artists {
+        font-size: 1.4rem;
+        color: $col-dark-4;
+    }
+}

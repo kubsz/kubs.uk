@@ -1,0 +1,45 @@
+@use '../abstracts' as *;
+
+.heading-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 3rem);
+    grid-gap: $gutter / 2;
+
+    &__button {
+        width: 3rem;
+        height: 3rem;
+        @include flexCenter;
+
+        box-shadow: 0 0 10px rgba($col-primary, 0.2);
+        border-radius: 0.75rem;
+        background-color: $col-primary;
+        color: #fff;
+
+        cursor: pointer;
+
+        &,
+        svg {
+            transition: 0.1s ease;
+        }
+
+        &:not(&--inactive) {
+            &:first-of-type:hover {
+                transform: rotate(-5deg);
+            }
+            &:last-of-type:hover {
+                transform: rotate(5deg);
+            }
+
+            &:hover svg {
+                transform: scale(1.1);
+            }
+        }
+
+        &--inactive {
+            background-color: #fff;
+            color: $col-primary;
+
+            cursor: default;
+        }
+    }
+}

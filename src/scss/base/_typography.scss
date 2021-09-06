@@ -9,3 +9,21 @@ p {
     font-size: 1.4rem;
     margin: 0;
 }
+
+.heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading-secondary {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.heading-see-all {
+    color: $col-primary;
+    font-size: 1.4rem;
+}
