@@ -1,10 +1,10 @@
 @use '../abstracts' as *;
 
 .pg-index {
-    &__about {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        margin: $gutter 0 0 0;
+    &__section {
+        display: flex;
+        align-items: center;
+        margin: -$gutter;
 
         @include respond(1400) {
             grid-template-columns: 100%;
@@ -13,51 +13,64 @@
         }
 
         p {
-            color: $col-light-4;
             font-weight: 400;
             font-size: 1.7rem;
         }
+
+        &--dark p {
+            color: $col-light-4;
+        }
     }
 
-    &__about-graphic {
+    &__section-graphic {
+        margin: $gutter;
+        flex: 0 0 auto;
         @include respond(1400) {
             display: none;
         }
     }
 
-    &__about-top-text {
+    &__section-main {
+        margin: $gutter;
+    }
+
+    &__section-top-text {
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         font-weight: 600;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        color: $col-dark-3;
+    }
+
+    &__section--dark &__section-top-text {
         color: $col-light-4;
     }
 
-    &__about-heading-container {
+    &__section-heading-container {
         margin: 1rem 0;
         display: flex;
         align-items: center;
     }
 
-    &__about-heading {
+    &__section-heading {
         font-size: 3.2rem;
     }
 
-    &__about-icon-container {
+    &__section-icon-container {
         padding: 1.5rem;
         border-radius: 50%;
         background-color: $col-primary;
         margin-right: 2rem;
     }
 
-    &__about-icon {
+    &__section-icon {
         width: 2rem;
         height: 2rem;
         fill: $col-light-1;
         display: block;
     }
 
-    &__about-technology-list {
+    &__section-technology-list {
         display: flex;
         flex-flow: row wrap;
         margin: -0.5rem;

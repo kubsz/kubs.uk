@@ -1,0 +1,73 @@
+@use '../abstracts' as *;
+
+.square-graphic {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $gutter * 2;
+
+    width: 40rem;
+    height: 40rem;
+
+    margin-left: auto;
+
+    &__inner {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        border: 1.5rem solid rgba($col-primary, 0.07);
+        border-radius: 1rem;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+    }
+
+    &__box {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        border: 3px solid rgba(255, 255, 255, 0.5);
+        box-shadow: $shadow;
+        border-radius: 1rem;
+
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &:nth-of-type(2) {
+            transform: translate(10px, 10px);
+        }
+        &:nth-of-type(3) {
+            transform: translate(-10px, -20px);
+        }
+        &:nth-of-type(4) {
+            transform: translate(20px, 5px);
+        }
+        &:nth-of-type(5) {
+            transform: translate(0, -40px);
+        }
+    }
+
+    &__icon {
+        font-size: 4.5rem;
+        color: rgba($col-primary, 0.6);
+
+        background-color: rgba($col-primary, 0.2);
+        padding: 0.75rem;
+        border-radius: $radius * 2;
+        border: 2px solid rgba($col-primary, 0.2);
+    }
+
+    &__box-label {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+}

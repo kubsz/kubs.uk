@@ -126,6 +126,21 @@ const Listening = () => {
                     <div className="pg-listening__body-column">
                         <div className="pg-listening__body-section">
                             <h3 className="heading-secondary">Recently Played Songs</h3>
+                            <ul className="pg-listening__song-list">
+                                <li className="song-row">
+                                    <span className="song-row__date">2m</span>
+                                    <img
+                                        src="https://upload.wikimedia.org/wikipedia/en/3/37/Be_Honest_single_cover.jpg"
+                                        alt="Song image"
+                                        className="song-row__image"
+                                    />
+                                    <div className="song-row__main">
+                                        <h4 className="song-row__title">Be Honest</h4>
+                                        <p className="song-row__artists">Jorja Smith (feat. Burna Boy)</p>
+                                    </div>
+                                    <div className="song-row__time">5:32</div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div className="pg-listening__body-column">

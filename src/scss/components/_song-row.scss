@@ -1,0 +1,43 @@
+@use '../abstracts' as *;
+
+.song-row {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+
+    border-radius: $radius;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &__date {
+        color: $col-dark-4;
+        font-size: 1.2rem;
+    }
+
+    &__image {
+        width: 52px;
+        height: 52px;
+        border-radius: $radius;
+        margin: 0 1.5rem;
+    }
+
+    &__main {
+        flex: 1;
+    }
+
+    &__title {
+        font-size: 1.6rem;
+    }
+
+    &__artists {
+        font-size: 1.4rem;
+        color: $col-dark-4;
+    }
+
+    &__time {
+        font-size: 1.4rem;
+        color: $col-dark-3;
+    }
+}

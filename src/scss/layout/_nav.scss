@@ -92,9 +92,12 @@
         }
 
         &--fill {
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 2rem;
             background-color: $col-primary;
             color: $col-light-2;
+
+            font-size: 1.4rem;
+            font-weight: 600;
 
             &:hover {
                 background-color: $col-primary-light;

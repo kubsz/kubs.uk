@@ -21,13 +21,13 @@ const Footer = ({ harshShadow }) => {
             label: 'My Projects',
             description: "View a variety of projects I've designed and developed.",
             icon: <ProjectsIcon className="footer__link-icon" />,
-            link: '/'
+            link: '/projects'
         },
         {
             label: 'Dashboard',
             description: 'Browse through a complete selection of stats about my life!',
             icon: <DashboardIcon className="footer__link-icon" />,
-            link: '/'
+            link: '/dashboard'
         },
         {
             label: 'Biography',
@@ -52,7 +52,7 @@ const Footer = ({ harshShadow }) => {
                     <ul className="footer__link-list">
                         {links.map((link, i) => (
                             <li key={i} className="footer__link-item">
-                                <Link href="#">
+                                <Link href={link.link}>
                                     <a className="footer__link">
                                         {link.icon}
                                         <h5 className="footer__link-heading">{link.label}</h5>
