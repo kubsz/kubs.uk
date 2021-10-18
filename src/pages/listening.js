@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 
+import useSWRFetcher from '../hooks/useSWRFetcher';
+
 import ArrowButtons from '../components/ArrowButtons';
 import Badge from '../components/Badge';
 import Layout from '../components/Layout';
@@ -17,47 +19,61 @@ const Listening = () => {
         'https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944',
         'https://i.scdn.co/image/ab6761610000e5eb076a7a770365df607fe8047a'
     ];
-    const top_tracks = [
-        {
-            name: 'Guilty Conscience',
-            artist: '070 Shake',
-            image: 'https://i.scdn.co/image/ab67616d0000b273a309d9cbb0048a43ab5289a4'
-        },
-        {
-            name: 'Sky',
-            artist: 'Playboi Carti',
-            image: 'https://upload.wikimedia.org/wikipedia/en/6/6c/Playboi_Carti_-_Whole_Lotta_Red.png'
-        },
-        {
-            name: 'High School Reunion, Prom',
-            artist: 'SAINt JHN, Lil Uzi Vert',
-            image: 'https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_90,w_1400/fl_lossy,pg_1/fnlakp8fweodepdpzizu/saint-jhn-album'
-        },
-        {
-            name: 'Addicted',
-            artist: 'Jorja Smith',
-            image: 'https://lite-images-i.scdn.co/image/ab67616d00001e0278378dcaccec9e965e0d6351'
-        },
-        {
-            name: 'Violent Crimes',
-            artist: 'Kanye West',
-            image: 'https://pyxis.nymag.com/v1/imgs/699/1e2/965287137d49b3f29e6ff9c4d0e5a3f07b-01-kanye-west-ye.rsquare.w1200.jpg'
-        },
-        {
-            name: 'Lucid Dreams',
-            artist: 'Juice wrld',
-            image: 'https://upload.wikimedia.org/wikipedia/en/8/86/Goodbye_%26_Good_Riddance_Album_Cover.jpg'
-        }
-    ];
+
+    const { data: top_tracks } = useSWRFetcher('/api/spotify/top-tracks');
+    const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
 
     const handlePageChange = (newPage) => {
         setTopTrackPage(newPage);
     };
 
+    if (!top_tracks || !currently_playing) {
+        return <h1>loading...</h1>;
+    }
+
+    console.log(
+        (currently_playing.data.progress_ms / currently_playing.data.item.duration_ms) * 100,
+        currently_playing.data.item.duration_ms,
+        currently_playing.data.progress_ms
+    );
+
     return (
         <Layout noGaps>
             <Section noPadding className="pg-listening__header">
                 <div className="pg-listening__header-image-container">
+                    <img className="pg-listening__header-image" src={currently_playing.data.item.album.images[0].url} />
+                </div>
+                <div className="pg-listening__header-main">
+                    <Badge modifiers={['light', 'shadow']}>Currently Playing</Badge>
+                    <h1 className="pg-listening__header-title">{currently_playing.data.item.name}</h1>
+                    <h4 className="pg-listening__header-subtitle">{currently_playing.data.item.artists.map((x) => x.name).join(', ')}</h4>
+                    <div className="pg-listening__header-footer">
+                        <PlayButton paused={currently_playing.data.is_playing === false} />
+                        <div className="pg-listening__header-timeline-container">
+                            <span className="pg-listening__header-timeline-time">
+                                {Math.floor(currently_playing.data.progress_ms / 1000 / 60)}:
+                                {`${Math.floor((currently_playing.data.progress_ms / 1000) % 60)}`.length === 1
+                                    ? `0${Math.floor((currently_playing.data.progress_ms / 1000) % 60)}`
+                                    : Math.floor((currently_playing.data.progress_ms / 1000) % 60)}
+                            </span>
+                            <div className="pg-listening__header-timeline">
+                                <div
+                                    className="pg-listening__header-timeline-inner"
+                                    style={{
+                                        width: `${(currently_playing.data.progress_ms / currently_playing.data.item.duration_ms) * 100}%`
+                                    }}
+                                ></div>
+                            </div>
+                            <span className="pg-listening__header-timeline-time">
+                                {Math.floor(currently_playing.data.item.duration_ms / 1000 / 60)}:
+                                {`${Math.floor((currently_playing.data.item.duration_ms / 1000) % 60)}`.length === 1
+                                    ? `0${Math.floor((currently_playing.data.item.duration_ms / 1000) % 60)}`
+                                    : Math.floor((currently_playing.data.item.duration_ms / 1000) % 60)}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="pg-listening__header-image-container">
                     <img className="pg-listening__header-image" src="https://i.scdn.co/image/ab67616d00001e02bd6587e9a32c161be8c71100" />
                 </div>
                 <div className="pg-listening__header-main">
@@ -65,13 +81,13 @@ const Listening = () => {
                     <h1 className="pg-listening__header-title">Fair Trade</h1>
                     <h4 className="pg-listening__header-subtitle">Drake ft. Travis Scott</h4>
                     <PlayButton />
-                </div>
+                </div> */}
             </Section>
             <Section theme="light" className="pg-listening__body" shadow>
                 {/* <MusicNotes /> */}
                 <div className="pg-listening__body-section">
                     <div className="heading-container">
-                        <h3 className="heading-secondary">Weekly Top Tracks</h3>
+                        <h3 className="heading-secondary">Monthly Top Tracks</h3>
                         <ArrowButtons pages={3} currentPage={topTrackPage} handlePageChange={handlePageChange} />
                     </div>
                     <div className="pg-listening__horizontal-row-outer-container">
@@ -79,45 +95,21 @@ const Listening = () => {
                             className="pg-listening__horizontal-row-container"
                             style={{ width: '300%', marginLeft: `-${topTrackPage - 1}00%` }}
                         >
-                            <ul className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
-                                {top_tracks.map((track) => (
-                                    <li className="song-card" key={track.name}>
-                                        <div className="song-card__image-container">
-                                            <img className="song-card__image" src={track.image} />
-                                        </div>
-                                        <div className="song-card__main">
-                                            <h5 className="song-card__name">{track.name}</h5>
-                                            <p className="song-card__artists">{track.artist}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                            <ul className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
-                                {top_tracks.map((track) => (
-                                    <li className="song-card" key={track.name}>
-                                        <div className="song-card__image-container">
-                                            <img className="song-card__image" src={track.image} />
-                                        </div>
-                                        <div className="song-card__main">
-                                            <h5 className="song-card__name">{track.name}</h5>
-                                            <p className="song-card__artists">{track.artist}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                            <ul className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
-                                {top_tracks.map((track) => (
-                                    <li className="song-card" key={track.name}>
-                                        <div className="song-card__image-container">
-                                            <img className="song-card__image" src={track.image} />
-                                        </div>
-                                        <div className="song-card__main">
-                                            <h5 className="song-card__name">{track.name}</h5>
-                                            <p className="song-card__artists">{track.artist}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
+                            {[0, 1, 2].map((_, i) => (
+                                <ul key={_} className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
+                                    {[...top_tracks.data.items].slice(i * 6, (i + 1) * 6).map((track) => (
+                                        <li className="song-card" key={track.id}>
+                                            <div className="song-card__image-container">
+                                                <img className="song-card__image" src={track.album.images[0].url} />
+                                            </div>
+                                            <div className="song-card__main">
+                                                <h5 className="song-card__name">{track.name}</h5>
+                                                <p className="song-card__artists">{track.artists.map((x) => x.name).join(', ')}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ))}
                         </div>
                     </div>
                 </div>

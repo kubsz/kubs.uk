@@ -1,11 +1,7 @@
-import { BsFillPlayFill } from 'react-icons/bs';
+import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs';
 
 const PlayButton = ({ paused }) => {
-    return (
-        <button className="play-button">
-            <BsFillPlayFill size="3rem" />
-        </button>
-    );
+    return <button className="play-button">{paused ? <BsFillPlayFill size="3rem" /> : <BsFillPauseFill size="3rem" />}</button>;
 };
 
 export default PlayButton;

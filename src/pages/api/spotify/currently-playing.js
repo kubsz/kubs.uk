@@ -1,4 +1,4 @@
-// import { getAccessToken } from '../../../lib/api/spotifyAuth';
+import { getAccessToken } from '../../../lib/api/spotifyAuth';
 
 const handler = async (req, res) => {
     // const ACCESS_TOKEN = await getAccessToken();
@@ -9,7 +9,7 @@ const handler = async (req, res) => {
         return;
     }
 
-    const spotifyFetch = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=18', {
+    const spotifyFetch = await fetch('https://api.spotify.com/v1/me/player', {
         headers: {
             Authorization: `Bearer ${ACCESS_TOKEN}`
         }
