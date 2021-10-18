@@ -10,32 +10,29 @@ import Layout from '../components/Layout';
 import PlayButton from '../components/PlayButton';
 import Section from '../components/Section';
 
+import { formatDistance, subDays } from 'date-fns';
+
 const Listening = () => {
     const [topTrackPage, setTopTrackPage] = useState(1);
-    const top_artists = [
-        'https://lite-images-i.scdn.co/image/ab67616d00001e02bba7cfaf7c59ff0898acba1f',
-        'https://lite-images-i.scdn.co/image/ab67706c0000da846f25572514ee3025326335bc',
-        'https://i.scdn.co/image/ab6761610000e5eba4fe9e7039edf6c60113e741',
-        'https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944',
-        'https://i.scdn.co/image/ab6761610000e5eb076a7a770365df607fe8047a'
-    ];
 
     const { data: top_tracks } = useSWRFetcher('/api/spotify/top-tracks');
+    const { data: top_artists } = useSWRFetcher('/api/spotify/top-artists');
     const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
+    const { data: recently_played } = useSWRFetcher('/api/spotify/recently-played', null, 3000);
 
     const handlePageChange = (newPage) => {
         setTopTrackPage(newPage);
     };
 
-    if (!top_tracks || !currently_playing) {
+    if (!top_tracks || !currently_playing || !top_artists || !recently_played) {
         return <h1>loading...</h1>;
     }
 
-    console.log(
-        (currently_playing.data.progress_ms / currently_playing.data.item.duration_ms) * 100,
-        currently_playing.data.item.duration_ms,
-        currently_playing.data.progress_ms
-    );
+    const convertTime = (time) => {
+        return `${Math.floor(time / 1000 / 60)}:${
+            `${Math.floor((time / 1000) % 60)}`.length === 1 ? `0${Math.floor((time / 1000) % 60)}` : Math.floor((time / 1000) % 60)
+        }`;
+    };
 
     return (
         <Layout noGaps>
@@ -50,12 +47,7 @@ const Listening = () => {
                     <div className="pg-listening__header-footer">
                         <PlayButton paused={currently_playing.data.is_playing === false} />
                         <div className="pg-listening__header-timeline-container">
-                            <span className="pg-listening__header-timeline-time">
-                                {Math.floor(currently_playing.data.progress_ms / 1000 / 60)}:
-                                {`${Math.floor((currently_playing.data.progress_ms / 1000) % 60)}`.length === 1
-                                    ? `0${Math.floor((currently_playing.data.progress_ms / 1000) % 60)}`
-                                    : Math.floor((currently_playing.data.progress_ms / 1000) % 60)}
-                            </span>
+                            <span className="pg-listening__header-timeline-time">{convertTime(currently_playing.data.progress_ms)}</span>
                             <div className="pg-listening__header-timeline">
                                 <div
                                     className="pg-listening__header-timeline-inner"
@@ -65,23 +57,11 @@ const Listening = () => {
                                 ></div>
                             </div>
                             <span className="pg-listening__header-timeline-time">
-                                {Math.floor(currently_playing.data.item.duration_ms / 1000 / 60)}:
-                                {`${Math.floor((currently_playing.data.item.duration_ms / 1000) % 60)}`.length === 1
-                                    ? `0${Math.floor((currently_playing.data.item.duration_ms / 1000) % 60)}`
-                                    : Math.floor((currently_playing.data.item.duration_ms / 1000) % 60)}
+                                {convertTime(currently_playing.data.item.duration_ms)}
                             </span>
                         </div>
                     </div>
                 </div>
-                {/* <div className="pg-listening__header-image-container">
-                    <img className="pg-listening__header-image" src="https://i.scdn.co/image/ab67616d00001e02bd6587e9a32c161be8c71100" />
-                </div>
-                <div className="pg-listening__header-main">
-                    <Badge modifiers={['light', 'shadow']}>Most Popular of the Week</Badge>
-                    <h1 className="pg-listening__header-title">Fair Trade</h1>
-                    <h4 className="pg-listening__header-subtitle">Drake ft. Travis Scott</h4>
-                    <PlayButton />
-                </div> */}
             </Section>
             <Section theme="light" className="pg-listening__body" shadow>
                 {/* <MusicNotes /> */}
@@ -118,19 +98,19 @@ const Listening = () => {
                         <div className="pg-listening__body-section">
                             <h3 className="heading-secondary">Recently Played Songs</h3>
                             <ul className="pg-listening__song-list">
-                                <li className="song-row">
-                                    <span className="song-row__date">2m</span>
-                                    <img
-                                        src="https://upload.wikimedia.org/wikipedia/en/3/37/Be_Honest_single_cover.jpg"
-                                        alt="Song image"
-                                        className="song-row__image"
-                                    />
-                                    <div className="song-row__main">
-                                        <h4 className="song-row__title">Be Honest</h4>
-                                        <p className="song-row__artists">Jorja Smith (feat. Burna Boy)</p>
-                                    </div>
-                                    <div className="song-row__time">5:32</div>
-                                </li>
+                                {recently_played.data.items.map((item) => (
+                                    <li className="song-row" key={item.track.id}>
+                                        <span className="song-row__date">
+                                            {formatDistance(new Date(item.played_at), new Date(), { addSuffix: true })}
+                                        </span>
+                                        <img src={item.track.album.images[0].url} alt="Song image" className="song-row__image" />
+                                        <div className="song-row__main">
+                                            <h4 className="song-row__title">{item.track.name}</h4>
+                                            <p className="song-row__artists">{item.track.artists.map((x) => x.name).join(', ')}</p>
+                                        </div>
+                                        <div className="song-row__time">{convertTime(item.track.duration_ms)}</div>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -143,10 +123,10 @@ const Listening = () => {
                                 </Link>
                             </div>
                             <ul className="pg-listening__horizontal-row pg-listening__horizontal-row--5">
-                                {top_artists.map((artist) => (
+                                {top_artists.data.items.map((artist) => (
                                     <li className="song-card song-card--rounded" key={artist}>
                                         <div className="song-card__image-container">
-                                            <img className="song-card__image" src={artist} />
+                                            <img className="song-card__image" src={artist.images[0].url} />
                                         </div>
                                     </li>
                                 ))}

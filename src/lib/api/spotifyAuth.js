@@ -6,7 +6,7 @@ export const getAccessToken = async () => {
     const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
     const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
     const code =
-        'AQDZLU-KF7EQflBtwCKAhgsESGYIJRcIWgAXpWlrBiiV_mAisGoB2tzxq9uK7MDNhgDiJWp2pJfVxH9Oaof4weBrWI8-WiaMTJ0IIqhUw9M32KL9c8FYoBHkIzBigu5YPe_423d_Zqs6eiwCtXWe8rQudakMHj8QOW5QMm9kOBJhfLJIwRHBbs1icxYQqa8lICjPZs_A_zjzjUEqGQunl4xz0Jowo4NYeraJSwH0SeEYHNojJ0vGuv8bKc5bWt26HEhkbd6hC3UPD62xiFK0dJ4-q2kYzDsLvtPC4TEg60XiBfoHSInn6ZCjEUkbaoBjpw_F2w74ElrMiKp_Vm6smvL0_51Shfs5WbiIch7jkazlMUFe';
+        'AQBhE5gJzwtSlGAwINelY_myElSCXOSIh5LlvkurHNTMaMbMYSllDI2NaydDWJ0EKj-5aaw1bgiuYk63PJ6Yt5mIxal90hT9GZTm_kau59cOgCW3lhDPbu_zDB85Qhq7DtUtwjXIvkTQVbNPtiUCW-3AW4HjwQHnaWuQKsVAVg9fMVy_e7CIalCSIgWu3L8phLw3gSw20T_p3RtTPMFUueQwaXif_-_7bR9OT-4j3661btKP0GF4zPl8-0zMEBdwGB_V2ktke4m_Qd65xun7Q8LfVrfj3zfxXUxuiSSypQ5fUNASBZlzyFVJQCZZMWGpjOb8UpwAjJ8wdLeDdjtiJ8whOcFpYSYjZOQIe76VliYJareJ';
     const REDIRECT_URI = encodeURI('http://localhost:3000/listening');
 
     if (!REFRESH_TOKEN || !CLIENT_ID || !CLIENT_SECRET) {
@@ -22,7 +22,7 @@ export const getAccessToken = async () => {
         method: 'POST'
     });
 
-    console.log(response);
+    console.log(response.data);
 
     if (response.status !== 200) return null;
 

@@ -49,7 +49,7 @@
         display: flex;
         align-items: center;
         flex: 1;
-        margin: 0 1.5rem;
+        margin: 0 2rem;
     }
 
     &__header-timeline {
@@ -102,6 +102,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: $gutter;
+            align-items: start;
         }
     }
 
