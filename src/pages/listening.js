@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
-import ArrowButtons from '../components/ArrowButtons';
 
+import ArrowButtons from '../components/ArrowButtons';
 import Badge from '../components/Badge';
 import Layout from '../components/Layout';
-import MusicNotes from '../components/MusicNotes';
 import PlayButton from '../components/PlayButton';
 import Section from '../components/Section';
 

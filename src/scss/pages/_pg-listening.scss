@@ -44,6 +44,7 @@
         display: grid;
         grid-template-columns: 100%;
         grid-gap: $gutter;
+        padding: $gutter * 2 0;
     }
 
     &__body-section {
