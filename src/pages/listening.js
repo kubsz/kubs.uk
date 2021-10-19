@@ -11,6 +11,8 @@ import PlayButton from '../components/PlayButton';
 import Section from '../components/Section';
 
 import { formatDistance, subDays } from 'date-fns';
+import Spinner from '../components/Spinner';
+import { BsPlayFill } from 'react-icons/bs';
 
 const Listening = () => {
     const [topTrackPage, setTopTrackPage] = useState(1);
@@ -24,10 +26,6 @@ const Listening = () => {
         setTopTrackPage(newPage);
     };
 
-    if (!top_tracks || !currently_playing || !top_artists || !recently_played) {
-        return <h1>loading...</h1>;
-    }
-
     const convertTime = (time) => {
         return `${Math.floor(time / 1000 / 60)}:${
             `${Math.floor((time / 1000) % 60)}`.length === 1 ? `0${Math.floor((time / 1000) % 60)}` : Math.floor((time / 1000) % 60)
@@ -36,32 +34,44 @@ const Listening = () => {
 
     return (
         <Layout noGaps>
-            <Section noPadding className="pg-listening__header">
-                <div className="pg-listening__header-image-container">
-                    <img className="pg-listening__header-image" src={currently_playing.data.item.album.images[0].url} />
-                </div>
-                <div className="pg-listening__header-main">
-                    <Badge modifiers={['light', 'shadow']}>Currently Playing</Badge>
-                    <h1 className="pg-listening__header-title">{currently_playing.data.item.name}</h1>
-                    <h4 className="pg-listening__header-subtitle">{currently_playing.data.item.artists.map((x) => x.name).join(', ')}</h4>
-                    <div className="pg-listening__header-footer">
-                        <PlayButton paused={currently_playing.data.is_playing === false} />
-                        <div className="pg-listening__header-timeline-container">
-                            <span className="pg-listening__header-timeline-time">{convertTime(currently_playing.data.progress_ms)}</span>
-                            <div className="pg-listening__header-timeline">
-                                <div
-                                    className="pg-listening__header-timeline-inner"
-                                    style={{
-                                        width: `${(currently_playing.data.progress_ms / currently_playing.data.item.duration_ms) * 100}%`
-                                    }}
-                                ></div>
-                            </div>
-                            <span className="pg-listening__header-timeline-time">
-                                {convertTime(currently_playing.data.item.duration_ms)}
-                            </span>
+            <Section noPadding className="pg-listening__header u-center">
+                {!currently_playing ? (
+                    <Spinner />
+                ) : (
+                    <>
+                        <div className="pg-listening__header-image-container">
+                            <img className="pg-listening__header-image" src={currently_playing.data.item.album.images[0].url} />
                         </div>
-                    </div>
-                </div>
+                        <div className="pg-listening__header-main">
+                            <Badge modifiers={['light', 'shadow']}>Currently Playing</Badge>
+                            <h1 className="pg-listening__header-title">{currently_playing.data.item.name}</h1>
+                            <h4 className="pg-listening__header-subtitle">
+                                {currently_playing.data.item.artists.map((x) => x.name).join(', ')}
+                            </h4>
+                            <div className="pg-listening__header-footer">
+                                <PlayButton paused={currently_playing.data.is_playing === false} />
+                                <div className="pg-listening__header-timeline-container">
+                                    <span className="pg-listening__header-timeline-time">
+                                        {convertTime(currently_playing.data.progress_ms)}
+                                    </span>
+                                    <div className="pg-listening__header-timeline">
+                                        <div
+                                            className="pg-listening__header-timeline-inner"
+                                            style={{
+                                                width: `${
+                                                    (currently_playing.data.progress_ms / currently_playing.data.item.duration_ms) * 100
+                                                }%`
+                                            }}
+                                        ></div>
+                                    </div>
+                                    <span className="pg-listening__header-timeline-time">
+                                        {convertTime(currently_playing.data.item.duration_ms)}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
             </Section>
             <Section theme="light" className="pg-listening__body" shadow>
                 {/* <MusicNotes /> */}
@@ -75,21 +85,26 @@ const Listening = () => {
                             className="pg-listening__horizontal-row-container"
                             style={{ width: '300%', marginLeft: `-${topTrackPage - 1}00%` }}
                         >
-                            {[0, 1, 2].map((_, i) => (
-                                <ul key={_} className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
-                                    {[...top_tracks.data.items].slice(i * 6, (i + 1) * 6).map((track) => (
-                                        <li className="song-card" key={track.id}>
-                                            <div className="song-card__image-container">
-                                                <img className="song-card__image" src={track.album.images[0].url} />
-                                            </div>
-                                            <div className="song-card__main">
-                                                <h5 className="song-card__name">{track.name}</h5>
-                                                <p className="song-card__artists">{track.artists.map((x) => x.name).join(', ')}</p>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                            ))}
+                            {!top_tracks ? (
+                                <Spinner />
+                            ) : (
+                                [0, 1, 2].map((_, i) => (
+                                    <ul key={_} className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
+                                        {[...top_tracks.data.items].slice(i * 6, (i + 1) * 6).map((track) => (
+                                            <li className="song-card" key={track.id}>
+                                                <a href={track.uri} className="song-card__image-container song-card__track">
+                                                    <img className="song-card__image" src={track.album.images[0].url} />
+                                                    <BsPlayFill className="song-card__track-icon" />
+                                                </a>
+                                                <div className="song-card__main">
+                                                    <h5 className="song-card__name">{track.name}</h5>
+                                                    <p className="song-card__artists">{track.artists.map((x) => x.name).join(', ')}</p>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
@@ -98,19 +113,25 @@ const Listening = () => {
                         <div className="pg-listening__body-section">
                             <h3 className="heading-secondary">Recently Played Songs</h3>
                             <ul className="pg-listening__song-list">
-                                {recently_played.data.items.map((item) => (
-                                    <li className="song-row" key={item.track.id}>
-                                        <span className="song-row__date">
-                                            {formatDistance(new Date(item.played_at), new Date(), { addSuffix: true })}
-                                        </span>
-                                        <img src={item.track.album.images[0].url} alt="Song image" className="song-row__image" />
-                                        <div className="song-row__main">
-                                            <h4 className="song-row__title">{item.track.name}</h4>
-                                            <p className="song-row__artists">{item.track.artists.map((x) => x.name).join(', ')}</p>
-                                        </div>
-                                        <div className="song-row__time">{convertTime(item.track.duration_ms)}</div>
-                                    </li>
-                                ))}
+                                {!recently_played ? (
+                                    <Spinner />
+                                ) : (
+                                    [...recently_played.data.items].map((item) => (
+                                        <li className="song-row" key={item.track.id}>
+                                            <img src={item.track.album.images[0].url} alt="Song image" className="song-row__image" />
+                                            <div className="song-row__main">
+                                                <h4 className="song-row__title">{item.track.name}</h4>
+                                                <p className="song-row__artists">{item.track.artists.map((x) => x.name).join(', ')}</p>
+                                            </div>
+                                            <div className="song-row__time-container">
+                                                <div className="song-row__time">{convertTime(item.track.duration_ms)}</div>
+                                                <span className="song-row__date">
+                                                    {formatDistance(new Date(item.played_at), new Date(), { addSuffix: true })}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    ))
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -118,22 +139,24 @@ const Listening = () => {
                         <div className="pg-listening__body-section">
                             <div className="heading-container">
                                 <h3 className="heading-secondary">Monthly Top Artists</h3>
-                                <Link href="/">
+                                {/* <Link href="/">
                                     <a className="heading-see-all">See All</a>
-                                </Link>
+                                </Link> */}
                             </div>
                             <ul className="pg-listening__horizontal-row pg-listening__horizontal-row--5">
-                                {top_artists.data.items.map((artist) => (
-                                    <li className="song-card song-card--rounded" key={artist}>
-                                        <div className="song-card__image-container">
-                                            <img className="song-card__image" src={artist.images[0].url} />
-                                        </div>
-                                    </li>
-                                ))}
+                                {!top_artists ? (
+                                    <Spinner />
+                                ) : (
+                                    top_artists.data.items.map((artist) => (
+                                        <li className="song-card song-card--rounded" key={artist}>
+                                            <div className="song-card__image-container">
+                                                <img className="song-card__image" src={artist.images[0].url} />
+                                            </div>
+                                            <span className="song-card__label">{artist.name}</span>
+                                        </li>
+                                    ))
+                                )}
                             </ul>
-                        </div>
-                        <div className="pg-listening__body-section">
-                            <h3 className="heading-secondary">My Top Genres</h3>
                         </div>
                     </div>
                 </div>
