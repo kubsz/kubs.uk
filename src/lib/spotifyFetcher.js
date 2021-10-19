@@ -1,31 +1,27 @@
+import axios from 'axios';
 import { getAccessToken } from './api/spotifyAuth';
 
 const spotifyFetcher = async (query) => {
     const ACCESS_TOKEN = await getAccessToken();
-    // const ACCESS_TOKEN = process.env.SPOTIFY_ACCESS_TOKEN;
 
     if (!ACCESS_TOKEN) {
         return null;
     }
 
-    const spotifyFetch = await fetch(query, {
+    const response = await axios(query, {
         headers: {
             Authorization: `Bearer ${ACCESS_TOKEN}`
         }
     });
 
-    let spotifyJson;
-
-    try {
-        spotifyJson = await spotifyFetch.json();
-    } catch {
+    if (response.status !== 200) {
         return null;
     }
 
-    delete spotifyJson.context;
-    delete spotifyJson.device;
+    delete response.data.context;
+    delete response.data.device;
 
-    return spotifyJson;
+    return response.data;
 };
 
 export default spotifyFetcher;

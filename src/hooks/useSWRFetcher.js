@@ -12,6 +12,8 @@ const useSWRFetcher = (query, initialData = null, refreshInterval = 10000, isPau
         revalidateOnMount: true
     });
 
+    console.log(data);
+
     return { data, isValidating, mutate, isError: error };
 };
 
