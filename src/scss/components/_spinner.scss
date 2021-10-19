@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.spinner {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto;
+
+    border: 8px solid rgba(0, 0, 0, 0.2);
+    border-top-color: $col-primary;
+
+    animation: spinner 1s infinite;
+
+    grid-column: 1 / -1;
+}

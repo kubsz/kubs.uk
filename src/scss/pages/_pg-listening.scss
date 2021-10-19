@@ -6,6 +6,8 @@
         grid-template-columns: repeat(2, 1fr);
         grid-gap: $gutter * 2;
         padding: $gutter * 1.5 0;
+
+        height: 45rem;
     }
 
     &__header-image-container {

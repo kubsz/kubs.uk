@@ -25,18 +25,5 @@ export const getAccessToken = async () => {
 
     const { access_token } = res.data;
 
-    // const response = await axios('https://accounts.spotify.com/api/token', {
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded',
-    //         Authorization: `Basic ${universalBtoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`
-    //     },
-    //     data: `grant_type=authorization_code&code=${code}&redirect_uri=${REDIRECT_URI}`,
-    //     method: 'POST'
-    // });
-
-    // console.log(response.data);
-
-    // if (response.status !== 200) return null;
-
     return access_token;
 };

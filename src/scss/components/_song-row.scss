@@ -14,13 +14,14 @@
     &__date {
         color: $col-dark-4;
         font-size: 1.2rem;
+        margin-top: 0.5rem;
     }
 
     &__image {
         width: 52px;
         height: 52px;
         border-radius: $radius;
-        margin: 0 1.5rem;
+        margin-right: 1.5rem;
     }
 
     &__main {
@@ -29,11 +30,19 @@
 
     &__title {
         font-size: 1.6rem;
+        font-weight: 500;
     }
 
     &__artists {
         font-size: 1.4rem;
         color: $col-dark-4;
+    }
+
+    &__time-container {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        align-self: stretch;
     }
 
     &__time {
