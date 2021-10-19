@@ -1,9 +1,8 @@
-// import { getAccessToken } from './api/spotifyAuth';
+import { getAccessToken } from './api/spotifyAuth';
 
 const spotifyFetcher = async (query) => {
-    // const ACCESS_TOKEN = await getAccessToken();
-    // return null;
-    const ACCESS_TOKEN = process.env.SPOTIFY_ACCESS_TOKEN;
+    const ACCESS_TOKEN = await getAccessToken();
+    // const ACCESS_TOKEN = process.env.SPOTIFY_ACCESS_TOKEN;
 
     if (!ACCESS_TOKEN) {
         return null;
