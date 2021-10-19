@@ -120,7 +120,7 @@
 
     &__horizontal-row-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+
         // grid-gap: $gutter
 
         transition: 0.65s $timing-function-elastic;

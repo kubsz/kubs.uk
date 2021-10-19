@@ -20,8 +20,7 @@ export const getAccessToken = async () => {
     });
 
     if (res.status !== 200) {
-        // throw new Error('Error getting access token');
-        return null;
+        throw new Error('Error getting access token');
     }
 
     const { access_token } = res.data;

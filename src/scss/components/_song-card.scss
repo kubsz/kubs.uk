@@ -22,6 +22,8 @@
     &__image {
         width: 100%;
         display: block;
+
+        transition: 0.2s ease;
     }
 
     &__main {
@@ -52,14 +54,6 @@
         position: relative;
         @include flexCenter;
 
-        &::after,
-        &::before {
-            content: '';
-            position: absolute;
-            transition: 0.2s ease;
-            opacity: 0;
-        }
-
         &::before {
             content: '';
             position: absolute;
@@ -71,13 +65,34 @@
 
             background-color: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(3px);
+
+            opacity: 0;
+            transition: 0.1s ease;
         }
 
         &:hover {
             &::before {
                 opacity: 1;
             }
+
+            img {
+                transform: scale(1.1) rotate(4deg);
+            }
         }
+    }
+
+    &__track-icon {
+        position: absolute;
+        z-index: 2;
+        fill: rgba(255, 255, 255, 0.7);
+        display: block;
+
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+
+        pointer-events: none;
+        opacity: 0;
+
+        transition: 0.2s ease;
     }
 
     &__track:hover &__track-icon {

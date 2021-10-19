@@ -12,7 +12,8 @@ import Section from '../components/Section';
 
 import { formatDistance, subDays } from 'date-fns';
 import Spinner from '../components/Spinner';
-import { BsPlayFill } from 'react-icons/bs';
+
+import { FaPlay } from 'react-icons/fa';
 
 const Listening = () => {
     const [topTrackPage, setTopTrackPage] = useState(1);
@@ -31,7 +32,6 @@ const Listening = () => {
             `${Math.floor((time / 1000) % 60)}`.length === 1 ? `0${Math.floor((time / 1000) % 60)}` : Math.floor((time / 1000) % 60)
         }`;
     };
-
     return (
         <Layout noGaps>
             <Section noPadding className="pg-listening__header u-center">
@@ -40,32 +40,28 @@ const Listening = () => {
                 ) : (
                     <>
                         <div className="pg-listening__header-image-container">
-                            <img className="pg-listening__header-image" src={currently_playing.data.item.album.images[0].url} />
+                            <img className="pg-listening__header-image" src={currently_playing.item.album.images[0].url} />
                         </div>
                         <div className="pg-listening__header-main">
                             <Badge modifiers={['light', 'shadow']}>Currently Playing</Badge>
-                            <h1 className="pg-listening__header-title">{currently_playing.data.item.name}</h1>
+                            <h1 className="pg-listening__header-title">{currently_playing.item.name}</h1>
                             <h4 className="pg-listening__header-subtitle">
-                                {currently_playing.data.item.artists.map((x) => x.name).join(', ')}
+                                {currently_playing.item.artists.map((x) => x.name).join(', ')}
                             </h4>
                             <div className="pg-listening__header-footer">
-                                <PlayButton paused={currently_playing.data.is_playing === false} />
+                                <PlayButton paused={currently_playing.is_playing === false} />
                                 <div className="pg-listening__header-timeline-container">
-                                    <span className="pg-listening__header-timeline-time">
-                                        {convertTime(currently_playing.data.progress_ms)}
-                                    </span>
+                                    <span className="pg-listening__header-timeline-time">{convertTime(currently_playing.progress_ms)}</span>
                                     <div className="pg-listening__header-timeline">
                                         <div
                                             className="pg-listening__header-timeline-inner"
                                             style={{
-                                                width: `${
-                                                    (currently_playing.data.progress_ms / currently_playing.data.item.duration_ms) * 100
-                                                }%`
+                                                width: `${(currently_playing.progress_ms / currently_playing.item.duration_ms) * 100}%`
                                             }}
                                         ></div>
                                     </div>
                                     <span className="pg-listening__header-timeline-time">
-                                        {convertTime(currently_playing.data.item.duration_ms)}
+                                        {convertTime(currently_playing.item.duration_ms)}
                                     </span>
                                 </div>
                             </div>
@@ -78,23 +74,31 @@ const Listening = () => {
                 <div className="pg-listening__body-section">
                     <div className="heading-container">
                         <h3 className="heading-secondary">Monthly Top Tracks</h3>
-                        <ArrowButtons pages={3} currentPage={topTrackPage} handlePageChange={handlePageChange} />
+                        <ArrowButtons
+                            pages={top_tracks ? Math.ceil(top_tracks.items.length / 6) : 1}
+                            currentPage={topTrackPage}
+                            handlePageChange={handlePageChange}
+                        />
                     </div>
                     <div className="pg-listening__horizontal-row-outer-container">
                         <div
                             className="pg-listening__horizontal-row-container"
-                            style={{ width: '300%', marginLeft: `-${topTrackPage - 1}00%` }}
+                            style={{
+                                width: `${top_tracks ? Math.ceil(top_tracks.items.length / 6) : 1}00%`,
+                                marginLeft: `-${topTrackPage - 1}00%`,
+                                gridTemplateColumns: `repeat(${top_tracks ? Math.ceil(top_tracks.items.length / 6) : 1}, 1fr)`
+                            }}
                         >
                             {!top_tracks ? (
                                 <Spinner />
                             ) : (
-                                [0, 1, 2].map((_, i) => (
+                                Array.from(Array(Math.ceil(top_tracks.items.length / 6)).keys()).map((_, i) => (
                                     <ul key={_} className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
-                                        {[...top_tracks.data.items].slice(i * 6, (i + 1) * 6).map((track) => (
+                                        {[...top_tracks.items].slice(i * 6, (i + 1) * 6).map((track) => (
                                             <li className="song-card" key={track.id}>
                                                 <a href={track.uri} className="song-card__image-container song-card__track">
                                                     <img className="song-card__image" src={track.album.images[0].url} />
-                                                    <BsPlayFill className="song-card__track-icon" />
+                                                    <FaPlay size="50px" className="song-card__track-icon" />
                                                 </a>
                                                 <div className="song-card__main">
                                                     <h5 className="song-card__name">{track.name}</h5>
@@ -116,8 +120,8 @@ const Listening = () => {
                                 {!recently_played ? (
                                     <Spinner />
                                 ) : (
-                                    [...recently_played.data.items].map((item) => (
-                                        <li className="song-row" key={item.track.id}>
+                                    [...recently_played.items].map((item) => (
+                                        <li className="song-row" key={item.played_at}>
                                             <img src={item.track.album.images[0].url} alt="Song image" className="song-row__image" />
                                             <div className="song-row__main">
                                                 <h4 className="song-row__title">{item.track.name}</h4>
@@ -147,8 +151,8 @@ const Listening = () => {
                                 {!top_artists ? (
                                     <Spinner />
                                 ) : (
-                                    top_artists.data.items.map((artist) => (
-                                        <li className="song-card song-card--rounded" key={artist}>
+                                    top_artists.items.map((artist) => (
+                                        <li className="song-card song-card--rounded" key={artist.id}>
                                             <div className="song-card__image-container">
                                                 <img className="song-card__image" src={artist.images[0].url} />
                                             </div>
