@@ -6,7 +6,7 @@ export const getAccessToken = async () => {
     const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
     const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
     const code =
-        'AQBhE5gJzwtSlGAwINelY_myElSCXOSIh5LlvkurHNTMaMbMYSllDI2NaydDWJ0EKj-5aaw1bgiuYk63PJ6Yt5mIxal90hT9GZTm_kau59cOgCW3lhDPbu_zDB85Qhq7DtUtwjXIvkTQVbNPtiUCW-3AW4HjwQHnaWuQKsVAVg9fMVy_e7CIalCSIgWu3L8phLw3gSw20T_p3RtTPMFUueQwaXif_-_7bR9OT-4j3661btKP0GF4zPl8-0zMEBdwGB_V2ktke4m_Qd65xun7Q8LfVrfj3zfxXUxuiSSypQ5fUNASBZlzyFVJQCZZMWGpjOb8UpwAjJ8wdLeDdjtiJ8whOcFpYSYjZOQIe76VliYJareJ';
+        'AQBqnALzErni8EC1uvGV16tH-DsuVGco99h4FI8eiB1VYf1qNf_89FvnJvathT8OvJJHyX2UwtnMtEP4pjYXEdl9rEysRBUGgdnnVw3_DqbDHSgWXlJnMHySLhmkIcki1j0Nl0RXsvysvtUERv2sud6GMbA4PoAGoW_zV4z_bZYgMi560mUw0fEBf40iAyFXcDrnQxnkumGmpqkxH8ezLf8UTwDoS0UI-7vk4Volrst__e90Jy8rDsi0Q55bDiJuYEMAcKXiLkxBIW8hF8bg5XBjYRNkZjXaEX73TfaTJWKq4t5fhtzALE-zAer5BsxEFyBAE-Ej7LU1EAsimNrGjVQjyg1oyCWl0KrUtm4Np4kPcjxZ';
     const REDIRECT_URI = encodeURI('http://localhost:3000/listening');
 
     if (!REFRESH_TOKEN || !CLIENT_ID || !CLIENT_SECRET) {
