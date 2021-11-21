@@ -7,6 +7,58 @@
 
     border-radius: $radius;
 
+    &--placeholder {
+        &__image {
+            height: 52px;
+            width: 52px;
+            @include placeholder(0.15);
+        }
+
+        &__content {
+            display: flex;
+            gap: 1.5rem;
+            margin-left: 1.5rem;
+            flex: 1;
+        }
+
+        &__main {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 5px;
+            &-name {
+                width: 150px;
+                height: 20px;
+                @include placeholder(0.075);
+            }
+
+            &-artist {
+                width: 70px;
+                height: 18px;
+                @include placeholder(0.05);
+            }
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+
+            &-length {
+                width: 45px;
+                height: 18px;
+                @include placeholder(0.08);
+            }
+
+            &-time {
+                width: 80px;
+                height: 16px;
+                @include placeholder(0.05);
+            }
+        }
+    }
+
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }

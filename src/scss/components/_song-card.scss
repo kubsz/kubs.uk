@@ -5,6 +5,55 @@
     flex-direction: column;
     align-items: center;
 
+    &--placeholder {
+        // height:
+
+        &__image {
+            width: 100%;
+            border-radius: $radius * 2;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: center;
+
+            @include placeholder(0.1);
+
+            &--rounded {
+                border-radius: 1.5rem !important;
+            }
+        }
+
+        &__info {
+            height: 42px;
+            width: 100%;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        &__title {
+            height: 22px;
+            width: 50%;
+
+            @include placeholder(0.08);
+        }
+
+        &__subtitle {
+            height: 20px;
+            width: 70%;
+            @include placeholder(0.05);
+        }
+
+        &__name-small {
+            width: 70%;
+            height: 20px;
+            @include placeholder(0.07);
+            margin-top: 8px;
+        }
+    }
+
     &__image-container {
         width: 100%;
         border-radius: $radius * 2;
@@ -36,6 +85,8 @@
         word-spacing: 0.2rem;
 
         font-size: 1.6rem;
+
+        @include lineClamp(1);
     }
 
     &__label {
@@ -48,6 +99,8 @@
     &__artists {
         font-size: 1.4rem;
         color: $col-dark-4;
+
+        @include lineClamp(1);
     }
 
     &__track {
