@@ -1,7 +1,4 @@
-import { useState } from 'react';
-
-import Link from 'next/link';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 import useSWRFetcher from '../hooks/useSWRFetcher';
 
@@ -18,11 +15,36 @@ import { FaPlay } from 'react-icons/fa';
 
 const Listening = () => {
     const [topTrackPage, setTopTrackPage] = useState(1);
+    const [breakpoint, setBreakpoint] = useState(0);
 
     const { data: top_tracks } = useSWRFetcher('/api/spotify/top-tracks');
     const { data: top_artists } = useSWRFetcher('/api/spotify/top-artists');
     const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
     const { data: recently_played } = useSWRFetcher('/api/spotify/recently-played', null, 3000);
+
+    const [totals, setTotals] = useState({ topTracks: 6 * 6, topTracksSlide: 6, recentPlayed: 10, topArtists: 25 });
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        switch (breakpoint) {
+            case 400:
+                return setTotals({ ...totals, topTracksSlide: 2 });
+            case 576:
+                return setTotals({ ...totals, topTracksSlide: 3 });
+            case 768:
+                return setTotals({ ...totals, topTracksSlide: 4 });
+            case 992:
+                return setTotals({ ...totals, topTracksSlide: 5 });
+            case 1400:
+                return setTotals({ ...totals, topTracksSlide: 6 });
+        }
+    }, [breakpoint]);
 
     const handlePageChange = (newPage) => {
         setTopTrackPage(newPage);
@@ -34,12 +56,16 @@ const Listening = () => {
         }`;
     };
 
-    const totals = {
-        topTracks: 6 * 6,
-        topTracksSlide: 6,
-        recentPlayed: 10,
-        topArtists: 25
+    const handleResize = () => {
+        const width = window.innerWidth;
+
+        const breakpoints = [400, 576, 768, 992, 1400];
+
+        const bp = breakpoints.find((x) => width < x);
+
+        if (bp !== breakpoint) setBreakpoint(() => bp);
     };
+
     return (
         <Layout noGaps>
             <Section noPadding className="pg-listening__header u-center">
@@ -83,7 +109,7 @@ const Listening = () => {
                     <div className="heading-container">
                         <h3 className="heading-secondary">Monthly Top Tracks</h3>
                         <ArrowButtons
-                            pages={top_tracks ? Math.ceil(top_tracks.items.length / 6) : 1}
+                            pages={top_tracks ? Math.ceil(top_tracks.items.length / totals.topTracksSlide) : 1}
                             currentPage={topTrackPage}
                             handlePageChange={handlePageChange}
                         />
@@ -96,26 +122,42 @@ const Listening = () => {
                         <div
                             className="pg-listening__horizontal-row-container"
                             style={{
-                                width: `${top_tracks ? Math.ceil(top_tracks.items.length / 6) : 6}00%`,
+                                width: `${
+                                    top_tracks
+                                        ? Math.ceil(top_tracks.items.length / totals.topTracksSlide)
+                                        : totals.topTracks / totals.topTracksSlide
+                                }00%`,
                                 marginLeft: `-${topTrackPage - 1}00%`,
-                                gridTemplateColumns: `repeat(${top_tracks ? Math.ceil(top_tracks.items.length / 6) : 6}, 1fr)`
+                                gridTemplateColumns: `repeat(${
+                                    top_tracks ? Math.ceil(top_tracks.items.length / totals.topTracksSlide) : totals.topTracksSlide
+                                }, 1fr)`
                             }}
                         >
                             {Array.from(Array(Math.ceil(totals.topTracks / totals.topTracksSlide)).keys()).map((_, i) => (
-                                <ul key={_} className="pg-listening__horizontal-row pg-listening__horizontal-row--6">
+                                <ul
+                                    key={_}
+                                    className="pg-listening__horizontal-row"
+                                    style={{
+                                        gridTemplateColumns: `repeat(${totals.topTracksSlide}, 1fr)`
+                                    }}
+                                >
                                     {top_tracks
-                                        ? [...top_tracks.items].slice(i * 6, (i + 1) * 6).map((track) => (
-                                              <li className="song-card" key={track.id}>
-                                                  <a href={track.uri} className="song-card__image-container song-card__track">
-                                                      <img className="song-card__image" src={track.album.images[0].url} />
-                                                      <FaPlay size="50px" className="song-card__track-icon" />
-                                                  </a>
-                                                  <div className="song-card__main">
-                                                      <h5 className="song-card__name">{track.name}</h5>
-                                                      <p className="song-card__artists">{track.artists.map((x) => x.name).join(', ')}</p>
-                                                  </div>
-                                              </li>
-                                          ))
+                                        ? [...top_tracks.items]
+                                              .slice(i * totals.topTracksSlide, (i + 1) * totals.topTracksSlide)
+                                              .map((track) => (
+                                                  <li className="song-card" key={track.id}>
+                                                      <a href={track.uri} className="song-card__image-container song-card__track">
+                                                          <img className="song-card__image" src={track.album.images[0].url} />
+                                                          <FaPlay size="50px" className="song-card__track-icon" />
+                                                      </a>
+                                                      <div className="song-card__main">
+                                                          <h5 className="song-card__name">{track.name}</h5>
+                                                          <p className="song-card__artists">
+                                                              {track.artists.map((x) => x.name).join(', ')}
+                                                          </p>
+                                                      </div>
+                                                  </li>
+                                              ))
                                         : Array.from(Array(totals.topTracksSlide)).map((x) => (
                                               <div key={x} className="song-card song-card--placeholder">
                                                   <img className="song-card--placeholder__image" src="/transparent.png" />

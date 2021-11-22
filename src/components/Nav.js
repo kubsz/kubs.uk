@@ -50,6 +50,11 @@ const Nav = () => {
                         </li>
                     </ul>
                 </div>
+                <button className="nav__hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     );
