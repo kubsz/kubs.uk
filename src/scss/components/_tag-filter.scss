@@ -1,0 +1,62 @@
+@use '../abstracts' as *;
+
+.tag-filter {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+
+    background-color: rgba(17, 13, 138, 0.08);
+    box-shadow: 0 4px 0 0 rgba(17, 13, 138, 0.15);
+    margin-bottom: 4px;
+
+    border: 1px solid transparent;
+
+    transition: 0.08s ease;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(17, 13, 138, 0.1);
+    }
+
+    &:active,
+    &--active {
+        transform: translateY(2px);
+    }
+
+    &--inactive {
+        opacity: 0.6;
+    }
+
+    svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        object-fit: cover;
+        margin-right: 0.8rem;
+    }
+
+    span {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    &__list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 1rem;
+        width: 100rem;
+        max-width: 100%;
+        margin: 0 auto;
+
+        @include respond(1200) {
+            width: 100%;
+            gap: 0.6rem;
+        }
+    }
+
+    &__item {
+    }
+}

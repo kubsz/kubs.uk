@@ -12,6 +12,7 @@
 @use './pages/pg-blog';
 @use './pages/pg-dashboard';
 @use './pages/pg-listening';
+@use './pages/pg-my-work';
 
 @use './components/jumbotron';
 @use './components/git-commit-graph';
@@ -29,3 +30,6 @@
 @use './components/heading-buttons';
 @use './components/square-graphic';
 @use './components/spinner';
+@use './components/tag-filter';
+@use './components/masonry';
+@use './components/project-card';

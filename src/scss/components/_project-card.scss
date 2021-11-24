@@ -1,0 +1,30 @@
+@use '../abstracts' as *;
+
+.project-card {
+    background-color: #fff;
+    box-shadow: $shadow;
+    border-radius: $radius;
+    overflow: hidden;
+
+    &__image {
+        width: 100%;
+    }
+
+    &__info {
+        padding: 1.5rem;
+        background-color: $col-light-1;
+        color: $col-dark-1;
+
+        p {
+            margin: 0.8rem 0 1.5rem 0;
+            color: $col-dark-4;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__badge-list {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 8px;
+    }
+}

@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+.pg-my-work {
+    height: 8000px;
+    &__header {
+        text-align: center;
+
+        width: 70rem;
+        max-width: 100%;
+        margin: $gutter auto;
+
+        @include respond(992) {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            font-size: 2rem;
+            margin: 1.5rem 0 0 0;
+        }
+    }
+
+    &__project-list {
+        margin: $gutter * 1.5 0;
+    }
+}

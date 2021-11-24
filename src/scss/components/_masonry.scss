@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.masonry {
+    display: flex;
+    margin-left: -$gutter;
+    width: auto;
+
+    &__column {
+        padding-left: $gutter;
+        background-clip: padding-box;
+    }
+
+    /* Style your items */
+    &__column > div {
+        margin-bottom: $gutter;
+    }
+}
