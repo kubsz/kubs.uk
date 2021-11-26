@@ -1,7 +1,6 @@
 @use '../abstracts' as *;
 
 .pg-my-work {
-    height: 8000px;
     &__header {
         text-align: center;
 
@@ -21,6 +20,13 @@
             font-size: 2rem;
             margin: 1.5rem 0 0 0;
         }
+    }
+
+    &__featured-list {
+        margin: $gutter 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: $gutter;
     }
 
     &__project-list {

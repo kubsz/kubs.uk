@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .breadcrumbs {
-    @include margin(1400);
+    @include margin($margin);
     margin: $gutter auto 0 auto;
 
     &__list {

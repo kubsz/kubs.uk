@@ -11,6 +11,7 @@ import SQLLogo from '../assets/svg/technologies/sql.svg';
 import HTMLLogo from '../assets/svg/technologies/html.svg';
 import SCSSLogo from '../assets/svg/technologies/scss.svg';
 import JQueryLogo from '../assets/svg/technologies/jquery.svg';
+import StrapiLogo from '../assets/svg/technologies/strapi.svg';
 
 export default [
     {
@@ -38,7 +39,7 @@ export default [
         link: 'https://reactjs.org/'
     },
     {
-        name: 'Node / Express',
+        name: 'Node.js',
         image: <NodeLogo />,
         color: '#75ac64',
         link: 'https://nodejs.org/en/'
@@ -94,7 +95,13 @@ export default [
     {
         name: 'Vercel',
         image: <VercelLogo />,
-        color: '#eeeeee',
+        color: '#222222',
         link: 'https://vercel.com/'
+    },
+    {
+        name: 'Strapi',
+        image: <StrapiLogo />,
+        color: '#8c4bff',
+        link: 'https://strapi.io/'
     }
 ];

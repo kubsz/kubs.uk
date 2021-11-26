@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .jumbotron {
-    @include margin(1400);
+    @include margin($margin);
     max-width: 100%;
     margin: $gutter auto 0 auto;
 
