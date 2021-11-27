@@ -3,10 +3,6 @@
 .breadcrumbs {
     width: auto;
 
-    background-color: $col-light-1;
-    border-radius: 5px;
-    box-shadow: $shadow;
-    padding: 0.5rem 1.5rem;
     align-self: start;
 
     display: inline-block;
@@ -33,7 +29,9 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 12px;
-        font-weight: 500;
+        font-weight: 700;
+
+        color: rgba(0, 0, 0, 0.8);
 
         svg {
             color: rgba(0, 0, 0, 0.6);

@@ -5,9 +5,8 @@ import BlogCard from '../../components/BlogCard';
 import blogs from '../../data/blogs';
 
 const Blog = () => {
-    const crumbs = [{ label: 'Blog', link: '/blog' }];
     return (
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={[{ label: 'Blog', link: '/blog' }]}>
             <Section>
                 <div className="pg-blog">
                     <ul className="pg-blog__container">

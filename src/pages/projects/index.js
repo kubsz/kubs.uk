@@ -30,10 +30,8 @@ const ProjectIndex = () => {
         }
     };
 
-    console.log(filters);
-
     return (
-        <Layout>
+        <Layout crumbs={[{ label: 'Projects', link: '/project' }]}>
             <Section className="pg-my-work">
                 <div className="pg-my-work__header">
                     <h1>Projects</h1>
@@ -131,7 +129,9 @@ const ProjectIndex = () => {
 
                                     <div className="featured-card__info">
                                         <span className="featured-card__top-text">Featured Project</span>
-                                        <h3 className="featured-card__title">{project.name}</h3>
+                                        <a href={project.url} target="_blank" rel="noreferrer">
+                                            <h3 className="featured-card__title">{project.name}</h3>
+                                        </a>
                                         <div className="featured-card__description">
                                             <p>{project.description}</p>
                                         </div>
@@ -162,6 +162,13 @@ const ProjectIndex = () => {
                                                     <GrGithub />
                                                 </a>
                                             </li>
+                                            {project.openSource ? (
+                                                <li className="featured-card__link-item">
+                                                    <a className="featured-card__link" href="#">
+                                                        <GrGithub />
+                                                    </a>
+                                                </li>
+                                            ) : null}
                                         </ul>
                                     </div>
                                 </div>
@@ -192,7 +199,7 @@ const ProjectIndex = () => {
                                             src={`/assets/sites/branding/${project.image.bitmap}`}
                                             width={32}
                                             height={32}
-                                            objectFit="contain`"
+                                            objectFit="contain"
                                         />
                                     ) : (
                                         <FaRegFolder />
@@ -200,15 +207,17 @@ const ProjectIndex = () => {
                                 </div>
                                 <ul className="project-card__link-list">
                                     <li className="project-card__link-item">
-                                        <a className="project-card__link" href="#">
+                                        <a className="project-card__link" href={project.url}>
                                             <HiExternalLink />
                                         </a>
                                     </li>
-                                    <li className="project-card__link-item">
-                                        <a className="project-card__link" href="#">
-                                            <GrGithub />
-                                        </a>
-                                    </li>
+                                    {project.openSource ? (
+                                        <li className="project-card__link-item">
+                                            <a className="project-card__link" href="#">
+                                                <GrGithub />
+                                            </a>
+                                        </li>
+                                    ) : null}
                                 </ul>
                             </div>
                             <h3 className="project-card__title">{project.name}</h3>
