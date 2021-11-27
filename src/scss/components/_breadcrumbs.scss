@@ -1,8 +1,22 @@
 @use '../abstracts' as *;
 
 .breadcrumbs {
-    @include margin($margin);
-    margin: $gutter auto 0 auto;
+    width: auto;
+
+    background-color: $col-light-1;
+    border-radius: 5px;
+    box-shadow: $shadow;
+    padding: 0.5rem 1.5rem;
+    align-self: start;
+
+    display: inline-block;
+
+    &__container {
+        @include margin($margin);
+        display: flex;
+        align-items: flex-start;
+        margin: $gutter auto 0 auto;
+    }
 
     &__list {
         display: flex;
@@ -19,6 +33,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 12px;
+        font-weight: 500;
 
         svg {
             color: rgba(0, 0, 0, 0.6);
@@ -30,7 +45,7 @@
     }
 
     &__link {
-        margin-right: 1.5rem;
+        margin-right: 2rem;
         color: $col-primary;
         font-weight: 700;
         font-size: 12px;

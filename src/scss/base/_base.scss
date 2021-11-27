@@ -49,17 +49,13 @@ body,
 .main {
     display: grid;
     grid-template-rows: 1fr;
-    grid-gap: $gutter * 2;
+    // grid-gap: $gutter;
 
     perspective: 2000px;
 
     width: 100%;
 
     flex: 1;
-
-    @include respond(992) {
-        grid-gap: $gutter;
-    }
 
     &--no-gaps {
         grid-gap: 0;

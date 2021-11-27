@@ -18,8 +18,10 @@ import { AiOutlinePartition, AiOutlineBarChart } from 'react-icons/ai';
 const Index = () => {
     return (
         <Layout harshFooterShadow={true}>
-            <Jumbotron />
-            <Section theme="dark" wave>
+            <Section>
+                <Jumbotron />
+            </Section>
+            <Section modifiers={['double-padding', 'dark', 'wave']}>
                 <div className="pg-index__section pg-index__section--dark">
                     <div className="pg-index__section-graphic">
                         <Image src="/graphic.png" height={378.5} width={600} />

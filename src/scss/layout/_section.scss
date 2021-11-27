@@ -2,10 +2,10 @@
 
 .section {
     position: relative;
-    padding: 0rem 0 6rem 0;
+    padding: $gutter 0 $gutter 0;
 
     &--wave {
-        margin: 8rem 0 0 0;
+        margin: 10rem 0 0 0;
 
         @include respond(992) {
             margin: 0;
@@ -14,6 +14,10 @@
 
     &--no-padding {
         padding: 0;
+    }
+
+    &--double-padding {
+        padding: $gutter * 2 0 $gutter * 2 0;
     }
 
     &--dark {
@@ -48,7 +52,7 @@
 
     &__margin {
         @include margin($margin);
-        @include respond(1500) {
+        @include respond($margin) {
             width: 100%;
         }
     }

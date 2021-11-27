@@ -3,7 +3,7 @@
 .jumbotron {
     @include margin($margin);
     max-width: 100%;
-    margin: $gutter auto 0 auto;
+    margin: 0 auto;
 
     background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
 
@@ -22,7 +22,7 @@
 
     @include respond(1200) {
         width: calc(100vw - #{$gutter * 2});
-        margin: $gutter auto 0 auto;
+        // margin: $gutter auto 0 auto;
     }
 
     &__main {

@@ -11,8 +11,10 @@ const Layout = ({ harshFooterShadow, children, title, crumbs, noGaps }) => {
             </Head>
             <div className="root__overlay" id="root__overlay"></div>
             <Nav />
-            {crumbs && crumbs.length ? <Breadcrumb crumbs={crumbs} /> : null}
-            <main className={`main${noGaps ? ' main--no-gaps' : ''}`}>{children}</main>
+            <main className={`main${noGaps ? ' main--no-gaps' : ''}`}>
+                {crumbs && crumbs.length ? <Breadcrumb crumbs={crumbs} /> : null}
+                {children}
+            </main>
             <Footer harshShadow={harshFooterShadow} />
         </div>
     );
