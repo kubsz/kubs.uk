@@ -37,13 +37,13 @@ const Nav = () => {
                 <div className="nav__side">
                     <ul className="nav__link-list">
                         <li className="nav__link-item">
-                            <NavLink label={<TwitterIcon />} href="/" icon />
+                            <NavLink label={<TwitterIcon />} href="https://twitter.com/kubs_korkmaz" icon />
                         </li>
                         <li className="nav__link-item">
-                            <NavLink label={<LinkedInIcon />} href="/" icon />
+                            <NavLink label={<LinkedInIcon />} href="https://www.linkedin.com/in/kubs-korkmaz-281373199/" icon />
                         </li>
                         <li className="nav__link-item">
-                            <NavLink label={<GithubIcon />} href="/" icon />
+                            <NavLink label={<GithubIcon />} href="https://github.com/kubsz" icon />
                         </li>
                         <li className="nav__link-item">
                             <NavLink label="Hire Me" href="/" fill />

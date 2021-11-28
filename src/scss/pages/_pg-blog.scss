@@ -1,6 +1,7 @@
-@use '../abstracts'as *;
+@use '../abstracts' as *;
 
 .pg-blog {
+    margin-bottom: $gutter;
     &__container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));

@@ -1,10 +1,19 @@
 import Link from 'next/link';
 
-const NavLink = (props) => {
-    return (
-        <Link href={props.href}>
-            <a className={`nav__link${props.fill ? ' nav__link--fill' : ''}${props.icon ? ' nav__link--icon' : ''}`}>{props.label}</a>
+const NavLink = ({ href, fill, icon, label }) => {
+    return href[0] === '/' ? (
+        <Link href={href}>
+            <a className={`nav__link${fill ? ' nav__link--fill' : ''}${icon ? ' nav__link--icon' : ''}`}>{label}</a>
         </Link>
+    ) : (
+        <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className={`nav__link${fill ? ' nav__link--fill' : ''}${icon ? ' nav__link--icon' : ''}`}
+        >
+            {label}
+        </a>
     );
 };
 

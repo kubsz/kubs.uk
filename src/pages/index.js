@@ -78,20 +78,21 @@ const Index = () => {
                             <h2 className="pg-index__section-heading">Refined Design, Desired Experiences</h2>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet suscipit quas illo deleniti, fuga minima odit
-                            magnam earum esse id facere cupiditate laudantium ullam deserunt atque rem ipsum sint. Officiis.
+                            Although designers often get looked down apon in the world of web development, I would argue design architecture
+                            is the most fundamentally important aspect when creating a purposeful website. A successful web experience must
+                            balance a quality level of exemplary design, along with meaningful UX.
                         </p>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam illum repudiandae soluta totam culpa vero odit
-                            ad eum, commodi laudantium! Hic earum consectetur similique minus debitis vitae officia, fugit a! Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Accusamus quis asperiores nobis ipsum commodi, pariatur magnam
-                            facilis recusandae fugiat natus quae ut sequi eos aspernatur, maxime accusantium, blanditiis omnis consequuntur.
+                            Whether it's within the web development industry or in every day life, I am obsessed with creating things, and
+                            even more obsessed with improving things. Every application built provides an oppourtunity to learn and
+                            incorporate new ideas to future projects, which is a big reason why I enjoy working on projects with a unique
+                            vision.
                         </p>
                     </div>
                     <div className="pg-index__section-graphic">
                         <div className="square-graphic">
                             <div className="square-graphic__inner">
-                                {Array.from(new Array(4).keys()).map((x) => (
+                                {Array.from(Array(4).keys()).map((x) => (
                                     <span key={x} />
                                 ))}
                             </div>
@@ -104,12 +105,12 @@ const Index = () => {
                                 <h4 className="square-graphic__box-label">Planning & Wireframing</h4>
                             </div>
                             <div className="square-graphic__box">
-                                <BsFileEarmarkCode className="square-graphic__icon" />
-                                <h4 className="square-graphic__box-label">Build & Develop</h4>
-                            </div>
-                            <div className="square-graphic__box">
                                 <AiOutlineBarChart className="square-graphic__icon" />
                                 <h4 className="square-graphic__box-label">Optimization</h4>
+                            </div>
+                            <div className="square-graphic__box">
+                                <BsFileEarmarkCode className="square-graphic__icon" />
+                                <h4 className="square-graphic__box-label">Build & Develop</h4>
                             </div>
                         </div>
                     </div>
