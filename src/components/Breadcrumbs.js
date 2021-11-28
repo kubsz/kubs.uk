@@ -13,10 +13,14 @@ const Breadcrumbs = ({ crumbs }) => {
                 <ul className="breadcrumbs__list">
                     {newCrumbs.map((crumb, i) => {
                         if (i + 1 > crumbs.length) {
-                            return <li className="breadcrumbs__item">{crumb.label}</li>;
+                            return (
+                                <li key={i} className="breadcrumbs__item">
+                                    {crumb.label}
+                                </li>
+                            );
                         } else {
                             return (
-                                <li className="breadcrumbs__item">
+                                <li key={i} className="breadcrumbs__item">
                                     <Link href={crumb.link}>
                                         <a className="breadcrumbs__link">{crumb.label}</a>
                                     </Link>

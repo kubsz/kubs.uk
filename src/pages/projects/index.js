@@ -16,6 +16,7 @@ import Badge from '../../components/Badge';
 
 import technologies from '../../data/technologies';
 import projects from '../../data/projects';
+import FeaturedProject from '../../components/FeaturedProject';
 
 const ProjectIndex = () => {
     const [filters, setFilters] = useState([]);
@@ -98,80 +99,16 @@ const ProjectIndex = () => {
                         {projects
                             .filter((x) => x.featured)
                             .map((project, i) => (
-                                <div key={project.name} className={`featured-card${i % 2 ? ' featured-card--reverse' : ''}`}>
-                                    <a
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        href={project.url}
-                                        className={`featured-card__image-container${
-                                            project.image.generated ? ' featured-card__image-container--overlay' : ''
-                                        }`}
-                                    >
-                                        {project.image.generated ? (
-                                            <div
-                                                className="featured-card__fake-image"
-                                                style={{
-                                                    backgroundImage: `linear-gradient(to bottom right, ${project.image.colors.join(',')})`
-                                                }}
-                                            >
-                                                {project.image.logo}
-                                            </div>
-                                        ) : (
-                                            <Image
-                                                className="featured-card__image"
-                                                src={`/assets/sites/screenshots/${project.image.screenshot}`}
-                                                width={600}
-                                                height={337}
-                                                quality={100}
-                                            />
-                                        )}
-                                    </a>
-
-                                    <div className="featured-card__info">
-                                        <span className="featured-card__top-text">Featured Project</span>
-                                        <a href={project.url} target="_blank" rel="noreferrer">
-                                            <h3 className="featured-card__title">{project.name}</h3>
-                                        </a>
-                                        <div className="featured-card__description">
-                                            <p>{project.description}</p>
-                                        </div>
-                                        <ul className="featured-card__technology-list">
-                                            {project.technologies.map((tech) => (
-                                                <li key={tech.name} className="project-card__badge-item">
-                                                    <Badge
-                                                        modifiers={['border', 'small']}
-                                                        style={{
-                                                            backgroundColor: `${tech.color}`,
-                                                            color: '#fff',
-                                                            borderColor: `${tech.color}4d`
-                                                        }}
-                                                    >
-                                                        {tech.name}
-                                                    </Badge>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <ul className="featured-card__link-list">
-                                            <li className="featured-card__link-item">
-                                                <a className="featured-card__link" href="#">
-                                                    <HiExternalLink />
-                                                </a>
-                                            </li>
-                                            <li className="featured-card__link-item">
-                                                <a className="featured-card__link" href="#">
-                                                    <GrGithub />
-                                                </a>
-                                            </li>
-                                            {project.openSource ? (
-                                                <li className="featured-card__link-item">
-                                                    <a className="featured-card__link" href="#">
-                                                        <GrGithub />
-                                                    </a>
-                                                </li>
-                                            ) : null}
-                                        </ul>
-                                    </div>
-                                </div>
+                                <FeaturedProject
+                                    key={i}
+                                    reverse={i % 2}
+                                    url={project.url}
+                                    name={project.name}
+                                    description={project.description}
+                                    image={project.image}
+                                    technologies={project.technologies}
+                                    openSource={project.openSource}
+                                />
                             ))}
                     </div>
                 )}
