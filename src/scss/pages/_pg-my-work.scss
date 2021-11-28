@@ -6,7 +6,7 @@
 
         width: 70rem;
         max-width: 100%;
-        margin: $gutter auto;
+        margin: 0 auto $gutter auto;
 
         @include respond(992) {
             width: 100%;

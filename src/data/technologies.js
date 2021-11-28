@@ -27,7 +27,7 @@ export default [
         link: 'https://sass-lang.com/'
     },
     {
-        name: 'JavaScript',
+        name: 'Vanilla JS',
         image: <JavascriptLogo />,
         color: '#f7df1e',
         link: 'https://www.javascript.com/'

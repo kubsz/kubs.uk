@@ -49,8 +49,19 @@
         }
     }
 
+    &__text-link {
+        align-self: flex-start;
+        color: rgba(255, 255, 255, 0.8);
+
+        transition: 0.15s ease;
+
+        &:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
     &__title {
-        color: rgba(255, 255, 255, 0.9);
+        color: currentColor;
         font-weight: 700;
         font-size: 2rem;
     }

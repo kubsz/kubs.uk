@@ -10,6 +10,15 @@
     width: 1200px;
     margin: 0 auto;
 
+    @include respond(1400) {
+        width: 100%;
+    }
+
+    @include respond(768) {
+        flex-direction: column !important;
+        padding: 0 0 $gutter 0;
+    }
+
     --flex-direction: row-reverse;
     --flex-align: flex-end;
     --text-align: right;
@@ -61,6 +70,12 @@
         transition: 0.15s ease;
         cursor: pointer;
 
+        @include respond(768) {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+
         svg {
             width: 100px;
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
@@ -87,6 +102,11 @@
 
         position: relative;
         z-index: 2;
+
+        @include respond(768) {
+            text-align: center;
+            align-items: center;
+        }
     }
 
     &__top-text {
@@ -114,6 +134,10 @@
         width: calc(100% + 150px);
         border-radius: $radius;
 
+        @include respond(768) {
+            width: 100%;
+        }
+
         p {
             color: inherit;
             font-size: 1.6rem;
@@ -134,6 +158,10 @@
         margin: 10px 0;
 
         pointer-events: none;
+
+        @include respond(768) {
+            justify-content: center;
+        }
     }
 
     &__link-list {

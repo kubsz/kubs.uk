@@ -12,6 +12,10 @@
         display: flex;
         align-items: flex-start;
         margin: $gutter auto 0 auto;
+
+        @include respond($margin) {
+            width: 100%;
+        }
     }
 
     &__list {

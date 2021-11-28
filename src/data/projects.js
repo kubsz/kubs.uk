@@ -2,6 +2,8 @@ import technologies from './technologies';
 
 import HytaleGuideLogo from '../assets/svg/sites/hytaleguide.svg';
 import CSSLabLogo from '../assets/svg/sites/csslab.svg';
+import RobloxDenLogo from '../assets/svg/sites/robloxden.svg';
+import DantooLogo from '../assets/svg/sites/dantoo.svg';
 
 export default [
     {
@@ -18,7 +20,7 @@ export default [
             // }
         },
         url: 'https://hytaleguide.net',
-        technologies: ['Next.js', 'React', 'Node.js', 'Vercel', 'Strapi', 'SCSS', 'HTML'].map((lang) =>
+        technologies: ['Next.js', 'React', 'Node.js', 'Vercel', 'Strapi', 'SCSS'].map((lang) =>
             technologies.find((tech) => tech.name === lang)
         ),
         featured: true
@@ -32,9 +34,7 @@ export default [
         },
         description:
             'CSSLab offers a selection of beautiful components that can be easily slotted into any of your web projects. View buttons, form elements, modals & many more, customize each component to your specific colors and sizing!',
-        technologies: ['Next.js', 'React', 'Strapi', 'Vercel', 'SCSS', 'HTML'].map((lang) =>
-            technologies.find((tech) => tech.name === lang)
-        ),
+        technologies: ['Next.js', 'React', 'Strapi', 'Vercel', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang)),
         featured: true
     },
     {
@@ -45,7 +45,7 @@ export default [
             bitmap: 'hytalehosting.png'
         },
         description: 'HytaleHosting is a next/react.js app aimed to provide high quality game servers, produced for a client.',
-        technologies: ['Next.js', 'React', 'SCSS', 'HTML'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['Next.js', 'React', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'BronwenJ',
@@ -55,7 +55,7 @@ export default [
             bitmap: 'bronwenj.png'
         },
         description: 'BronwenJ is a lightweight personal portfolio and blog for an client, studying journalism & writing.',
-        technologies: ['PHP', 'Strapi', 'SCSS', 'HTML'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['PHP', 'Strapi', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'HytaleNames',
@@ -64,7 +64,7 @@ export default [
             screenshot: 'hytalenames.jpg'
         },
         description: 'HytaleNames is a social platform made to search for and save Hytale names, developed in next/react.js for a client.',
-        technologies: ['Next.js', 'React', 'Strapi', 'SCSS', 'HTML'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['Next.js', 'React', 'Strapi', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'RustWeaponStats',
@@ -73,7 +73,7 @@ export default [
             screenshot: 'rustweaponstats.jpg'
         },
         description: 'RustWeaponStats is a site detailing weapon/item stats in the video game Rust.',
-        technologies: ['PHP', 'SQL', 'jQuery', 'HTML'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['PHP', 'SQL', 'jQuery'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'Debo',
@@ -82,6 +82,28 @@ export default [
             screenshot: 'debo.jpg'
         },
         description: 'DEBO is an advanced social media platform created as a part of my CS degree.',
-        technologies: ['PHP', 'SQL', 'jQuery', 'HTML'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['PHP', 'SQL', 'jQuery'].map((lang) => technologies.find((tech) => tech.name === lang))
+    },
+    {
+        name: 'RobloxDen',
+        url: 'https://robloxden.com',
+        image: {
+            screenshot: 'robloxden.jpg',
+            svg: <RobloxDenLogo />
+        },
+        description: 'Developed the front-end of RobloxDen, an informative website detailing information about Roblox.',
+        technologies: ['Pug', 'Node.js', 'Vanilla JS', 'MongoDB', 'SCSS', 'Strapi'].map((lang) =>
+            technologies.find((tech) => tech.name === lang)
+        )
+    },
+    {
+        name: 'Dantoo',
+        url: 'https://dantoo.net',
+        image: {
+            screenshot: 'dantoo.jpg',
+            svg: <DantooLogo />
+        },
+        description: 'A company website for Dantoo LTD, outlining the websites ran with a contact section.',
+        technologies: ['EJS', 'Node.js', 'Vanilla JS', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     }
 ];

@@ -28,7 +28,7 @@ const FeaturedProject = ({ name, description, image, url, openSource, technologi
                         className="featured-card__image"
                         src={`/assets/sites/screenshots/${image.screenshot}`}
                         width={600}
-                        height={337}
+                        height={338}
                         quality={100}
                     />
                 )}
