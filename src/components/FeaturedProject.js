@@ -30,6 +30,7 @@ const FeaturedProject = ({ name, description, image, url, openSource, technologi
                         width={600}
                         height={338}
                         quality={100}
+                        priority
                     />
                 )}
             </a>

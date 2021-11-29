@@ -10,6 +10,8 @@ import randomNumbers from '../data/randomNumbers';
 import commits from '../data/commits';
 import TooltipTrigger from './TooltipTrigger';
 
+import projects from '../data/projects';
+
 const Jumbotron = () => {
     const imageContainerRef = useRef(null);
 
@@ -43,15 +45,17 @@ const Jumbotron = () => {
             </div>
             <div ref={imageContainerRef} className="jumbotron__graphic-container">
                 <Image
-                    unoptimized={true}
+                    // unoptimized={true}
+                    quality={100}
+                    priority={true}
                     className="jumbotron__graphic"
                     src="/me.png"
-                    alt="Who's that good looking guy?"
-                    width="433"
-                    height="410"
+                    alt="Kubs Korkmaz - Web Developer"
+                    width={433}
+                    height={410}
                 />
                 <div className="jumbotron__info-box">
-                    <span>47</span>
+                    <span>{projects.length}</span>
                     <p>Projects Completed</p>
                 </div>
                 <div className="jumbotron__info-box">

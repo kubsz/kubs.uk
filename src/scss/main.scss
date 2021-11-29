@@ -13,6 +13,7 @@
 @use './pages/pg-dashboard';
 @use './pages/pg-listening';
 @use './pages/pg-my-work';
+@use './pages/pg-contact';
 
 @use './components/jumbotron';
 @use './components/git-commit-graph';
@@ -34,3 +35,4 @@
 @use './components/masonry';
 @use './components/project-card';
 @use './components/featured-card';
+@use './components/form';

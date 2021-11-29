@@ -22,8 +22,32 @@
             height: auto;
         }
 
-        @include respond(576) {
-            gap: 0;
+        @include respond(450) {
+            grid-gap: 0;
+        }
+    }
+
+    &__header-error {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 16rem;
+            height: 16rem;
+        }
+    }
+
+    &__header-error-title {
+        font-size: 5rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.85);
+        margin: $gutter 0 0.5rem 0;
+
+        & + p {
+            font-size: 1.8rem;
         }
     }
 

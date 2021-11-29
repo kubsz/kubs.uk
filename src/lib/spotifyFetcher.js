@@ -15,7 +15,10 @@ const spotifyFetcher = async (query) => {
     });
 
     if (response.status !== 200) {
-        return null;
+        return {
+            status: response.status,
+            error: true
+        };
     }
 
     delete response.data.context;

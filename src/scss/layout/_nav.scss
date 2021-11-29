@@ -46,8 +46,9 @@
 
     &__link {
         font-size: 1.6rem;
-        font-weight: 400;
-        color: $col-dark-3;
+        font-weight: 600;
+
+        color: $col-dark-4;
 
         padding: 0.75rem;
         border-radius: $radius;
@@ -114,6 +115,10 @@
         &:not(&--fill):not(&--icon):hover {
             color: $col-primary;
             background-color: rgba($col-primary, 0.1);
+        }
+
+        &--active {
+            color: $col-primary;
         }
     }
     &__hamburger {

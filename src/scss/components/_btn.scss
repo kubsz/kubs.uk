@@ -9,6 +9,8 @@
 
     transition: background-color 0.1s ease;
 
+    cursor: pointer;
+
     &:hover {
         background-color: $col-primary-light;
         color: #fff;

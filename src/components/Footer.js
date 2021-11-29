@@ -3,9 +3,11 @@ import Link from 'next/link';
 import ChevronIcon from '../assets/svg/chevron-up.svg';
 
 import ProjectsIcon from '../assets/svg/layers.svg';
-import DashboardIcon from '../assets/svg/flowchart.svg';
 import BiographyIcon from '../assets/svg/learning.svg';
 import ContactIcon from '../assets/svg/design-tools.svg';
+// import DashboardIcon from '../assets/svg/flowchart.svg';
+
+import { RiMusic2Line } from 'react-icons/ri';
 
 import TwitterIcon from '../assets/svg/socials/twitter.svg';
 import LinkedInIcon from '../assets/svg/socials/linkedin.svg';
@@ -27,10 +29,10 @@ const Footer = ({ harshShadow }) => {
             link: '/projects'
         },
         {
-            label: 'Dashboard',
-            description: 'Browse through a complete selection of stats about my life!',
-            icon: <DashboardIcon className="footer__link-icon" />,
-            link: '/dashboard'
+            label: 'Listening',
+            description: 'Feel free to consensually stalk my recent spotify listening activity!',
+            icon: <RiMusic2Line className="footer__link-icon" />,
+            link: '/listening'
         },
         {
             label: 'Biography',
@@ -42,7 +44,7 @@ const Footer = ({ harshShadow }) => {
             label: 'Get in Touch',
             description: "If you're looking to get in contact with me, here's the place!",
             icon: <ContactIcon className="footer__link-icon" />,
-            link: '/'
+            link: '/contact'
         }
     ];
 
@@ -103,7 +105,7 @@ const Footer = ({ harshShadow }) => {
                             </TooltipTrigger>
                             . All rights reserved.
                         </p>
-                        {currently_playing ? (
+                        {currently_playing?.status === 200 ? (
                             <div className="footer__current-song">
                                 {/* TODO: add border around album image to show how far through */}
                                 <img src={currently_playing.item.album.images[2].url} alt="" className="footer__current-song-image" />

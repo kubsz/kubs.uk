@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 
+import { formatDistance } from 'date-fns';
+
 import useSWRFetcher from '../hooks/useSWRFetcher';
+import { convertTime } from '../lib/utils';
 
 import ArrowButtons from '../components/ArrowButtons';
-import Badge from '../components/Badge';
 import Layout from '../components/Layout';
-import PlayButton from '../components/PlayButton';
 import Section from '../components/Section';
-
-import { formatDistance } from 'date-fns';
 import Spinner from '../components/Spinner';
+import CurrentlyListening from '../components/CurrentlyListening';
 
 import { FaPlay } from 'react-icons/fa';
+
+import SadFace from '../assets/svg/sad-face.svg';
 
 const Listening = () => {
     const [topTrackPage, setTopTrackPage] = useState(1);
@@ -50,12 +52,6 @@ const Listening = () => {
         setTopTrackPage(newPage);
     };
 
-    const convertTime = (time) => {
-        return `${Math.floor(time / 1000 / 60)}:${
-            `${Math.floor((time / 1000) % 60)}`.length === 1 ? `0${Math.floor((time / 1000) % 60)}` : Math.floor((time / 1000) % 60)
-        }`;
-    };
-
     const handleResize = () => {
         const width = window.innerWidth;
 
@@ -68,39 +64,19 @@ const Listening = () => {
 
     return (
         <Layout noGaps>
-            <Section noPadding className="pg-listening__header u-center">
-                {!currently_playing ? (
-                    <Spinner />
+            <Section modifiers={['no-padding']} className="pg-listening__header u-center">
+                {currently_playing ? (
+                    currently_playing.status === 204 ? (
+                        <div className="pg-listening__header-error">
+                            <SadFace />
+                            <h4 className="pg-listening__header-error-title">Stuck in Silence</h4>
+                            <p>I'm not currently listening to any music! Check my recently listened to music below.</p>
+                        </div>
+                    ) : (
+                        <CurrentlyListening data={currently_playing} />
+                    )
                 ) : (
-                    <>
-                        <div className="pg-listening__header-image-container">
-                            <img className="pg-listening__header-image" src={currently_playing.item.album.images[0].url} />
-                        </div>
-                        <div className="pg-listening__header-main">
-                            <Badge modifiers={['light', 'shadow']}>Currently Playing</Badge>
-                            <h1 className="pg-listening__header-title">{currently_playing.item.name}</h1>
-                            <h4 className="pg-listening__header-subtitle">
-                                {currently_playing.item.artists.map((x) => x.name).join(', ')}
-                            </h4>
-                            <div className="pg-listening__header-footer">
-                                <PlayButton paused={currently_playing.is_playing === false} />
-                                <div className="pg-listening__header-timeline-container">
-                                    <span className="pg-listening__header-timeline-time">{convertTime(currently_playing.progress_ms)}</span>
-                                    <div className="pg-listening__header-timeline">
-                                        <div
-                                            className="pg-listening__header-timeline-inner"
-                                            style={{
-                                                width: `${(currently_playing.progress_ms / currently_playing.item.duration_ms) * 100}%`
-                                            }}
-                                        ></div>
-                                    </div>
-                                    <span className="pg-listening__header-timeline-time">
-                                        {convertTime(currently_playing.item.duration_ms)}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </>
+                    <Spinner />
                 )}
             </Section>
             <Section theme="light" className="pg-listening__body" shadow>

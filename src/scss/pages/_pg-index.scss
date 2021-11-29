@@ -25,6 +25,7 @@
     &__section-graphic {
         margin: $gutter;
         flex: 0 0 auto;
+
         @include respond(1400) {
             display: none;
         }
