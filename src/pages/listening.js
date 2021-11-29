@@ -79,7 +79,7 @@ const Listening = () => {
                     <Spinner />
                 )}
             </Section>
-            <Section theme="light" className="pg-listening__body" shadow>
+            <Section className="pg-listening__body" modifiers={['shadow']}>
                 {/* <MusicNotes /> */}
                 <div className="pg-listening__body-section">
                     <div className="heading-container">

@@ -10,7 +10,7 @@ const BlogArticle = ({ article }) => {
 
     const crumbs = [{ label: 'Blog', link: '/blog' }, { label: article.title }];
     return (
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} metaDescription="test" title={`${article.title} - Kubs K`}>
             <Section>
                 <BlogCard data={article} horizontal hideLinks />
                 <div className="pg-blog__content">

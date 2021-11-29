@@ -10,10 +10,43 @@ import { RiMusic2Line, RiStackLine } from 'react-icons/ri';
 import { GoBook } from 'react-icons/go';
 import { BsNewspaper, BsEnvelope } from 'react-icons/bs';
 
-import Logo from '../assets/svg/logo.svg';
+import LogoLarge from '../assets/branding/logo-large.svg';
+import LogoSquare from '../assets/branding/logo-square.svg';
 
 export default {
-    logo: <Logo />,
+    metadata: [
+        {
+            pathname: '/',
+            title: 'Kubs K - Web Developer',
+            description: "Hey, I'm Kubs! Check out my web development portfolio."
+        },
+        {
+            pathname: '/projects',
+            title: 'Projects - Kubs K',
+            description: 'View a curated selection of web development projects I have worked on.'
+        },
+        {
+            pathname: '/blog',
+            title: 'Blog - Kubs K',
+            description: 'Check out my blog! Here will contain a myriad of articles relating to web development & design.'
+        },
+        {
+            pathname: '/listening',
+            title: 'Listening - Kubs K',
+            description: 'Stalk my real-time spotify activity and previous listening history.'
+        },
+        {
+            pathname: '/contact',
+            title: 'Contact - Kubs K',
+            description: 'Be sure to get in contact and send me a message.'
+        }
+    ],
+    branding: {
+        logo: {
+            large: <LogoSquare />,
+            square: <LogoSquare />
+        }
+    },
     links: {
         internal: [
             { label: 'My Projects', url: '/projects', icon: <RiStackLine size="3rem" /> },

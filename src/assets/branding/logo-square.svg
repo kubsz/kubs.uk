@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 516 507">
+    <defs>
+        <style>
+            .logo-square {
+                fill: #0f1221;
+            }
+
+            .logo-square-2 {
+                fill: #5e3aef;
+            }
+        </style>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_2-2" data-name="Layer 2">
+            <polygon class="logo-square" points="182.43 0 129.22 0 0 0 0 182.43 0 249 249 0 182.43 0" />
+            <polygon class="logo-square-2"
+                points="516 0 390.96 0 0 390.96 0 507 118 507 121.22 507 122 507 126.3 507 133 507 256.11 383.89 256.24 384.02 261.46 378.79 389.68 507 516 507 516 382.22 387 253.22 516 124.22 516 0" />
+        </g>
+    </g>
+</svg>

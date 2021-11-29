@@ -5,8 +5,6 @@ import config from '../data/config';
 
 import NavLink from './NavLink';
 
-import Logo from '../assets/svg/logo.svg';
-
 const Nav = ({ toggleSidenav, sidenavActive }) => {
     const { route } = useRouter();
 
@@ -15,7 +13,7 @@ const Nav = ({ toggleSidenav, sidenavActive }) => {
             <div className="nav__inner">
                 <div className="nav__logo-container">
                     <Link href="/">
-                        <a className="nav__logo">{config.logo}</a>
+                        <a className="nav__logo">{config.branding.logo.large}</a>
                     </Link>
                 </div>
                 <div className="nav__main">

@@ -7,7 +7,6 @@ class MyDocument extends Document {
     }
 
     render() {
-        console.log('hi');
         return (
             <Html>
                 <Head>

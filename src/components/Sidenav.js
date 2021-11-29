@@ -13,7 +13,7 @@ const Sidenav = ({ active, closeSidenav }) => {
             <button className="sidenav__close"></button>
             <div className="sidenav">
                 <Link href="/">
-                    <a className="sidenav__logo">{config.logo}</a>
+                    <a className="sidenav__logo">{config.branding.logo.square}</a>
                 </Link>
                 <h4 className="sidenav__list-title">Content</h4>
                 <ul className="sidenav__list">

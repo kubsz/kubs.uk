@@ -6,7 +6,7 @@
 
     &__inner {
         @include margin($margin);
-        padding: 3rem 1.5rem;
+        padding: 3rem 0rem;
 
         display: flex;
         align-items: center;
@@ -17,7 +17,10 @@
     }
 
     &__logo {
+        display: block;
+
         svg {
+            display: block;
             height: 4rem;
         }
     }
@@ -44,13 +47,16 @@
 
     &__link-item {
         margin: 0 1.5rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
     }
 
     &__link {
-        font-size: 1.6rem;
-        font-weight: 600;
+        font-size: 1.4rem;
 
-        color: $col-dark-4;
+        color: rgba($col-dark-1, 0.7);
 
         padding: 0.75rem;
         border-radius: $radius;
