@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
+import config from '../data/config';
+
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 
@@ -59,21 +61,13 @@ const Contact = () => {
                         <div className="pg-contact__side-footer-section">
                             <h5 className="pg-contact__side-footer-section-title">Keep up with me:</h5>
                             <ul className="pg-contact__socials-list">
-                                <li className="pg-contact__socials-item">
-                                    <a href="#" target="_blank" rel="noreferrer">
-                                        <TwitterLogo />
-                                    </a>
-                                </li>
-                                <li className="pg-contact__socials-item">
-                                    <a href="#" target="_blank" rel="noreferrer">
-                                        <GithubLogo />
-                                    </a>
-                                </li>
-                                <li className="pg-contact__socials-item">
-                                    <a href="#" target="_blank" rel="noreferrer">
-                                        <LinkedInLogo />
-                                    </a>
-                                </li>
+                                {config.links.socials.map(({ url, icon }) => (
+                                    <li key={url} className="pg-contact__socials-item">
+                                        <a href={url} target="_blank" rel="noreferrer">
+                                            {icon}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="pg-contact__side-footer-section">

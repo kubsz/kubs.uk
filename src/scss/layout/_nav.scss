@@ -17,7 +17,9 @@
     }
 
     &__logo {
-        height: 4rem;
+        svg {
+            height: 4rem;
+        }
     }
 
     &__main {
@@ -138,13 +140,21 @@
 
         $thickness: 2px;
 
+        color: $col-dark-3;
+        cursor: pointer;
+
+        &:hover {
+            color: $col-dark-2;
+        }
+
         span {
             display: block;
             width: 100%;
             height: $thickness;
-            background-color: $col-dark-3;
+            background-color: currentColor;
 
             position: absolute;
+            transition: 0.3s $timing-function-elastic;
 
             &:nth-of-type(1) {
                 top: 0;
@@ -156,6 +166,26 @@
 
             &:nth-of-type(3) {
                 top: calc(100% - #{$thickness});
+            }
+        }
+
+        &--active {
+            span {
+                &:nth-of-type(1),
+                &:nth-of-type(3) {
+                    top: calc(50% - #{$thickness / 2});
+                }
+
+                &:nth-of-type(1) {
+                    transform: rotate(45deg);
+                }
+                &:nth-of-type(3) {
+                    transform: rotate(-45deg);
+                }
+
+                &:nth-of-type(2) {
+                    opacity: 0;
+                }
             }
         }
     }

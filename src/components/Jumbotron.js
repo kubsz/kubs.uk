@@ -5,15 +5,15 @@ import Link from 'next/link';
 
 import useSWRFetcher from '../hooks/useSWRFetcher';
 
-import GitCommitGraph from './GitCommitGraph';
-
 import randomNumbers from '../data/randomNumbers';
-import TooltipTrigger from './TooltipTrigger';
-
 import projects from '../data/projects';
 
+import GitCommitGraph from './GitCommitGraph';
+import Spinner from './Spinner';
+import TooltipTrigger from './TooltipTrigger';
+
 const Jumbotron = () => {
-    const { data: github_contributions } = useSWRFetcher('/api/github-contributions', { data: Array.from(Array(12).keys()).fill(0) });
+    const { data: github_contributions } = useSWRFetcher('/api/github-contributions');
 
     const imageContainerRef = useRef(null);
 
@@ -73,31 +73,37 @@ const Jumbotron = () => {
                     <span>{projects.length}</span>
                     <p>Projects Completed</p>
                 </div>
-                <div className="jumbotron__info-box">
-                    <span>
-                        <TooltipTrigger
-                            className="jumbotron__info-tooltip"
-                            code
-                            content="github_contributions.reduce((a, b) => a + b, 0)"
-                            width="32rem"
-                        >
-                            {github_contributions.reduce((a, b) => a + b, 0)}
-                        </TooltipTrigger>
-                    </span>
-                    <p>Yearly Git Commits</p>
-                    <GitCommitGraph rows={2} columns={6} boxSize="1.2rem" gap=".4rem" width="9.3rem">
-                        {github_contributions.map((count, i) => (
-                            <div
-                                key={i}
-                                className="git-commit-graph__box"
-                                style={{
-                                    backgroundColor: `rgba(94, 58, 239, ${
-                                        Math.max(...github_contributions) === 0 ? 0 : count / Math.max(...github_contributions)
-                                    }`
-                                }}
-                            />
-                        ))}
-                    </GitCommitGraph>
+                <div className="jumbotron__info-box jumbotron__info-box--fixed">
+                    {!github_contributions ? (
+                        <Spinner modifiers={['small', 'light']} />
+                    ) : (
+                        <>
+                            <span>
+                                <TooltipTrigger
+                                    className="jumbotron__info-tooltip"
+                                    code
+                                    content="github_contributions.reduce((a, b) => a + b, 0)"
+                                    width="32rem"
+                                >
+                                    {github_contributions.reduce((a, b) => a + b, 0)}
+                                </TooltipTrigger>
+                            </span>
+                            <p>Yearly Git Commits</p>
+                            <GitCommitGraph rows={2} columns={6} boxSize="1.2rem" gap=".4rem" width="9.3rem">
+                                {github_contributions.map((count, i) => (
+                                    <div
+                                        key={i}
+                                        className="git-commit-graph__box"
+                                        style={{
+                                            backgroundColor: `rgba(94, 58, 239, ${
+                                                Math.max(...github_contributions) === 0 ? 0 : count / Math.max(...github_contributions)
+                                            }`
+                                        }}
+                                    />
+                                ))}
+                            </GitCommitGraph>
+                        </>
+                    )}
                 </div>
                 {imageRect
                     ? randomNumbers.map((rd, i) => {

@@ -77,10 +77,21 @@
         color: $col-light-1;
         text-align: center;
 
+        &--fixed {
+            height: 12rem;
+            width: 16rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         &:nth-of-type(2) {
             top: 45%;
             right: 8%;
-            animation: float 10s infinite ease-in-out 5s;
+            animation: float 7s infinite ease-in-out;
+            transform: translateY(-12px);
         }
 
         &:nth-of-type(3) {

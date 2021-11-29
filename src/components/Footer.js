@@ -1,17 +1,8 @@
 import Link from 'next/link';
 
+import config from '../data/config';
+
 import ChevronIcon from '../assets/svg/chevron-up.svg';
-
-import ProjectsIcon from '../assets/svg/layers.svg';
-import BiographyIcon from '../assets/svg/learning.svg';
-import ContactIcon from '../assets/svg/design-tools.svg';
-// import DashboardIcon from '../assets/svg/flowchart.svg';
-
-import { RiMusic2Line } from 'react-icons/ri';
-
-import TwitterIcon from '../assets/svg/socials/twitter.svg';
-import LinkedInIcon from '../assets/svg/socials/linkedin.svg';
-import GithubIcon from '../assets/svg/socials/github.svg';
 
 import EmailIcon from '../assets/svg/email-fill.svg';
 import NavLink from './NavLink';
@@ -21,33 +12,6 @@ import useSWRFetcher from '../hooks/useSWRFetcher';
 const Footer = ({ harshShadow }) => {
     const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
 
-    const links = [
-        {
-            label: 'My Projects',
-            description: "View a variety of projects I've designed and developed.",
-            icon: <ProjectsIcon className="footer__link-icon" />,
-            link: '/projects'
-        },
-        {
-            label: 'Listening',
-            description: 'Feel free to consensually stalk my recent spotify listening activity!',
-            icon: <RiMusic2Line className="footer__link-icon" />,
-            link: '/listening'
-        },
-        {
-            label: 'Biography',
-            description: 'Want to learn more about me? Check out my biography.',
-            icon: <BiographyIcon className="footer__link-icon" />,
-            link: '/'
-        },
-        {
-            label: 'Get in Touch',
-            description: "If you're looking to get in contact with me, here's the place!",
-            icon: <ContactIcon className="footer__link-icon" />,
-            link: '/contact'
-        }
-    ];
-
     return (
         <footer className={`footer${harshShadow ? ' footer--harsh-shadow' : ''}`}>
             <div className="footer__inner">
@@ -56,7 +20,7 @@ const Footer = ({ harshShadow }) => {
                 </div> */}
                 <div className="footer__main">
                     <ul className="footer__link-list">
-                        {links.map((link, i) => (
+                        {config.links.footer.map((link, i) => (
                             <li key={i} className="footer__link-item">
                                 <Link href={link.link}>
                                     <a className="footer__link">
@@ -85,15 +49,11 @@ const Footer = ({ harshShadow }) => {
                         <div className="footer__lower-section">
                             <h5 className="footer__lower-heading">Keep up with me</h5>
                             <ul className="footer__social-list">
-                                <li className="footer__social-item">
-                                    <NavLink label={<TwitterIcon />} href="/" icon />
-                                </li>
-                                <li className="footer__social-item">
-                                    <NavLink label={<LinkedInIcon />} href="/" icon />
-                                </li>
-                                <li className="footer__social-item">
-                                    <NavLink label={<GithubIcon />} href="/" icon />
-                                </li>
+                                {config.links.socials.map(({ icon, url }) => (
+                                    <li key={url} className="footer__social-item">
+                                        <NavLink label={icon} href={url} icon />
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
