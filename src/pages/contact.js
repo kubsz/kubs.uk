@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 
+import { useRouter } from 'next/router';
+
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 
@@ -11,9 +13,12 @@ import { validateEmail } from '../lib/utils';
 import axios from 'axios';
 
 const Contact = () => {
+    const { query } = useRouter();
+    console.log(query);
+
     const [name, setName] = useState('');
     const [company, setCompany] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(query.email || '');
     const [message, setMessage] = useState('');
 
     const [errorMessage, setErrorMessage] = useState('');

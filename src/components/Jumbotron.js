@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import Image from 'next/image';
-
-import SingleInput from './SingleInput';
+import Link from 'next/link';
 
 import GitCommitGraph from './GitCommitGraph';
 
@@ -15,6 +14,7 @@ import projects from '../data/projects';
 const Jumbotron = () => {
     const imageContainerRef = useRef(null);
 
+    const [email, setEmail] = useState('');
     const [imageRect, setImageRect] = useState({ center: {} });
 
     useEffect(() => {
@@ -41,7 +41,19 @@ const Jumbotron = () => {
                     Converting <span>Complex</span> Problems into <span>Beautiful</span>, <span>Intuitive</span> Designs
                 </h1>
                 <p className="jumbotron__text">Full stack web developer speciailising in react.js, based in the UK.</p>
-                <SingleInput placeholder="Email Address" name="email" buttonText="Lets Chat!" />
+
+                <div className="single-input">
+                    <input
+                        placeholder="Email Address"
+                        type="text"
+                        className="single-input__input"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <Link href={{ pathname: 'contact', query: { email } }}>
+                        <a className="single-input__button">Let's Chat</a>
+                    </Link>
+                </div>
             </div>
             <div ref={imageContainerRef} className="jumbotron__graphic-container">
                 <Image
