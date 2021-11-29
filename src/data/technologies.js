@@ -8,18 +8,12 @@ import EJSLogo from '../assets/svg/technologies/ejs.svg';
 import MongoDBLogo from '../assets/svg/technologies/mongodb.svg';
 import PHPLogo from '../assets/svg/technologies/php.svg';
 import SQLLogo from '../assets/svg/technologies/sql.svg';
-import HTMLLogo from '../assets/svg/technologies/html.svg';
+import VueJSLogo from '../assets/svg/technologies/vue.svg';
 import SCSSLogo from '../assets/svg/technologies/scss.svg';
 import JQueryLogo from '../assets/svg/technologies/jquery.svg';
 import StrapiLogo from '../assets/svg/technologies/strapi.svg';
 
 export default [
-    {
-        name: 'HTML',
-        image: <HTMLLogo />,
-        color: '#EF662A',
-        link: 'https://www.w3.org/'
-    },
     {
         name: 'SCSS',
         image: <SCSSLogo />,
@@ -49,6 +43,12 @@ export default [
         image: <NextJSLogo />,
         color: '#0070f3',
         link: 'https://nextjs.org/'
+    },
+    {
+        name: 'Vue.js',
+        image: <VueJSLogo />,
+        color: '#41b883',
+        link: 'https://vuejs.org'
     },
     {
         name: 'MongoDB',

@@ -7,7 +7,7 @@
 
     background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
 
-    border-radius: 14px;
+    border-radius: 10px;
 
     box-shadow: 0 0 74px 10px rgba(56, 50, 124, 0.08);
 
@@ -77,8 +77,9 @@
         padding: 1.5rem 2.5rem;
 
         background-color: rgba(lighten($col-primary, 30%), 0.4);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(20px);
         border-radius: $radius * 3;
+        border: 2px solid rgba(255, 255, 255, 0.1);
 
         box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
 
@@ -87,7 +88,7 @@
 
         &--fixed {
             height: 12rem;
-            width: 16rem;
+            width: 16.5rem;
 
             display: flex;
             flex-direction: column;
@@ -97,15 +98,14 @@
 
         &:nth-of-type(2) {
             top: 45%;
-            right: 8%;
-            animation: float 7s infinite ease-in-out;
-            transform: translateY(-12px);
-        }
-
-        &:nth-of-type(3) {
-            top: 60%;
             left: 5%;
             animation: float 10s infinite ease-in-out;
+        }
+        &:nth-of-type(3) {
+            top: 55%;
+            right: 5%;
+            animation: float 7s infinite ease-in-out;
+            transform: translateY(-12px);
         }
 
         span {
