@@ -6,11 +6,9 @@ import TwitterIcon from '../assets/svg/socials/twitter.svg';
 import LinkedInIcon from '../assets/svg/socials/linkedin.svg';
 import GithubIcon from '../assets/svg/socials/github.svg';
 
-import ProjectsIcon from '../assets/svg/layers.svg';
-import BiographyIcon from '../assets/svg/learning.svg';
-import ContactIcon from '../assets/svg/design-tools.svg';
-// import DashboardIcon from '../assets/svg/flowchart.svg';
-import { RiMusic2Line } from 'react-icons/ri';
+import { RiMusic2Line, RiStackLine } from 'react-icons/ri';
+import { GoBook } from 'react-icons/go';
+import { BsNewspaper, BsEnvelope } from 'react-icons/bs';
 
 import Logo from '../assets/svg/logo.svg';
 
@@ -18,11 +16,11 @@ export default {
     logo: <Logo />,
     links: {
         internal: [
-            { label: 'My Projects', url: '/projects' },
-            { label: 'About Me', url: '/' },
-            { label: 'Blog', url: '/blog' },
-            { label: 'Listening', url: '/listening' },
-            { label: 'Hire Me', url: '/contact', fill: true }
+            { label: 'My Projects', url: '/projects', icon: <RiStackLine size="3rem" /> },
+            { label: 'About Me', url: '/', icon: <GoBook size="3rem" /> },
+            { label: 'Blog', url: '/blog', icon: <BsNewspaper size="3rem" /> },
+            { label: 'Listening', url: '/listening', icon: <RiMusic2Line size="3rem" /> },
+            { label: 'Hire Me', url: '/contact', icon: <BsEnvelope size="3rem" />, fill: true }
         ],
         socials: [
             { icon: <TwitterIcon />, url: 'https://twitter.com/kubs_korkmaz' },
@@ -33,7 +31,7 @@ export default {
             {
                 label: 'My Projects',
                 description: "View a variety of projects I've designed and developed.",
-                icon: <ProjectsIcon className="footer__link-icon" />,
+                icon: <RiStackLine className="footer__link-icon" />,
                 link: '/projects'
             },
             {
@@ -45,13 +43,13 @@ export default {
             {
                 label: 'Biography',
                 description: 'Want to learn more about me? Check out my biography.',
-                icon: <BiographyIcon className="footer__link-icon" />,
+                icon: <GoBook className="footer__link-icon" />,
                 link: '/'
             },
             {
                 label: 'Get in Touch',
                 description: "If you're looking to get in contact with me, here's the place!",
-                icon: <ContactIcon className="footer__link-icon" />,
+                icon: <BsEnvelope className="footer__link-icon" />,
                 link: '/contact'
             }
         ]

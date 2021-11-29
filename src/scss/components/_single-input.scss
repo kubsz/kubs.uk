@@ -18,6 +18,11 @@
         &::-webkit-input-placeholder {
             color: rgba(0, 0, 0, 0.6);
         }
+
+        @include respond(576) {
+            width: auto;
+            flex: 1;
+        }
     }
 
     &__button {

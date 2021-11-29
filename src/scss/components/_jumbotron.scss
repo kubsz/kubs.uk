@@ -7,7 +7,7 @@
 
     background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
 
-    border-radius: $radius;
+    border-radius: 14px;
 
     box-shadow: 0 0 74px 10px rgba(56, 50, 124, 0.08);
 
@@ -25,6 +25,10 @@
         // margin: $gutter auto 0 auto;
     }
 
+    @include respond(576) {
+        text-align: center;
+    }
+
     &__main {
         flex: 1 1 auto;
         padding: $gutter * 2 $gutter * 1.5;
@@ -32,6 +36,10 @@
         display: grid;
         grid-template-rows: 1fr;
         grid-gap: $gutter / 2;
+
+        @include respond(576) {
+            padding: $gutter $gutter * 1.5;
+        }
 
         @include respond(1200) {
             flex: 1;
@@ -138,6 +146,11 @@
         font-size: 4.2rem;
         line-height: 1.1;
         margin-bottom: 0;
+
+        @include respond(576) {
+            font-size: 3.6rem;
+            line-height: 1.2;
+        }
 
         span {
             color: $col-primary-light;
