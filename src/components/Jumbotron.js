@@ -8,7 +8,6 @@ import useSWRFetcher from '../hooks/useSWRFetcher';
 import GitCommitGraph from './GitCommitGraph';
 
 import randomNumbers from '../data/randomNumbers';
-import commits from '../data/commits';
 import TooltipTrigger from './TooltipTrigger';
 
 import projects from '../data/projects';
