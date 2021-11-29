@@ -7,5 +7,6 @@
     &__box {
         background-color: $col-primary;
         border-radius: 0.2rem;
+        border: 1px solid rgba($col-primary, 0.2);
     }
 }

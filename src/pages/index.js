@@ -8,6 +8,7 @@ import Section from '../components/Section';
 import TechnologyItem from '../components/TechnologyItem';
 
 import PencilIcon from '../assets/svg/pencil.svg';
+import ProgrammerIcon from '../assets/svg/programmer.svg';
 
 import technologies from '../data/technologies';
 
@@ -24,7 +25,8 @@ const Index = () => {
             <Section modifiers={['double-padding', 'dark', 'wave']}>
                 <div className="pg-index__section pg-index__section--dark">
                     <div className="pg-index__section-graphic">
-                        <Image src="/graphic.png" height={378.5} width={600} />
+                        {/* <Image src="/graphic.png" height={378.5} width={600} /> */}
+                        <ProgrammerIcon />
                     </div>
                     <div className="pg-index__section-main">
                         <span className="pg-index__section-top-text">Biography</span>

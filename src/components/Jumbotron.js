@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import useSWRFetcher from '../hooks/useSWRFetcher';
+
 import GitCommitGraph from './GitCommitGraph';
 
 import randomNumbers from '../data/randomNumbers';
@@ -12,6 +14,8 @@ import TooltipTrigger from './TooltipTrigger';
 import projects from '../data/projects';
 
 const Jumbotron = () => {
+    const { data: github_contributions } = useSWRFetcher('/api/github-contributions', { data: Array.from(Array(12).keys()).fill(0) });
+
     const imageContainerRef = useRef(null);
 
     const [email, setEmail] = useState('');
@@ -75,16 +79,24 @@ const Jumbotron = () => {
                         <TooltipTrigger
                             className="jumbotron__info-tooltip"
                             code
-                            content="await fetch('/api/git-commits').then(res => res.json())}"
-                            width="40rem"
+                            content="github_contributions.reduce((a, b) => a + b, 0)"
+                            width="32rem"
                         >
-                            {273}
+                            {github_contributions.reduce((a, b) => a + b, 0)}
                         </TooltipTrigger>
                     </span>
                     <p>Yearly Git Commits</p>
                     <GitCommitGraph rows={2} columns={6} boxSize="1.2rem" gap=".4rem" width="9.3rem">
-                        {commits.map((opacity, i) => (
-                            <div key={i} className="git-commit-graph__box" style={{ opacity }} />
+                        {github_contributions.map((count, i) => (
+                            <div
+                                key={i}
+                                className="git-commit-graph__box"
+                                style={{
+                                    backgroundColor: `rgba(94, 58, 239, ${
+                                        Math.max(...github_contributions) === 0 ? 0 : count / Math.max(...github_contributions)
+                                    }`
+                                }}
+                            />
                         ))}
                     </GitCommitGraph>
                 </div>

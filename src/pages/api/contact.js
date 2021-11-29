@@ -1,6 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 const handler = async (req, res) => {
+    if (req.method !== 'POST') return res.status(404).send('Invalid Method');
+
     if (!req.body) return;
 
     const required = ['name', 'email', 'message'];

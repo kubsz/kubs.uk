@@ -26,6 +26,10 @@
         margin: $gutter;
         flex: 0 0 auto;
 
+        & > svg {
+            width: 500px;
+        }
+
         @include respond(1400) {
             display: none;
         }
