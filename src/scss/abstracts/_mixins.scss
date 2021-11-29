@@ -6,6 +6,12 @@
     }
 }
 
+@mixin respondLarger($breakpoint) {
+    @media only screen and (min-width: ($breakpoint * 1px) + 1px) {
+        @content;
+    }
+}
+
 @mixin margin($size) {
     width: $size * 1px;
     margin: 0 auto;

@@ -1,7 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
 
-import { createClient } from '@supabase/supabase-js';
-
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 

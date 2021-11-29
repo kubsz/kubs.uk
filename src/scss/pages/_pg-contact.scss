@@ -4,12 +4,18 @@
     display: flex;
     gap: $gutter;
 
-    &__side {
-        flex: 0 0 550px;
+    @include respond(1200) {
+        flex-direction: column;
+    }
 
+    &__side {
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        @include respondLarger(1200) {
+            flex: 0 0 550px;
+        }
 
         h1 {
             margin-bottom: 0;
@@ -25,6 +31,10 @@
 
         display: flex;
         justify-content: space-between;
+
+        @include respond(1200) {
+            margin-top: $gutter;
+        }
     }
 
     &__side-footer-section-title {
