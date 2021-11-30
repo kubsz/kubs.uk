@@ -54,9 +54,9 @@
             margin-right: 0;
         }
 
-        @include respond(450) {
+        @include respond(576) {
             height: auto;
-            aspect-ratio: 1 /1;
+            padding: 4rem;
         }
 
         svg {

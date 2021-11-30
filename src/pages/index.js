@@ -16,7 +16,7 @@ import { AiOutlinePartition, AiOutlineBarChart } from 'react-icons/ai';
 const Index = () => {
     return (
         <Layout harshFooterShadow={true}>
-            <Section modifiers={['perspective']}>
+            <Section innerModifiers={['perspective']}>
                 <Jumbotron />
             </Section>
             <Section modifiers={['double-padding', 'dark', 'wave']}>
