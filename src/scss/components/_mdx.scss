@@ -6,10 +6,47 @@
     align-items: flex-start;
     gap: 1.5rem;
 
+    p {
+        margin: 0;
+    }
+
     .btn {
     }
 
     pre {
         width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        a {
+            color: $col-primary;
+            border-bottom: 2px dotted rgba($col-primary, 0.3);
+            padding-bottom: 0.1rem;
+
+            transition: 0.15s ease;
+            &:hover {
+                border-bottom: 2px dotted rgba($col-primary, 0.5);
+            }
+        }
+    }
+
+    h2 {
+        font-size: 2.8rem;
+    }
+
+    h3 {
+        font-size: 2.2rem;
+    }
+
+    h4 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 900;
+        font-size: 1.6rem;
     }
 }

@@ -53,7 +53,7 @@ export default {
             { label: 'About Me', url: '/', icon: <GoBook size="3rem" /> },
             { label: 'Blog', url: '/blog', icon: <BsNewspaper size="3rem" /> },
             { label: 'Listening', url: '/listening', icon: <RiMusic2Line size="3rem" /> },
-            { label: 'Hire Me', url: '/contact', icon: <BsEnvelope size="3rem" />, fill: true }
+            { label: 'Get in Touch', url: '/contact', icon: <BsEnvelope size="3rem" />, fill: true }
         ],
         socials: [
             { icon: <TwitterIcon />, url: 'https://twitter.com/kubs_korkmaz' },

@@ -5,7 +5,7 @@ import Section from '../components/Section';
 
 const Custom404 = () => {
     return (
-        <Layout>
+        <Layout title="Page Not Found - Kubs K" metaDescription="Page not found.">
             <Section className="pg-404" innerModifiers={['grow']}>
                 <h1 className="pg-404__title">
                     {[...'404'].map((letter, i) => (

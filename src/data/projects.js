@@ -20,9 +20,7 @@ export default [
             // }
         },
         url: 'https://hytaleguide.net',
-        technologies: ['Next.js', 'React', 'Node.js', 'Vercel', 'Strapi', 'SCSS'].map((lang) =>
-            technologies.find((tech) => tech.name === lang)
-        ),
+        technologies: ['Next.js', 'React', 'Node.js', 'Vercel', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang)),
         featured: true
     },
     {
@@ -34,7 +32,7 @@ export default [
         },
         description:
             'CSSLab offers a selection of beautiful components that can be easily slotted into any of your web projects. View buttons, form elements, modals & many more, customize each component to your specific colors and sizing!',
-        technologies: ['Next.js', 'React', 'Strapi', 'Vercel', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang)),
+        technologies: ['Next.js', 'React', 'Vercel', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang)),
         featured: true
     },
     {
@@ -55,7 +53,7 @@ export default [
             bitmap: 'bronwenj.png'
         },
         description: 'BronwenJ is a lightweight personal portfolio and blog for an client, studying journalism & writing.',
-        technologies: ['PHP', 'Strapi', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['PHP', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'HytaleNames',
@@ -64,7 +62,7 @@ export default [
             screenshot: 'hytalenames.jpg'
         },
         description: 'HytaleNames is a social platform made to search for and save Hytale names, developed in next/react.js for a client.',
-        technologies: ['Next.js', 'React', 'Strapi', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
+        technologies: ['Next.js', 'React', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'RustWeaponStats',
@@ -92,9 +90,7 @@ export default [
             svg: <RobloxDenLogo />
         },
         description: 'Developed the front-end of RobloxDen, an informative website detailing information about Roblox.',
-        technologies: ['Pug', 'Node.js', 'Vanilla JS', 'MongoDB', 'SCSS', 'Strapi'].map((lang) =>
-            technologies.find((tech) => tech.name === lang)
-        )
+        technologies: ['Pug', 'Node.js', 'Vanilla JS', 'MongoDB', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
         name: 'Dantoo',

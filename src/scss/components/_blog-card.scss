@@ -49,14 +49,11 @@
         margin-right: $gutter;
 
         @include respond(992) {
-            height: auto;
             padding: 10rem;
             margin-right: 0;
         }
 
         @include respond(576) {
-            height: auto;
-            padding: 4rem;
         }
 
         svg {

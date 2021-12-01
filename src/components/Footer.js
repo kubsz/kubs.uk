@@ -8,6 +8,7 @@ import EmailIcon from '../assets/svg/email-fill.svg';
 import NavLink from './NavLink';
 import TooltipTrigger from './TooltipTrigger';
 import useSWRFetcher from '../hooks/useSWRFetcher';
+import Spinner from './Spinner';
 
 const Footer = ({ harshShadow }) => {
     const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
@@ -65,17 +66,19 @@ const Footer = ({ harshShadow }) => {
                             </TooltipTrigger>
                             . All rights reserved.
                         </p>
-                        {currently_playing && !currently_playing?.error ? (
-                            <div className="footer__current-song">
-                                {/* TODO: add border around album image to show how far through */}
-                                <img src={currently_playing.item.album.images[2].url} alt="" className="footer__current-song-image" />
-                                <div className="footer__current-song-info">
-                                    <span className="footer__current-song-name">{currently_playing.item.name}</span>
-                                    <span className="footer__current-song-artists">
-                                        {currently_playing.item.artists.map((x) => x.name).join(', ')}
-                                    </span>
+                        {currently_playing ? (
+                            currently_playing.status === 204 ? null : (
+                                <div className="footer__current-song">
+                                    {/* TODO: add border around album image to show how far through */}
+                                    <img src={currently_playing.item.album.images[2].url} alt="" className="footer__current-song-image" />
+                                    <div className="footer__current-song-info">
+                                        <span className="footer__current-song-name">{currently_playing.item.name}</span>
+                                        <span className="footer__current-song-artists">
+                                            {currently_playing.item.artists.map((x) => x.name).join(', ')}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
+                            )
                         ) : null}
                     </div>
                 </div>

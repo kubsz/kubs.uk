@@ -97,11 +97,5 @@ export default [
         image: <VercelLogo />,
         color: '#222222',
         link: 'https://vercel.com/'
-    },
-    {
-        name: 'Strapi',
-        image: <StrapiLogo />,
-        color: '#8c4bff',
-        link: 'https://strapi.io/'
     }
 ];

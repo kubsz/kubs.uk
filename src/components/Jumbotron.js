@@ -53,7 +53,7 @@ const Jumbotron = ({ githubContribitons }) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <Link href={{ pathname: 'contact', query: { email } }}>
+                    <Link href={email ? { pathname: 'contact', query: { email } } : '/contact'}>
                         <a className="single-input__button">Let's Chat</a>
                     </Link>
                 </div>

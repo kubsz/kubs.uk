@@ -8,13 +8,18 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import MarkdownCodeBlock from '../../components/MarkdownCodeBlock';
 
-import ExternalButton from '../../components/ExternalButton';
+import Button from '../../components/Button';
 
 import matter from 'gray-matter';
+import TooltipTrigger from '../../components/TooltipTrigger';
+import SmartLink from '../../components/SmartLink';
 
 const components = {
     code: MarkdownCodeBlock,
-    ExternalButton
+    Button,
+    TooltipTrigger,
+    a: SmartLink,
+    Whitespace: ({ size }) => <div style={{ height: `${size}rem` }} />
 };
 
 const BlogArticle = ({ post, mdx }) => {

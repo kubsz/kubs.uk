@@ -7,20 +7,20 @@ import config from '../data/config';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 
-import TwitterLogo from '../assets/svg/socials/twitter.svg';
-import LinkedInLogo from '../assets/svg/socials/linkedin.svg';
-import GithubLogo from '../assets/svg/socials/github.svg';
 import FormSection from '../components/FormSection';
 import { validateEmail } from '../lib/utils';
 import axios from 'axios';
 
 const Contact = () => {
     const { query } = useRouter();
-    console.log(query);
+
+    useEffect(() => {
+        setEmail(query.email);
+    }, [query]);
 
     const [name, setName] = useState('');
     const [company, setCompany] = useState('');
-    const [email, setEmail] = useState(query.email || '');
+    const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
     const [errorMessage, setErrorMessage] = useState('');
