@@ -63,7 +63,6 @@ const TagFilter = ({ items, filters, toggleFilter, filterMessage = 'Showing resu
                             </span>
                         );
                     })}
-                    .
                 </p>
             ) : null}
         </>

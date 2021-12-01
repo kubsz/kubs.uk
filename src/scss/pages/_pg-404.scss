@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+.pg-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0;
+
+    @for $i from 0 through 10 {
+        & > *:nth-last-child(#{$i}) {
+            transform: translateY(10px);
+            opacity: 0;
+            animation: fade-in 1s ease 0.2s * $i forwards;
+        }
+    }
+
+    &__title {
+        font-size: 20rem;
+        letter-spacing: 2rem;
+        font-weight: 900;
+        line-height: 1;
+
+        perspective: 1300px;
+
+        span {
+            display: inline-block;
+            transform: translateY(10px) rotate(20deg);
+            opacity: 0;
+            @for $i from 0 through 3 {
+                &:nth-of-type(#{$i}) {
+                    animation: fade-in-rotate 0.7s ease 0.8s + (0.2s * $i) forwards;
+                }
+            }
+        }
+    }
+    &__subtitle {
+        font-size: 5rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+    }
+
+    &__text {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+}
