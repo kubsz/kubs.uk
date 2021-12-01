@@ -4,13 +4,29 @@ import Section from '../../components/Section';
 import { getBlogPosts } from '../../lib/api/getBlogPosts';
 import { getBlogPost } from '../../lib/api/getBlogPost';
 
-const BlogArticle = ({ post }) => {
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
+import MarkdownCodeBlock from '../../components/MarkdownCodeBlock';
+
+import ExternalButton from '../../components/ExternalButton';
+
+import matter from 'gray-matter';
+
+const components = {
+    code: MarkdownCodeBlock,
+    ExternalButton
+};
+
+const BlogArticle = ({ post, mdx }) => {
     const crumbs = [{ label: 'Blog', link: '/blog' }, { label: post.title }];
+
     return (
         <Layout crumbs={crumbs} metaDescription="test" title={`${post.title} - Kubs K`}>
             <Section>
                 <BlogCard data={post} horizontal hideLinks />
-                <div className="pg-blog__content">{post.content}</div>
+                <div className="pg-blog__content mdx">
+                    <MDXRemote {...mdx.source} components={components} />
+                </div>
             </Section>
         </Layout>
     );
@@ -21,9 +37,17 @@ export default BlogArticle;
 export const getStaticProps = async (context) => {
     const post = await getBlogPost(context.params.slug);
 
+    //  = await serialize(post.content);
+
+    const { content, data } = matter(post.content);
+    const source = await serialize(content, { scope: data });
     return {
         props: {
-            post
+            post,
+            mdx: {
+                source,
+                frontMatter: data
+            }
         }
     };
 };

@@ -38,3 +38,6 @@
 @use './components/project-card';
 @use './components/featured-card';
 @use './components/form';
+@use './components/mdx';
+
+@use './vendors/prism.scss';
