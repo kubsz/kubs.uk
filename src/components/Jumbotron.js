@@ -12,8 +12,8 @@ import GitCommitGraph from './GitCommitGraph';
 import Spinner from './Spinner';
 import TooltipTrigger from './TooltipTrigger';
 
-const Jumbotron = () => {
-    const { data: github_contributions } = useSWRFetcher('/api/github-contributions');
+const Jumbotron = ({ githubContribitons }) => {
+    const { data: github_contributions } = useSWRFetcher('/api/github-contributions', { data: githubContribitons });
 
     const imageContainerRef = useRef(null);
 

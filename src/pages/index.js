@@ -12,12 +12,13 @@ import ProgrammerIcon from '../assets/svg/programmer.svg';
 import { RiUserSearchLine } from 'react-icons/ri';
 import { BsFileEarmarkCode } from 'react-icons/bs';
 import { AiOutlinePartition, AiOutlineBarChart } from 'react-icons/ai';
+import { getGithubContributions } from '../lib/api/getGithubContributions';
 
-const Index = () => {
+const Index = ({ githubContribitons }) => {
     return (
         <Layout harshFooterShadow={true}>
             <Section innerModifiers={['perspective']}>
-                <Jumbotron />
+                <Jumbotron githubContribitons={githubContribitons} />
             </Section>
             <Section modifiers={['double-padding', 'dark', 'wave']}>
                 <div className="pg-index__section pg-index__section--dark">
@@ -85,3 +86,13 @@ const Index = () => {
 };
 
 export default Index;
+
+export const getStaticProps = async () => {
+    const githubContribitons = await getGithubContributions();
+
+    return {
+        props: {
+            githubContribitons
+        }
+    };
+};
