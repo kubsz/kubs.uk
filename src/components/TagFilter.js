@@ -37,7 +37,7 @@ const TagFilter = ({ items, filters, toggleFilter, filterMessage = 'Showing resu
                                         : {}
                                 }
                             >
-                                {image || <div className="tag-filter__box" style={{ backgroundColor: getColor(color) }}></div>}
+                                {image || <div className="tag-filter__box" style={{ backgroundColor: getColor(color, true) }}></div>}
                                 <span>{name}</span>
                             </button>
                         </li>

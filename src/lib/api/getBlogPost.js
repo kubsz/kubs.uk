@@ -6,6 +6,7 @@ export const getBlogPost = async (slug) => {
         .from('blog')
         .select('*, categories:blog_category_link ( category ( * ) )')
         .eq('slug', slug)
+        .eq('draft', false)
         .single();
 
     if (error) return null;

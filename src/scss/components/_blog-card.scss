@@ -73,11 +73,12 @@
 
     &__tag-list {
         display: flex;
-        margin: -0.2rem -0.2rem 1rem -0.2rem;
+        flex-flow: row wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
     }
 
     &__tag-item {
-        margin: 0.2rem;
     }
 
     &__date {
