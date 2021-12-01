@@ -11,6 +11,7 @@ import useSWRFetcher from '../hooks/useSWRFetcher';
 
 const Footer = ({ harshShadow }) => {
     const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
+    console.log(currently_playing);
 
     return (
         <footer className={`footer${harshShadow ? ' footer--harsh-shadow' : ''}`}>
@@ -65,7 +66,7 @@ const Footer = ({ harshShadow }) => {
                             </TooltipTrigger>
                             . All rights reserved.
                         </p>
-                        {currently_playing?.status === 200 ? (
+                        {currently_playing ? (
                             <div className="footer__current-song">
                                 {/* TODO: add border around album image to show how far through */}
                                 <img src={currently_playing.item.album.images[2].url} alt="" className="footer__current-song-image" />

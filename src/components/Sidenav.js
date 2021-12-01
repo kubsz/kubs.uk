@@ -35,7 +35,7 @@ const Sidenav = ({ active, closeSidenav }) => {
                     <ul className="sidenav__socials-list">
                         {config.links.socials.map(({ url, icon }) => (
                             <li key={url} className="sidenav__socials-item">
-                                <a href={url} className="sidenav__socials-link">
+                                <a href={url} target="_blank" rel="noreferrer" className="sidenav__socials-link">
                                     {icon}
                                 </a>
                             </li>

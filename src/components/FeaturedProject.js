@@ -10,7 +10,7 @@ const FeaturedProject = ({ name, description, image, url, openSource, technologi
         <div className={`featured-card${reverse ? ' featured-card--reverse' : ''}`}>
             <a
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href={url}
                 className={`featured-card__image-container${image.generated ? ' featured-card__image-container--overlay' : ''}`}
             >
@@ -37,7 +37,7 @@ const FeaturedProject = ({ name, description, image, url, openSource, technologi
 
             <div className="featured-card__info">
                 <span className="featured-card__top-text">Featured Project</span>
-                <a href={url} target="_blank" rel="noreferrer">
+                <a href={url} target="_blank" rel="noopener noreferrer">
                     <h3 className="featured-card__title">{name}</h3>
                 </a>
                 <div className="featured-card__description">
@@ -61,13 +61,13 @@ const FeaturedProject = ({ name, description, image, url, openSource, technologi
                 </ul>
                 <ul className="featured-card__link-list">
                     <li className="featured-card__link-item">
-                        <a className="featured-card__link" href={url} target="_blank" rel="noreferrer">
+                        <a className="featured-card__link" href={url} target="_blank" rel="noopener noreferrer">
                             <HiExternalLink />
                         </a>
                     </li>
                     {openSource ? (
                         <li className="featured-card__link-item">
-                            <a className="featured-card__link" href={openSource} target="_blank" rel="noreferrer">
+                            <a className="featured-card__link" href={openSource} target="_blank" rel="noopener noreferrer">
                                 <GrGithub />
                             </a>
                         </li>

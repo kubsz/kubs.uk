@@ -21,20 +21,20 @@ const ProjectCard = ({ name, description, technologies, openSource, url, image }
                 </div>
                 <ul className="project-card__link-list">
                     <li className="project-card__link-item">
-                        <a className="project-card__link" href={url} target="_blank" rel="noreferrer">
+                        <a className="project-card__link" href={url} target="_blank" rel="noopener noreferrer">
                             <HiExternalLink />
                         </a>
                     </li>
                     {openSource ? (
                         <li className="project-card__link-item">
-                            <a className="project-card__link" href={openSource} target="_blank" rel="noreferrer">
+                            <a className="project-card__link" href={openSource} target="_blank" rel="noopener noreferrer">
                                 <GrGithub />
                             </a>
                         </li>
                     ) : null}
                 </ul>
             </div>
-            <a href={url} target="_blank" rel="noreferrer" className="project-card__text-link">
+            <a href={url} target="_blank" rel="noopener noreferrer" className="project-card__text-link">
                 <h3 className="project-card__title">{name}</h3>
             </a>
             <p className="project-card__description">{description}</p>
