@@ -1,3 +1,5 @@
+import { format, formatDistance, subDays } from 'date-fns';
+
 export const universalBtoa = (str) => {
     try {
         return btoa(str);
@@ -23,4 +25,12 @@ export const convertTime = (time) => {
 export const validateEmail = (email) => {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
+};
+
+export const formatDate = (date, distance = false) => {
+    if (distance) {
+        return formatDistance(subDays(new Date(), 0), new Date(date));
+    } else {
+        return format(new Date(date), 'd LLLL, yyyy');
+    }
 };

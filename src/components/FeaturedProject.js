@@ -61,13 +61,13 @@ const FeaturedProject = ({ name, description, image, url, openSource, technologi
                 </ul>
                 <ul className="featured-card__link-list">
                     <li className="featured-card__link-item">
-                        <a className="featured-card__link" href="#">
+                        <a className="featured-card__link" href={url} target="_blank" rel="noreferrer">
                             <HiExternalLink />
                         </a>
                     </li>
                     {openSource ? (
                         <li className="featured-card__link-item">
-                            <a className="featured-card__link" href={openSource}>
+                            <a className="featured-card__link" href={openSource} target="_blank" rel="noreferrer">
                                 <GrGithub />
                             </a>
                         </li>

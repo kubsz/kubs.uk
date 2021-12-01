@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Masonry from 'react-masonry-css';
 
 import Layout from '../../components/Layout';
@@ -9,82 +7,29 @@ import technologies from '../../data/technologies';
 import projects from '../../data/projects';
 import FeaturedProject from '../../components/FeaturedProject';
 import ProjectCard from '../../components/ProjectCard';
+import TagFilter from '../../components/TagFilter';
+import useTagFilter from '../../hooks/useTagFilter';
 
 const ProjectIndex = () => {
-    const [filters, setFilters] = useState([]);
-
-    const toggleFilter = (filter) => {
-        const index = filters.indexOf(filter);
-
-        if (index > -1) {
-            setFilters([...filters].filter((x) => x !== filter));
-        } else {
-            setFilters([...filters, filter]);
-        }
-    };
+    const [filters, toggleFilter] = useTagFilter();
 
     return (
         <Layout crumbs={[{ label: 'Projects', link: '/project' }]}>
-            <Section className="pg-my-work">
-                <div className="pg-my-work__header">
+            <Section>
+                <div className="centered-header">
                     <h1>Projects</h1>
                     <p>
                         Ranging from Web Components and UI/UX animations to web and mobile apps, check out my latest web software
                         development portfolio projects.
                     </p>
                 </div>
-                <ul className="tag-filter__list">
-                    {technologies.map((tech, i) => {
-                        const active = filters.findIndex((x) => x === tech.name) > -1;
-                        const filtersExist = filters.length > 0;
 
-                        return (
-                            <li key={i} className="tag-filter__item">
-                                <button
-                                    className={`tag-filter${
-                                        filtersExist ? (active ? ' tag-filter--active' : ' tag-filter--inactive') : ''
-                                    }`}
-                                    onClick={() => toggleFilter(tech.name)}
-                                    style={
-                                        active
-                                            ? {
-                                                  backgroundColor: `${tech.color}4d`,
-                                                  color: tech.color,
-                                                  boxShadow: `0 2px 0 0 ${tech.color}8c`,
-                                                  borderColor: `${tech.color}4d`
-                                              }
-                                            : {}
-                                    }
-                                >
-                                    {tech.image}
-                                    <span>{tech.name}</span>
-                                </button>
-                            </li>
-                        );
-                    })}
-                </ul>
-                {filters.length ? (
-                    <p className="pg-my-work__filter-text">
-                        Only showing projects that utilized{' '}
-                        {filters.map((filter) => {
-                            const filterObj = technologies.find((x) => x.name === filter);
-                            return (
-                                <span key={filter}>
-                                    <span
-                                        onClick={() => toggleFilter(filterObj.name)}
-                                        style={{
-                                            backgroundColor: `${filterObj.color}4d`,
-                                            borderColor: `${filterObj.color}4d`
-                                        }}
-                                    >
-                                        {filter}
-                                    </span>
-                                </span>
-                            );
-                        })}
-                        .
-                    </p>
-                ) : null}
+                <TagFilter
+                    items={technologies.map(({ name, color, image }) => ({ name, color, image }))}
+                    filters={filters}
+                    toggleFilter={toggleFilter}
+                    filterMessage="Only showing projects that utilized "
+                />
 
                 {!filters.length && (
                     <div className="pg-my-work__featured-list">
