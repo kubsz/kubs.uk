@@ -19,8 +19,7 @@ const BlogArticle = ({ post }) => {
 export default BlogArticle;
 
 export const getStaticProps = async (context) => {
-    const { data: post } = await getBlogPost(context.params.slug);
-    // console.log(d)
+    const post = await getBlogPost(context.params.slug);
 
     return {
         props: {
@@ -30,7 +29,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-    const { data: posts } = await getBlogPosts();
+    const posts = await getBlogPosts();
 
     const paths = posts.map((blog) => ({
         params: {

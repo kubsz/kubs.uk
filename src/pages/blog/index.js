@@ -9,8 +9,6 @@ import useTagFilter from '../../hooks/useTagFilter';
 
 const Blog = ({ posts, categories }) => {
     const [filters, toggleFilter] = useTagFilter();
-    console.log(filters);
-    console.log(posts);
 
     return (
         <Layout crumbs={[{ label: 'Blog', link: '/blog' }]}>
@@ -19,7 +17,7 @@ const Blog = ({ posts, categories }) => {
                     <h1>Blog</h1>
                     <p>
                         View a plethora of blog articles related to my journey as a web developer, design inspiration, website documentation
-                        & latest news about technologies!
+                        and latest news about technologies!
                     </p>
                 </div>
 
@@ -45,8 +43,8 @@ const Blog = ({ posts, categories }) => {
 export default Blog;
 
 export const getStaticProps = async () => {
-    const { data: posts } = await getBlogPosts();
-    const { data: categories } = await getBlogCategories();
+    const posts = await getBlogPosts();
+    const categories = await getBlogCategories();
 
     return {
         props: {

@@ -1,10 +1,9 @@
-import { createClient } from '@supabase/supabase-js';
+import { getBlogCategories } from '../../lib/api/getBlogCategories';
 
 const handler = async (req, res) => {
-    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SECRET_KEY);
-    const { data, error } = await supabase.from('category').select('*');
+    const data = await getBlogCategories();
 
-    if (error) return res.status(500).json({ status: 500, error: 'Error.' });
+    if (!data.length) return res.status(400).json({ status: 400, error: 'No categories found' });
 
     return res.status(200).json({ status: 200, data });
 };
