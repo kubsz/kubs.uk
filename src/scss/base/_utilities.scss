@@ -1,0 +1,59 @@
+@use '../abstracts' as *;
+
+.u-center {
+    @include flexCenter;
+}
+
+@keyframes shine {
+    0% {
+        left: -10%;
+    }
+
+    70%,
+    100% {
+        left: 110%;
+    }
+}
+
+@keyframes shine-diagonal {
+    0% {
+        left: -50%;
+        top: -75%;
+    }
+
+    70%,
+    100% {
+        left: 50%;
+        top: 50%;
+    }
+}
+
+.u-shine-animation {
+    position: relative;
+    overflow: hidden;
+    &::after {
+        content: '';
+        display: block;
+        width: 7.5%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: -10%;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.3);
+        filter: blur(10px);
+    }
+
+    &--right::after {
+        transform: rotate(10deg);
+        animation: shine 1.5s infinite;
+    }
+
+    &--diagonal::after {
+        width: 25%;
+        height: 120%;
+        transform-origin: bottom left;
+        transform: rotate(45deg);
+        animation: shine-diagonal 1.5s infinite;
+    }
+}

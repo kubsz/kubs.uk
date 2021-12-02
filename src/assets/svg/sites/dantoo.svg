@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="47" height="59.38745"
+  viewBox="0 0 47 59.38745">
+  <defs>
+    <style>
+      .dantoo-a {
+        fill: url(#dantoo-a);
+      }
+
+      .dantoo-b {
+        fill: url(#dantoo-b);
+      }
+    </style>
+    <linearGradient id="dantoo-a" x1="8.00776" y1="54.18043" x2="31.49783" y2="13.49444" gradientUnits="userSpaceOnUse">
+      <stop offset="0.1" stop-color="#4f00bc" />
+      <stop offset="0.9" stop-color="#29abe2" />
+    </linearGradient>
+    <linearGradient id="dantoo-b" x1="36.38989" y1="0" x2="36.38989" y2="59.38745" xlink:href="#dantoo-a" />
+  </defs>
+  <title>d-grad-1-vector</title>
+  <g>
+    <path class="dantoo-a"
+      d="M23.5,49.5A13.5,13.5,0,1,1,37,36V16.78223A23.4926,23.4926,0,1,0,18.50513,58.96045,23.508,23.508,0,0,0,36.96948,37.20972C36.98535,36.80786,37,36.40576,37,36A13.5,13.5,0,0,1,23.5,49.5Z" />
+    <path class="dantoo-b"
+      d="M37,0V36c0,.40576-.01465.80786-.03052,1.20972a29.936,29.936,0,0,1-11.1897,22.17773A23.53084,23.53084,0,0,0,47,36V0Z" />
+  </g>
+</svg>

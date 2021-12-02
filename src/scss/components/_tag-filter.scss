@@ -1,0 +1,114 @@
+@use '../abstracts' as *;
+
+.tag-filter {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+
+    margin-bottom: 0.4rem;
+
+    background-color: rgba(17, 13, 138, 0.08);
+    box-shadow: 0 4px 0 0 rgba(17, 13, 138, 0.15);
+
+    border: 1px solid transparent;
+
+    transition: 0.08s ease;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(17, 13, 138, 0.1);
+    }
+
+    &:active,
+    &--active {
+        transform: translateY(2px);
+    }
+
+    &--inactive {
+        opacity: 0.6;
+    }
+
+    svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        object-fit: cover;
+        margin-right: 0.8rem;
+    }
+
+    span {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    &__list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 1rem;
+        width: 100rem;
+        max-width: 100%;
+        margin: 0 auto;
+
+        margin-bottom: $gutter * 2;
+
+        @include respond(1200) {
+            width: 100%;
+            gap: 0.6rem;
+        }
+    }
+
+    &__item {
+    }
+
+    &__text {
+        color: rgba(0, 0, 0, 0.6);
+        font-weight: 500;
+        text-align: center;
+        margin-top: -$gutter;
+        margin-bottom: $gutter;
+
+        & > span {
+            display: inline-flex;
+            align-items: center;
+            span {
+                color: rgba(0, 0, 0, 0.8);
+                padding: 0.1rem 0.5rem;
+                border-radius: 2px;
+                border-width: 1px;
+                border-style: solid;
+                font-size: 1.1rem;
+                font-weight: 500;
+
+                display: inline-block;
+
+                cursor: pointer;
+                transition: 0.2s ease;
+
+                &:hover {
+                    transform: translateY(-1px);
+                    color: rgba(0, 0, 0, 0.9);
+                }
+            }
+
+            &:not(:last-of-type) {
+                margin-right: 0.5rem;
+            }
+
+            &:not(:first-of-type):last-of-type::before {
+                content: ' or ';
+                display: inline-block;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    &__box {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        margin-right: 8px;
+    }
+}

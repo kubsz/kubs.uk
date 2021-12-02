@@ -1,0 +1,201 @@
+@use '../abstracts' as *;
+
+.pg-listening {
+    &__header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: $gutter * 2;
+        padding: $gutter * 1.5 0;
+
+        height: 45rem;
+
+        position: relative;
+
+        @include respond(992) {
+            display: flex;
+
+            width: 100%;
+
+            grid-gap: 0;
+            gap: $gutter;
+
+            height: auto;
+        }
+
+        @include respond(450) {
+            grid-gap: 0;
+        }
+    }
+
+    &__header-error {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 16rem;
+            height: 16rem;
+        }
+    }
+
+    &__header-error-title {
+        font-size: 5rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.85);
+        margin: $gutter 0 0.5rem 0;
+
+        & + p {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__header-image-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__header-image {
+        display: block;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+        width: 36rem;
+
+        @include respond(992) {
+            width: auto;
+            height: 22rem;
+        }
+
+        @include respond(450) {
+            display: none;
+        }
+    }
+
+    &__header-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    &__header-title {
+        margin-bottom: 0;
+        margin-top: 1rem;
+
+        @include respond(992) {
+            font-size: 3.4rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    &__header-subtitle {
+        margin-bottom: 2rem;
+
+        color: $col-dark-3;
+        font-size: 2rem;
+    }
+
+    &__header-footer {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+    }
+
+    &__header-timeline-container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        margin: 0 2rem;
+    }
+
+    &__header-timeline {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        height: 0.5rem;
+        width: 100%;
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__header-timeline-inner {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: $col-primary;
+    }
+
+    &__header-timeline-time {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.6);
+
+        &:first-child {
+            margin-right: 1.5rem;
+        }
+
+        &:last-child {
+            margin-left: 1.5rem;
+        }
+    }
+
+    &__body {
+        min-height: 300px;
+
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: $gutter;
+        // padding: $gutter * 2 0;
+    }
+
+    &__body-section {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 1.5rem;
+
+        &--split {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: $gutter;
+            align-items: start;
+
+            @include respond(992) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    &__body-column {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: $gutter;
+    }
+
+    &__horizontal-row-outer-container {
+        overflow: hidden;
+    }
+
+    &__horizontal-row-container {
+        display: grid;
+
+        // grid-gap: $gutter
+
+        transition: 0.65s $timing-function-elastic;
+    }
+
+    &__horizontal-row {
+        display: grid;
+        grid-gap: $gutter;
+
+        &--6 {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        &--5 {
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        }
+    }
+}

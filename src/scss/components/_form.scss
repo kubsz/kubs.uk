@@ -1,0 +1,91 @@
+@use '../abstracts' as *;
+
+.form {
+    display: flex;
+    flex-flow: row wrap;
+    gap: $gutter;
+    margin-top: $gutter;
+
+    &__section {
+        flex: 1 1 calc(50% - #{$gutter / 2});
+
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 1rem;
+
+        &--100 {
+            flex: 1 1 100%;
+        }
+
+        @include respond(576) {
+            flex: 1 1 100%;
+        }
+    }
+
+    &__label {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 900;
+        font-size: 1.1rem;
+
+        color: rgba(0, 0, 0, 0.6);
+
+        transition: 0.1s ease;
+
+        &:hover {
+            color: rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    &__section:not([data-optional='true']) > &__label {
+        &::after {
+            content: '*';
+            color: $col-primary;
+            font-size: 1.4rem;
+            margin-left: 0.3rem;
+        }
+    }
+
+    &__input:focus + &__label,
+    &__textarea:focus + &__label {
+        color: rgba(0, 0, 0, 0.8);
+    }
+
+    &__input,
+    &__textarea {
+        font-size: 1.6rem;
+
+        padding: 0.5rem 0 1rem 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+
+        transition: border-color 0.15s ease;
+        resize: vertical;
+        width: 100%;
+
+        &::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+        }
+
+        &:focus {
+            border-color: $col-primary;
+        }
+    }
+
+    &__message {
+        margin: 0;
+        font-size: 1.4rem;
+        transform: translateY(-0.3rem);
+        text-align: center;
+        width: 100%;
+
+        &--error {
+            color: rgb(255, 54, 54);
+            font-weight: 600;
+        }
+
+        &--success {
+            color: rgb(26, 199, 92);
+        }
+    }
+}

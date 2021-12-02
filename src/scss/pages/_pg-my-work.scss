@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.pg-my-work {
+    &__featured-list {
+        display: flex;
+        flex-direction: column;
+        gap: $gutter;
+    }
+
+    &__project-list {
+        margin: $gutter 0;
+    }
+}

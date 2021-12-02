@@ -1,0 +1,114 @@
+@use '../abstracts' as *;
+
+.blog-card {
+    &--horizontal {
+        display: flex;
+        align-items: center;
+        grid-column: 1 / -1;
+
+        @include respond(992) {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+    &__graphic {
+        width: 100%;
+        height: 200px;
+        border-radius: 1rem;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+
+        @include flexCenter;
+
+        transition: filter 0.15s ease;
+
+        svg {
+            width: 15rem;
+            opacity: 1;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+
+            transition: transform 0.2s ease;
+
+            @include respond(992) {
+                width: 22rem;
+            }
+        }
+
+        @at-root a#{&}:hover {
+            filter: brightness(1.2);
+
+            svg {
+                transform: scale(1.05) rotate(5deg);
+            }
+        }
+    }
+
+    &--horizontal &__graphic {
+        flex: 0 0 50%;
+        height: 400px;
+        width: auto;
+        margin-right: $gutter;
+
+        @include respond(992) {
+            padding: 10rem;
+            margin-right: 0;
+        }
+
+        @include respond(576) {
+        }
+
+        svg {
+            width: 25rem;
+        }
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 2rem;
+    }
+
+    &__tag-list {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__tag-item {
+    }
+
+    &__date {
+        color: $col-dark-4;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    &--horizontal &__date {
+        font-size: 1.2rem;
+    }
+
+    &__title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+
+    &--horizontal &__title {
+        font-size: 3.8rem;
+    }
+
+    &__description {
+        font-size: 1.5rem;
+    }
+
+    &--horizontal &__description {
+        font-size: 2rem;
+    }
+
+    &__button {
+        margin-top: 1.5rem;
+    }
+}

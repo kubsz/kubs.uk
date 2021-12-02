@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+.pg-blog {
+    margin-bottom: $gutter;
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+        grid-gap: $gutter * 1.5;
+    }
+
+    &__content {
+        width: 800px;
+        margin: 5rem auto;
+        max-width: 100%;
+
+        @include respond(1200) {
+            width: 100%;
+        }
+
+        p {
+            font-size: 1.8rem;
+        }
+    }
+}

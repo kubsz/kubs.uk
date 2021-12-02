@@ -1,0 +1,198 @@
+@use '../abstracts' as *;
+
+.nav {
+    background-color: $col-light-1;
+    box-shadow: -10px 10px 40px 0 rgba(56, 50, 124, 0.08);
+
+    &__inner {
+        @include margin($margin);
+        padding: 3rem 0rem;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo-container {
+        margin-right: 2rem;
+    }
+
+    &__logo {
+        display: block;
+
+        svg {
+            display: block;
+            height: 2.4rem;
+        }
+    }
+
+    &__main {
+        flex: 1;
+
+        @include respond(992) {
+            display: none;
+        }
+    }
+
+    &__side {
+        @include respond(992) {
+            display: none;
+        }
+    }
+
+    &__link-list {
+        display: flex;
+        align-items: center;
+        margin: 0 1.5rem;
+    }
+
+    &__link-item {
+        margin: 0 1.5rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    &__link {
+        font-size: 1.6rem;
+
+        color: rgba($col-dark-1, 0.7);
+
+        padding: 0.75rem;
+        border-radius: $radius;
+
+        cursor: pointer;
+        user-select: none;
+        transition: 0.1s ease;
+
+        &--icon {
+            border-radius: 100%;
+            display: block;
+            position: relative;
+            padding: 1rem;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba($col-primary, 0.1);
+                border-radius: 100%;
+
+                width: 1rem;
+                height: 1rem;
+                opacity: 0;
+
+                transition: 0.2s ease;
+            }
+
+            svg {
+                display: block;
+                width: 1.6rem;
+
+                fill: currentColor;
+            }
+
+            &:hover {
+                &::after {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    opacity: 1;
+                }
+
+                svg {
+                    color: $col-primary;
+                }
+            }
+        }
+        &--fill {
+            padding: 1.2rem 2rem;
+            background-color: $col-primary;
+            color: $col-light-2;
+
+            font-size: 1.4rem;
+            font-weight: 600;
+
+            &:hover {
+                background-color: $col-primary-light;
+                color: $col-light-1;
+            }
+        }
+
+        &:not(&--fill):not(&--icon):hover {
+            color: $col-primary;
+            background-color: rgba($col-primary, 0.1);
+        }
+
+        &--active {
+            color: $col-primary;
+        }
+    }
+    &__hamburger {
+        display: none;
+
+        margin-left: auto;
+        margin-right: 1rem;
+
+        width: 25px;
+        height: 16px;
+
+        position: relative;
+
+        @include respond(992) {
+            display: flex;
+        }
+
+        $thickness: 2px;
+
+        color: $col-dark-3;
+        cursor: pointer;
+
+        &:hover {
+            color: $col-dark-2;
+        }
+
+        span {
+            display: block;
+            width: 100%;
+            height: $thickness;
+            background-color: currentColor;
+
+            position: absolute;
+            transition: 0.3s $timing-function-elastic;
+
+            &:nth-of-type(1) {
+                top: 0;
+            }
+
+            &:nth-of-type(2) {
+                top: calc(50% - #{$thickness / 2});
+            }
+
+            &:nth-of-type(3) {
+                top: calc(100% - #{$thickness});
+            }
+        }
+
+        // &--active {
+        //     span {
+        //         &:nth-of-type(1),
+        //         &:nth-of-type(3) {
+        //             top: calc(50% - #{$thickness / 2});
+        //         }
+
+        //         &:nth-of-type(1) {
+        //             transform: rotate(45deg);
+        //         }
+        //         &:nth-of-type(3) {
+        //             transform: rotate(-45deg);
+        //         }
+
+        //         &:nth-of-type(2) {
+        //             opacity: 0;
+        //         }
+        //     }
+        // }
+    }
+}

@@ -1,0 +1,40 @@
+@use '../abstracts' as *;
+
+.badge {
+    color: #fff;
+    background-color: $col-dark-1;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    &--light {
+        background-color: #fff;
+        color: $col-primary;
+    }
+
+    &--shadow {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+    }
+
+    &--border {
+        border: 1px solid transparent;
+    }
+
+    &--small {
+        padding: 0.4rem 1rem;
+        font-size: 1rem;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    }
+
+    svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-right: 0.8rem;
+    }
+}

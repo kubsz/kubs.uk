@@ -1,0 +1,103 @@
+@use '../abstracts' as *;
+
+.pg-contact {
+    display: flex;
+    gap: $gutter;
+
+    @include respond(1200) {
+        flex-direction: column;
+    }
+
+    &__side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include respondLarger(1200) {
+            flex: 0 0 550px;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        p {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__side-footer {
+        margin-top: auto;
+
+        display: flex;
+        justify-content: space-between;
+
+        @include respond(1200) {
+            margin-top: $gutter;
+        }
+    }
+
+    &__side-footer-section-title {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.7);
+        margin-bottom: 0.6rem;
+    }
+
+    &__side-footer-section-text {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0.4rem 0.8rem;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    &__socials-list {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1.2rem;
+    }
+
+    &__socials-item {
+        a {
+            display: block;
+            color: rgba(0, 0, 0, 0.5);
+            transition: 0.15s ease;
+
+            &:hover {
+                color: rgba(0, 0, 0, 0.7);
+            }
+        }
+        svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+    }
+
+    &__main {
+        flex: 1;
+        background-color: $col-light-1;
+        border-radius: $radius;
+        box-shadow: $shadow;
+        padding: 2rem;
+    }
+
+    &__main-title {
+        & > span {
+            display: inline-flex;
+            align-items: flex-start;
+            font-weight: 900;
+            margin-left: 1rem;
+
+            & > span {
+                // position: absolute;
+                font-size: 10px;
+                margin-left: 0.5rem;
+            }
+        }
+    }
+}

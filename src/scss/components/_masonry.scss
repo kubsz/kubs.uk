@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.masonry {
+    display: flex;
+    margin-left: -3rem;
+    width: auto;
+
+    &__column {
+        padding-left: 3rem;
+        background-clip: padding-box;
+    }
+
+    /* Style your items */
+    &__column > div {
+        margin-bottom: 3rem;
+    }
+}

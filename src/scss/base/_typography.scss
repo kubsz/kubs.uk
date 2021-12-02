@@ -1,0 +1,50 @@
+@use '../abstracts' as *;
+
+h1 {
+    font-size: 6rem;
+    margin-bottom: $gutter;
+}
+
+p {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading-secondary {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.heading-see-all {
+    color: $col-primary;
+    font-size: 1.4rem;
+}
+
+.centered-header {
+    text-align: center;
+
+    width: 70rem;
+    max-width: 100%;
+    margin: 0 auto $gutter auto;
+
+    @include respond(992) {
+        width: 100%;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    p {
+        font-size: 2rem;
+        margin: 1.5rem 0 0 0;
+    }
+}

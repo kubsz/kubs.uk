@@ -1,52 +1,43 @@
-body,
-html,
-#__next {
-    height: 100vh;
-    font-family: sans-serif;
-    position: relative;
-}
+@use './abstracts/normalize';
 
-body {
-    background-color: #222;
-    color: #fff;
-}
+@use './base/base';
+@use './base/typography';
+@use './base/utilities';
 
-.centerbox {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+@use './layout/nav';
+@use './layout/footer';
+@use './layout/section';
+@use './layout/sidenav';
 
-    @keyframes italic {
-        0%,
-        100% {
-            transform: skewX(5deg);
-        }
+@use './pages/pg-index';
+@use './pages/pg-blog';
+@use './pages/pg-dashboard';
+@use './pages/pg-listening';
+@use './pages/pg-my-work';
+@use './pages/pg-contact';
+@use './pages/pg-404';
 
-        50% {
-            transform: skewX(-5deg);
-        }
-    }
+@use './components/jumbotron';
+@use './components/git-commit-graph';
+@use './components/single-input';
+@use './components/tooltip';
+@use './components/technology';
+@use './components/blog-card';
+@use './components/btn';
+@use './components/badge';
+@use './components/breadcrumbs';
+@use './components/play-button';
+@use './components/music-notes';
+@use './components/song-card';
+@use './components/song-row';
+@use './components/heading-buttons';
+@use './components/square-graphic';
+@use './components/spinner';
+@use './components/tag-filter';
+@use './components/masonry';
+@use './components/project-card';
+@use './components/featured-card';
+@use './components/form';
+@use './components/mdx';
 
-    h1 {
-        font-size: 40px;
-        letter-spacing: 2px;
-        animation: italic 2s infinite;
-        margin-bottom: 0;
-    }
-
-    h3 {
-        text-transform: uppercase;
-        letter-spacing: 10px;
-        word-spacing: 20px;
-
-        color: rgba(255, 255, 255, 0.8);
-
-        &::after,
-        &::before {
-            content: '-';
-            margin: 0 20px;
-        }
-    }
-}
+@use './vendors/prism.scss';

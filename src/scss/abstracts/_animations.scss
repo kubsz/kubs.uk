@@ -1,0 +1,79 @@
+@use './variables' as *;
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(-12px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes flip-in {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-rotate {
+    0% {
+        transform: translateY(10px) rotate(20deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes tooltip-in {
+    0% {
+        opacity: 0;
+        transform: translateY(calc(-100% - 6px));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes shadow-animation {
+    0%,
+    100% {
+        text-shadow: 0 0 2rem rgba($col-primary-light, 0);
+    }
+
+    50% {
+        text-shadow: 0 0 4rem rgba($col-primary-light, 0.3);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

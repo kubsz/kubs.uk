@@ -1,0 +1,26 @@
+$col-primary: #5e3aef;
+$col-secondary: #22ac3b;
+$col-tertiary: #22ac3b;
+
+$col-primary-light: lighten($col-primary, 5%);
+$col-secondary-light: lighten($col-secondary, 5%);
+$col-tertiary-light: lighten($col-tertiary, 5%);
+
+$col-light-1: #fff;
+$col-light-2: #fbfbfd;
+$col-light-3: #eee;
+$col-light-4: rgba(255, 255, 255, 0.8);
+
+$col-dark-1: #101322;
+$col-dark-2: #0f1221;
+$col-dark-3: #5b5675;
+$col-dark-4: rgba(#101322, 0.6);
+
+$margin: 1300;
+$gutter: 3rem;
+
+$radius: 0.3rem;
+
+$shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+$timing-function-elastic: cubic-bezier(0.34, 1.4, 0.64, 1);

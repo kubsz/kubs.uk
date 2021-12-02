@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+.pg-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: $gutter;
+
+    &__row {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 1rem;
+
+        background-color: $col-light-1;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: $radius;
+        padding: 1.5rem;
+    }
+    &__column {
+    }
+}

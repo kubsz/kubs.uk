@@ -1,0 +1,37 @@
+@use './variables' as *;
+
+@mixin respond($breakpoint) {
+    @media only screen and (max-width: $breakpoint * 1px) {
+        @content;
+    }
+}
+
+@mixin respondLarger($breakpoint) {
+    @media only screen and (min-width: ($breakpoint * 1px) + 1px) {
+        @content;
+    }
+}
+
+@mixin margin($size) {
+    width: $size * 1px;
+    margin: 0 auto;
+    max-width: calc(100% - (#{$gutter * 2}));
+}
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin lineClamp($lines) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin placeholder($transparency) {
+    background-color: rgba(0, 0, 0, $transparency);
+    border-radius: 4px;
+}

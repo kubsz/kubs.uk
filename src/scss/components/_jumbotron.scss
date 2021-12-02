@@ -1,0 +1,188 @@
+@use '../abstracts' as *;
+
+.jumbotron {
+    @include margin($margin);
+    max-width: 100%;
+    margin: 0 auto;
+
+    background-image: linear-gradient(to bottom right, lighten($col-dark-2, 3%), lighten($col-dark-2, 10%));
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 74px 10px rgba(56, 50, 124, 0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+
+    animation: flip-in 0.8s $timing-function-elastic;
+    transform-origin: top center;
+
+    @include respond(1200) {
+        width: calc(100vw - #{$gutter * 2});
+        // margin: $gutter auto 0 auto;
+    }
+
+    @include respond(576) {
+        text-align: center;
+    }
+
+    &__main {
+        flex: 1 1 auto;
+        padding: $gutter * 2 $gutter * 1.5;
+
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-gap: $gutter / 2;
+
+        @include respond(576) {
+            padding: $gutter $gutter * 1.5;
+        }
+
+        @include respond(1200) {
+            flex: 1;
+        }
+    }
+
+    &__graphic-container {
+        flex: 1 1 50%;
+        padding: 0 5rem;
+        align-self: flex-end;
+        position: relative;
+
+        // height: 378.5px;
+        // width: 600px;
+
+        & > div:first-of-type {
+            display: block !important;
+        }
+
+        @include respond(1200) {
+            display: none;
+        }
+    }
+
+    &__graphic {
+        position: relative;
+        z-index: 1;
+        display: block;
+        filter: drop-shadow(0 0 30px rgba($col-primary-light, 0.2));
+    }
+
+    &__info-box {
+        position: absolute;
+        z-index: 2;
+        padding: 1.5rem 2.5rem;
+
+        background-color: rgba(lighten($col-primary, 30%), 0.4);
+        backdrop-filter: blur(20px);
+        border-radius: $radius * 3;
+        border: 2px solid rgba(255, 255, 255, 0.06);
+
+        box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+
+        color: $col-light-1;
+        text-align: center;
+
+        &--fixed {
+            height: 12rem;
+            width: 16.5rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:nth-of-type(2) {
+            top: 45%;
+            left: 5%;
+            animation: float 10s infinite ease-in-out;
+        }
+        &:nth-of-type(3) {
+            top: 55%;
+            right: 5%;
+            animation: float 7s infinite ease-in-out;
+            transform: translateY(-12px);
+        }
+
+        span {
+            font-size: 2.4rem;
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+            font-weight: 200;
+            margin-top: 0.25rem;
+        }
+
+        .git-commit-graph {
+            margin-top: 0.75rem;
+        }
+    }
+
+    &__top-text {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+        word-spacing: 0.1rem;
+
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+
+        color: $col-primary-light;
+    }
+
+    &__heading {
+        font-weight: 700;
+        color: $col-light-2;
+        font-size: 4.2rem;
+        line-height: 1.1;
+        margin-bottom: 0;
+
+        @include respond(576) {
+            font-size: 3.6rem;
+            line-height: 1.2;
+        }
+
+        span {
+            color: $col-primary-light;
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    animation: shadow-animation 8s infinite 2s * $i;
+                }
+            }
+        }
+    }
+
+    &__text {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    &__asset {
+        position: absolute;
+        background-color: $col-primary;
+
+        &--line {
+            width: 2rem;
+            height: 0.2rem;
+            border-radius: 0.2rem;
+        }
+
+        &--circle {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+        }
+    }
+}

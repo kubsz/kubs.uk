@@ -1,0 +1,64 @@
+@use '../abstracts' as *;
+
+.breadcrumbs {
+    width: auto;
+
+    align-self: start;
+
+    display: inline-block;
+
+    &__container {
+        @include margin($margin);
+        display: flex;
+        align-items: flex-start;
+        margin: $gutter auto 0 auto;
+
+        @include respond($margin) {
+            width: 100%;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-flow: row wrap;
+
+        align-items: center;
+        margin: 0 -1rem;
+    }
+
+    &__item {
+        margin: 0 1rem;
+        display: flex;
+        align-items: center;
+        height: 3rem;
+
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.3rem;
+        font-weight: 700;
+
+        color: rgba(0, 0, 0, 0.8);
+
+        svg {
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    &__home {
+        color: $col-primary !important;
+        font-size: 1.6rem;
+    }
+
+    &__link {
+        margin-right: 2rem;
+        color: $col-primary;
+        font-weight: 700;
+        font-size: 1.3rem;
+
+        &:hover {
+            &,
+            svg {
+                color: $col-primary-light !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,278 @@
+@use '../abstracts' as *;
+
+.footer {
+    padding: $gutter * 1.5 $gutter * 1.5 0 $gutter * 1.5;
+
+    background-color: $col-light-1;
+
+    box-shadow: -10px -10px 30px 0 rgba(56, 50, 124, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    &--harsh-shadow {
+        // box-shadow: 0 -5px 30px 0 rgba(56, 50, 124, 0.2);
+    }
+
+    @include respond(992) {
+        padding: $gutter;
+    }
+
+    &__inner {
+        @include margin(1600);
+        margin: 0 auto 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: $gutter;
+
+        @include respond(992) {
+            width: 100%;
+            max-width: unset;
+        }
+    }
+
+    &__head {
+        text-align: center;
+    }
+
+    &__heading {
+        font-family: 'CircularBold', sans-serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: rgba($col-dark-2, 0.9);
+
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        word-spacing: 0.5rem;
+
+        background-color: $col-dark-2;
+        color: #fff;
+
+        display: inline-block;
+        padding: $gutter / 2 $gutter;
+        border-radius: $radius;
+    }
+
+    &__link-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: $gutter / 2;
+        margin: 0 auto;
+    }
+
+    &__link-item {
+    }
+
+    &__link {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+
+        padding: $gutter;
+        border-radius: $radius * 2;
+
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+
+        transition: 0.2s ease;
+
+        &:hover {
+            background-color: $col-dark-2;
+            color: $col-light-2;
+            transform: translateY(-5px);
+        }
+    }
+
+    &__link-icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        fill: currentColor;
+        margin-bottom: 0.5rem;
+    }
+
+    &__link-heading {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 900;
+        font-size: 1.3rem;
+    }
+
+    &__link-text {
+        font-size: 1.4rem;
+        color: $col-dark-3;
+        transition: 0.2s ease;
+
+        @include lineClamp(2);
+    }
+    &__link:hover &__link-text {
+        color: $col-light-4;
+    }
+
+    &__dummy-link {
+        display: inline-block;
+        color: $col-primary;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+
+        transition: 0.2s ease;
+
+        svg {
+            width: 0.8rem;
+            margin-left: 0.5rem;
+            transform: rotate(90deg);
+            fill: currentColor;
+        }
+    }
+
+    &__link:hover &__dummy-link {
+        color: $col-primary-light;
+    }
+
+    &__lower {
+        // padding: 1.5rem 1.5rem 0 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__lower-top {
+        padding: 3rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__email {
+        display: flex;
+        align-items: stretch;
+        border-radius: $radius;
+
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+
+        min-width: 24rem;
+
+        svg {
+            width: 1.6rem;
+            fill: rgba(0, 0, 0, 0.6);
+            display: block;
+            padding: 1.2rem;
+            box-sizing: content-box;
+            transition: 0.1s ease;
+        }
+
+        a {
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1.2rem;
+
+            order: 1;
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+
+            border-radius: 0 $radius $radius 0;
+
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 1.4rem;
+
+            transition: 0.1s ease;
+
+            &:hover {
+                color: $col-light-1;
+                background-color: $col-primary;
+            }
+        }
+        a:hover + svg {
+            fill: $col-light-1;
+            background-color: darken($col-primary, 5%);
+
+            border-radius: $radius 0 0 $radius;
+        }
+    }
+
+    &__lower-section {
+    }
+
+    &__lower-heading {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: $col-dark-2;
+    }
+
+    &__social-list {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__social-item {
+        position: relative;
+        margin: 0 0.5rem;
+    }
+
+    &__lower-bottom {
+        padding: 2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include respond(576) {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: $col-dark-3;
+        }
+    }
+
+    &__current-song {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1.5rem;
+
+        // background-color: rgba($col-primary, 0.3);
+        // padding: 1.5rem 1.5rem 1.5rem 2rem;
+        // border-radius: $radius;
+        // border: 2px solid rgba($col-primary, 0.1);
+    }
+
+    &__current-song-image {
+        width: 48px;
+        height: 48px;
+        box-shadow: $shadow, inset 0 0 0 1px rgba($col-primary, 0.3);
+        display: block;
+        border-radius: $radius;
+    }
+    &__current-song-info {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        justify-content: center;
+    }
+
+    &__current-song-name {
+        font-weight: 700;
+        font-size: 1.5rem;
+        // text-transform:uppercase
+        margin-bottom: 0.3rem;
+        color: $col-dark-1;
+    }
+
+    &__current-song-artists {
+        color: $col-dark-3;
+        font-size: 1.4rem;
+    }
+}
+
+.section--dark + .footer {
+    background-color: $col-dark-2;
+}
