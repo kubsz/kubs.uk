@@ -26,7 +26,7 @@ const BlogArticle = ({ post, mdx }) => {
     const crumbs = [{ label: 'Blog', link: '/blog' }, { label: post.title }];
 
     return (
-        <Layout crumbs={crumbs} metaDescription="test" title={`${post.title} - Kubs K`}>
+        <Layout crumbs={crumbs} metaDescription={post.teaser} title={`${post.title} - Kubs K`}>
             <Section>
                 <BlogCard data={post} horizontal hideLinks />
                 <div className="pg-blog__content mdx">
