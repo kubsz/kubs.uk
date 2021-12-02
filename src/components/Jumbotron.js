@@ -43,7 +43,7 @@ const Jumbotron = ({ githubContribitons }) => {
                 <h1 className="jumbotron__heading">
                     Converting <span>Complex</span> Problems into <span>Beautiful</span>, <span>Intuitive</span> Designs
                 </h1>
-                <p className="jumbotron__text">Full stack web developer speciailising in react.js, based in the UK.</p>
+                <p className="jumbotron__text">Full stack web developer specialising in react.js, based in the UK.</p>
 
                 <div className="single-input">
                     <input
