@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { formatDistance } from 'date-fns';
 
@@ -14,6 +14,7 @@ import CurrentlyListening from '../components/CurrentlyListening';
 import { FaPlay } from 'react-icons/fa';
 
 import SadFace from '../assets/svg/sad-face.svg';
+import { clear } from 'dom-helpers';
 
 const Listening = () => {
     const [topTrackPage, setTopTrackPage] = useState(1);
@@ -24,6 +25,9 @@ const Listening = () => {
     const { data: currently_playing } = useSWRFetcher('/api/spotify/currently-playing', null, 3000);
     const { data: recently_played } = useSWRFetcher('/api/spotify/recently-played', null, 3000);
 
+    const [currentlyPlayingTime, setCurrentlyPlayingTime] = useState(0);
+    const timeStore = useRef(0);
+
     const [totals, setTotals] = useState({ topTracks: 6 * 6, topTracksSlide: 6, recentPlayed: 10, topArtists: 25 });
 
     useEffect(() => {
@@ -32,6 +36,28 @@ const Listening = () => {
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    useEffect(() => {
+        if (!currently_playing) return;
+
+        const time = Date.now();
+        timeStore.current = time;
+        console.log(timeStore.current);
+
+        setCurrentlyPlayingTime(currently_playing.progress_ms);
+
+        let count = 0;
+        const interval = setInterval(() => {
+            count++;
+            setCurrentlyPlayingTime(currently_playing.progress_ms + 500 * count);
+
+            if (time !== timeStore.current) clearInterval(interval);
+        }, 500);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [currently_playing]);
 
     useEffect(() => {
         switch (breakpoint) {
@@ -73,7 +99,7 @@ const Listening = () => {
                             <p>I'm not currently listening to any music! Check my recently listened to music below.</p>
                         </div>
                     ) : (
-                        <CurrentlyListening data={currently_playing} />
+                        <CurrentlyListening data={currently_playing} progress={currentlyPlayingTime} />
                     )
                 ) : (
                     <Spinner />
