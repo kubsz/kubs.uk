@@ -3,7 +3,7 @@ import PlayButton from '../components/PlayButton';
 import { convertTime } from '../lib/utils';
 import Badge from './Badge';
 
-const CurrentlyListening = ({ data }) => {
+const CurrentlyListening = ({ data, progress }) => {
     return (
         <>
             <div className="pg-listening__header-image-container">
@@ -16,12 +16,12 @@ const CurrentlyListening = ({ data }) => {
                 <div className="pg-listening__header-footer">
                     <PlayButton paused={data.is_playing === false} />
                     <div className="pg-listening__header-timeline-container">
-                        <span className="pg-listening__header-timeline-time">{convertTime(data.progress_ms)}</span>
+                        <span className="pg-listening__header-timeline-time">{convertTime(progress)}</span>
                         <div className="pg-listening__header-timeline">
                             <div
                                 className="pg-listening__header-timeline-inner"
                                 style={{
-                                    width: `${(data.progress_ms / data.item.duration_ms) * 100}%`
+                                    width: `${(progress / data.item.duration_ms) * 100}%`
                                 }}
                             ></div>
                         </div>
