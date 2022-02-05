@@ -12,6 +12,7 @@ import VueJSLogo from '../assets/svg/technologies/vue.svg';
 import SCSSLogo from '../assets/svg/technologies/scss.svg';
 import JQueryLogo from '../assets/svg/technologies/jquery.svg';
 import StrapiLogo from '../assets/svg/technologies/strapi.svg';
+import SvelteLogo from '../assets/svg/technologies/svelte.svg';
 
 export default [
     {
@@ -97,5 +98,11 @@ export default [
         image: <VercelLogo />,
         color: '#222222',
         link: 'https://vercel.com/'
+    },
+    {
+        name: 'Svelte',
+        image: <SvelteLogo />,
+        color: '#FF3E00',
+        link: 'https://svelte.dev/'
     }
 ];

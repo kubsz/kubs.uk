@@ -46,6 +46,37 @@ export default [
         technologies: ['Next.js', 'React', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
     },
     {
+        name: 'Ark IDs',
+        url: 'https://arkids.net/commands',
+        image: {
+            screenshot: 'bronwenj.jpg',
+            bitmap: 'arkids.png'
+        },
+        description: 'Designed pages outlining Ark admin commands & color IDs page. Owned by Dantoo.',
+        technologies: ['Pug', 'Vanilla JS', 'SCSS', 'Node.js'].map((lang) => technologies.find((tech) => tech.name === lang))
+    },
+    {
+        name: 'MinecraftItemIDs',
+        url: 'https://arkids.net/commands',
+        image: {
+            screenshot: 'bronwenj.jpg',
+            bitmap: 'mcids.png'
+        },
+        description:
+            'Developed the front-end to MinecraftItemIds - a website dedicated to showcasing comamnds and IDs for Minecraft. Owned by Dantoo.',
+        technologies: ['Pug', 'Vanilla JS', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
+    },
+    {
+        name: 'TotalCSGO',
+        url: 'https://totalcsgo.com/crosshair-generator',
+        image: {
+            screenshot: 'bronwenj.jpg',
+            bitmap: 'totalcsgo.png'
+        },
+        description: 'Developed a functional CS:GO Crosshair, and Binds Generator. Owned by Dantoo',
+        technologies: ['Pug', 'Vanilla JS', 'SCSS'].map((lang) => technologies.find((tech) => tech.name === lang))
+    },
+    {
         name: 'BronwenJ',
         url: 'https://bronwenj.com',
         image: {
