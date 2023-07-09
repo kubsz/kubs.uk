@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import TooltipTrigger from '../components/TooltipTrigger';
 
@@ -10,7 +11,6 @@ import { RiMusic2Line, RiStackLine } from 'react-icons/ri';
 import { GoBook } from 'react-icons/go';
 import { BsNewspaper, BsEnvelope } from 'react-icons/bs';
 
-import LogoLarge from '../assets/branding/logo-large.svg';
 import LogoSquare from '../assets/branding/logo-square.svg';
 
 export default {
@@ -56,9 +56,9 @@ export default {
             { label: 'Get in Touch', url: '/contact', icon: <BsEnvelope size="3rem" />, fill: true }
         ],
         socials: [
-            { icon: <TwitterIcon />, url: 'https://twitter.com/kubs_korkmaz' },
-            { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/in/kubs-korkmaz-281373199/' },
-            { icon: <GithubIcon />, url: 'https://github.com/kubsz' }
+            { icon: <TwitterIcon width={14} height={14} />, url: 'https://twitter.com/kubs_korkmaz' },
+            { icon: <LinkedInIcon width={14} height={14} />, url: 'https://www.linkedin.com/in/kubs-korkmaz-281373199/' },
+            { icon: <GithubIcon width={14} height={14} />, url: 'https://github.com/kubsz' }
         ],
         footer: [
             {
@@ -101,8 +101,8 @@ export default {
                     </TooltipTrigger>{' '}
                     years ago, I have picked up many different front-end and back-end technologies, but always seemed to be drawn to
                     front-end development. As showcased in{' '}
-                    <Link href="/projects">
-                        <a className="link">my work</a>
+                    <Link href="/projects" className="link">
+                        my work
                     </Link>
                     , my beloved tool is{' '}
                     <TooltipTrigger

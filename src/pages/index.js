@@ -1,4 +1,8 @@
-import technologies from '../data/technologies';
+import Image from 'next/image';
+
+import { findAllTechnologies } from '../lib/api/technologies.js';
+import { getGithubContributions } from '../lib/api/getGithubContributions';
+
 import config from '../data/config';
 
 import Jumbotron from '../components/Jumbotron';
@@ -12,9 +16,9 @@ import ProgrammerIcon from '../assets/svg/programmer.svg';
 import { RiUserSearchLine } from 'react-icons/ri';
 import { BsFileEarmarkCode } from 'react-icons/bs';
 import { AiOutlinePartition, AiOutlineBarChart } from 'react-icons/ai';
-import { getGithubContributions } from '../lib/api/getGithubContributions';
 
-const Index = ({ githubContribitons }) => {
+const Index = ({ githubContribitons, technologies }) => {
+    console.log(githubContribitons);
     return (
         <Layout harshFooterShadow={true}>
             <Section innerModifiers={['perspective']}>
@@ -48,7 +52,7 @@ const Index = ({ githubContribitons }) => {
                         <span className="pg-index__section-top-text">Vision & Philosophy</span>
                         <div className="pg-index__section-heading-container">
                             <div className="pg-index__section-icon-container">
-                                <PencilIcon className="pg-index__section-icon" />
+                                <Image src={PencilIcon} className="pg-index__section-icon" />
                             </div>
                             <h2 className="pg-index__section-heading">Refined Design, Desired Experiences</h2>
                         </div>
@@ -88,11 +92,12 @@ const Index = ({ githubContribitons }) => {
 export default Index;
 
 export const getStaticProps = async () => {
-    const githubContribitons = await getGithubContributions();
+    const [technologies, githubContribitons] = await Promise.all([findAllTechnologies(), getGithubContributions()]);
 
     return {
         props: {
-            githubContribitons
+            githubContribitons,
+            technologies
         }
     };
 };

@@ -6,8 +6,8 @@ const Button = ({ children, href, className, external = false }) => {
             {children}
         </a>
     ) : (
-        <Link href={href}>
-            <a className={`btn${className ? ` ${className}` : ''}`}>{children}</a>
+        <Link href={href} className={`btn${className ? ` ${className}` : ''}`}>
+            {children}
         </Link>
     );
 };

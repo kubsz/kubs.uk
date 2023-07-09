@@ -7,15 +7,15 @@ export const getGithubContributions = async () => {
 
     const days = Array.from(root.querySelectorAll('.ContributionCalendar-day'));
 
-    const data = Array.from(Array(12).keys()).fill(0);
+    const months = days.reduce(
+        (acc, curr) => {
+            if (!curr._attrs['data-date']) return acc;
+            const month = Number(curr._attrs['data-date'].split('-')[1]);
+            acc[month - 1] += Number(curr._attrs['data-level']);
+            return acc;
+        },
+        Array.from(Array(12).keys()).map((_i) => 0)
+    );
 
-    for (const day of days) {
-        const { ['data-date']: date, ['data-count']: count } = day._attrs;
-        if (!date || !count) continue;
-
-        const month = date.split('-')[1] * 1;
-        data[month - 1] += count * 1;
-    }
-
-    return data;
+    return months;
 };

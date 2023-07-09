@@ -21,8 +21,8 @@ const Breadcrumbs = ({ crumbs }) => {
                         } else {
                             return (
                                 <li key={i} className="breadcrumbs__item">
-                                    <Link href={crumb.link}>
-                                        <a className="breadcrumbs__link">{crumb.label}</a>
+                                    <Link href={crumb.link} className="breadcrumbs__link">
+                                        {crumb.label}
                                     </Link>
                                     <MdChevronRight />
                                 </li>

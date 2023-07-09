@@ -5,13 +5,13 @@ const TechnologyItem = ({ data }) => {
 
     const styles = {
         initial: {
-            backgroundColor: `${data.color}33`,
-            border: `1px solid ${data.color}3d`,
-            color: data.color
+            backgroundColor: `${data.hexColor}33`,
+            border: `1px solid ${data.hexColor}3d`,
+            color: data.hexColor
         },
         hover: {
-            backgroundColor: `${data.color}`,
-            border: `1px solid ${data.color}3d`,
+            backgroundColor: `${data.hexColor}`,
+            border: `1px solid ${data.hexColor}3d`,
             color: '#fff'
         }
     };

@@ -1,52 +1,49 @@
 import Image from 'next/image';
 
+import { strapiImage } from '../lib/utils';
+
 import Badge from './Badge';
 
 import { HiExternalLink } from 'react-icons/hi';
 import { GrGithub } from 'react-icons/gr';
 import { FaRegFolder } from 'react-icons/fa';
 
-const ProjectCard = ({ name, description, technologies, openSource, url, image }) => {
+const ProjectCard = ({ project }) => {
     return (
         <div className="project-card">
             <div className="project-card__header">
                 <div className="project-card__logo-container">
-                    {image.svg ? (
-                        image.svg
-                    ) : image.bitmap ? (
-                        <Image src={`/assets/sites/branding/${image.bitmap}`} width={32} height={32} objectFit="contain" />
-                    ) : (
-                        <FaRegFolder />
-                    )}
+                    {project.logo ? <img src={strapiImage(project.logo, 'thumbnail')} width={32} height={32} /> : <FaRegFolder />}
+                    {strapiImage(project.logo, 'thumbnail')}
                 </div>
                 <ul className="project-card__link-list">
                     <li className="project-card__link-item">
-                        <a className="project-card__link" href={url} target="_blank" rel="noopener noreferrer">
+                        <a className="project-card__link" href={project.link} target="_blank" rel="noopener noreferrer">
                             <HiExternalLink />
                         </a>
                     </li>
-                    {openSource ? (
+                    {project.githubLink ? (
                         <li className="project-card__link-item">
-                            <a className="project-card__link" href={openSource} target="_blank" rel="noopener noreferrer">
+                            <a className="project-card__link" href={project.githubLink} target="_blank" rel="noopener noreferrer">
                                 <GrGithub />
                             </a>
                         </li>
                     ) : null}
                 </ul>
             </div>
-            <a href={url} target="_blank" rel="noopener noreferrer" className="project-card__text-link">
-                <h3 className="project-card__title">{name}</h3>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-card__text-link">
+                <h3 className="project-card__title">{project.title}</h3>
             </a>
-            <p className="project-card__description">{description}</p>
+            <p className="project-card__description">{project.description}</p>
             <ul className="project-card__badge-list">
-                {technologies.map((tech) => (
+                {project.technologies.map((tech) => (
                     <li key={tech.name} className="project-card__badge-item">
                         <Badge
                             modifiers={['border', 'small']}
                             style={{
-                                backgroundColor: `${tech.color}`,
+                                backgroundColor: `${tech.hexColor}`,
                                 color: '#fff',
-                                borderColor: `${tech.color}4d`
+                                borderColor: `${tech.hexColor}4d`
                             }}
                         >
                             {tech.name}

@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import config from '../data/config';
 
 import ChevronIcon from '../assets/svg/chevron-up.svg';
-
 import EmailIcon from '../assets/svg/email-fill.svg';
+
 import NavLink from './NavLink';
 import TooltipTrigger from './TooltipTrigger';
 import useSWRFetcher from '../hooks/useSWRFetcher';
@@ -23,16 +24,14 @@ const Footer = ({ harshShadow }) => {
                     <ul className="footer__link-list">
                         {config.links.footer.map((link, i) => (
                             <li key={i} className="footer__link-item">
-                                <Link href={link.link}>
-                                    <a className="footer__link">
-                                        {link.icon}
-                                        <h5 className="footer__link-heading">{link.label}</h5>
-                                        <p className="footer__link-text">{link.description}</p>
-                                        <span className="footer__dummy-link">
-                                            Learn More
-                                            <ChevronIcon />
-                                        </span>
-                                    </a>
+                                <Link href={link.link} className="footer__link">
+                                    {link.icon}
+                                    <h5 className="footer__link-heading">{link.label}</h5>
+                                    <p className="footer__link-text">{link.description}</p>
+                                    <span className="footer__dummy-link">
+                                        Learn More
+                                        <ChevronIcon />
+                                    </span>
                                 </Link>
                             </li>
                         ))}

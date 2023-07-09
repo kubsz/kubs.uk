@@ -2,8 +2,9 @@ import Layout from '../../components/Layout';
 import Section from '../../components/Section';
 import BlogCard from '../../components/BlogCard';
 
-import { getBlogPosts } from '../../lib/api/getBlogPosts';
-import { getBlogCategories } from '../../lib/api/getBlogCategories';
+import { findAllArticles } from '../../lib/api/articles';
+import { findAllArticleCategories } from '../../lib/api/articleCategories';
+
 import TagFilter from '../../components/TagFilter';
 import useTagFilter from '../../hooks/useTagFilter';
 
@@ -22,14 +23,18 @@ const Blog = ({ posts, categories }) => {
                 </div>
 
                 <TagFilter
-                    items={categories.map(({ name, background_color: color }) => ({ name, color }))}
+                    items={categories.map(({ name, backgroundHexColor, value: slug }) => ({
+                        name,
+                        color: backgroundHexColor,
+                        value: slug
+                    }))}
                     filters={filters}
                     toggleFilter={toggleFilter}
                     filterMessage="Showing articles with the categories "
                 />
                 <ul className="pg-blog__container">
                     {(filters.length
-                        ? posts.filter((post) => post.categories.some(({ category: el }) => filters.findIndex((x) => x === el.name) > -1))
+                        ? posts.filter((post) => post.articleCategories.some(({ slug }) => filters.findIndex((s) => s === slug) > -1))
                         : posts
                     ).map((post, i) => (
                         <BlogCard key={i} data={post} horizontal={filters.length ? false : i === 0} />
@@ -43,8 +48,7 @@ const Blog = ({ posts, categories }) => {
 export default Blog;
 
 export const getStaticProps = async () => {
-    const posts = await getBlogPosts();
-    const categories = await getBlogCategories();
+    const [posts, categories] = await Promise.all([findAllArticles(), findAllArticleCategories()]);
 
     return {
         props: {

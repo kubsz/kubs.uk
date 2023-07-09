@@ -4,13 +4,14 @@ import Layout from '../../components/Layout';
 import Section from '../../components/Section';
 
 import technologies from '../../data/technologies';
-import projects from '../../data/projects';
 import FeaturedProject from '../../components/FeaturedProject';
 import ProjectCard from '../../components/ProjectCard';
 import TagFilter from '../../components/TagFilter';
 import useTagFilter from '../../hooks/useTagFilter';
 
-const ProjectIndex = () => {
+import { findAllProjects } from '../../lib/api/projects';
+
+const ProjectIndex = ({ projects }) => {
     const [filters, toggleFilter] = useTagFilter();
 
     return (
@@ -36,16 +37,7 @@ const ProjectIndex = () => {
                         {projects
                             .filter((x) => x.featured)
                             .map((project, i) => (
-                                <FeaturedProject
-                                    key={i}
-                                    reverse={i % 2}
-                                    url={project.url}
-                                    name={project.name}
-                                    description={project.description}
-                                    image={project.image}
-                                    technologies={project.technologies}
-                                    openSource={project.openSource}
-                                />
+                                <FeaturedProject key={i} reverse={i % 2} project={project} />
                             ))}
                     </div>
                 )}
@@ -60,23 +52,26 @@ const ProjectIndex = () => {
                     columnClassName="masonry__column"
                 >
                     {(filters.length
-                        ? projects.filter((proj) => proj.technologies.some((el) => filters.findIndex((x) => x === el.name) > -1))
+                        ? // ? projects.filter((proj) => proj.technologies.some((el) => filters.findIndex((x) => x === el.name) > -1))
+                          projects
                         : projects
                     ).map((project, i) => (
-                        <ProjectCard
-                            key={i}
-                            name={project.name}
-                            description={project.description}
-                            url={project.url}
-                            image={project.image}
-                            technologies={project.technologies}
-                            openSource={project.openSource}
-                        />
+                        <ProjectCard key={i} project={project} />
                     ))}
                 </Masonry>
             </Section>
         </Layout>
     );
+};
+
+export const getStaticProps = async () => {
+    const projects = await findAllProjects();
+    return {
+        props: {
+            projects
+        },
+        revalidate: 60
+    };
 };
 
 export default ProjectIndex;

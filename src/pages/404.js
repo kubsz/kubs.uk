@@ -14,8 +14,8 @@ const Custom404 = () => {
                 </h1>
                 <div className="pg-404__subtitle">Page Not Found</div>
                 <p className="pg-404__text">Sorry, we can't find the page you're looking for.</p>
-                <Link href="/">
-                    <a className="btn">Back to Home</a>
+                <Link href="/" className="btn">
+                    Back to Home
                 </Link>
             </Section>
         </Layout>

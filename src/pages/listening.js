@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { useState, useEffect } from 'react';
 
 import { formatDistance } from 'date-fns';

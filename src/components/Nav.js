@@ -12,8 +12,8 @@ const Nav = ({ toggleSidenav, sidenavActive }) => {
         <nav className="nav">
             <div className="nav__inner">
                 <div className="nav__logo-container">
-                    <Link href="/">
-                        <a className="nav__logo">{config.branding.logo.large}</a>
+                    <Link href="/" className="nav__logo">
+                        {config.branding.logo.large}
                     </Link>
                 </div>
                 <div className="nav__main">

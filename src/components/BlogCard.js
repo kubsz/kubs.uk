@@ -1,11 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import SVG from 'react-inlinesvg';
-import { format } from 'date-fns';
 
 import Badge from './Badge';
 import Button from './Button';
-import { formatDate } from '../lib/utils';
+import { formatDate, strapiImage } from '../lib/utils';
 
 const BlogCard = ({ data, horizontal, hideLinks }) => {
     return (
@@ -14,21 +14,24 @@ const BlogCard = ({ data, horizontal, hideLinks }) => {
                 <div
                     className="blog-card__graphic"
                     style={{
-                        backgroundImage: `linear-gradient(${data.graphic_degrees}deg, ${data.graphic_colors.join(', ')})`
+                        backgroundImage: `linear-gradient(${data.gradientAngle}deg, ${data.gradientColors
+                            .map((col) => col.hexColor)
+                            .join(', ')})`
                     }}
                 >
-                    <SVG src={data.graphic_icon} />
+                    <Image src={strapiImage(data.graphic, 'thumbnail')} width={100} height={100} />
                 </div>
             ) : (
-                <Link href={`/blog/${data.slug}`}>
-                    <a
-                        className="blog-card__graphic"
-                        style={{
-                            backgroundImage: `linear-gradient(${data.graphic_degrees}deg, ${data.graphic_colors.join(', ')})`
-                        }}
-                    >
-                        <SVG src={data.graphic_icon} />
-                    </a>
+                <Link
+                    href={`/blog/${data.slug}`}
+                    className="blog-card__graphic"
+                    style={{
+                        backgroundImage: `linear-gradient(${data.gradientAngle}deg, ${data.gradientColors
+                            .map((col) => col.hexColor)
+                            .join(', ')})`
+                    }}
+                >
+                    <Image src={strapiImage(data.graphic, 'thumbnail')} width={100} height={100} />
                 </Link>
             )}
             <div className="blog-card__main">
@@ -45,12 +48,12 @@ const BlogCard = ({ data, horizontal, hideLinks }) => {
                         ))}
                     </ul>
                 ) : null}
-                <span className="blog-card__date">{formatDate(data.created_at)}</span>
+                <span className="blog-card__date">{formatDate(data.createdAt)}</span>
                 {hideLinks ? (
                     <h1 className="blog-card__title">{data.title}</h1>
                 ) : (
-                    <Link href={`/blog/${data.slug}`}>
-                        <a className="blog-card__title">{data.title}</a>
+                    <Link href={`/blog/${data.slug}`} className="blog-card__title">
+                        {data.title}
                     </Link>
                 )}
                 <p className="blog-card__description">{data.teaser}</p>

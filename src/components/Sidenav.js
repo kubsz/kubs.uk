@@ -12,18 +12,16 @@ const Sidenav = ({ active, closeSidenav }) => {
         <div className={`sidenav__container${active ? ' sidenav__container--active' : ''}`} onClick={handleClick}>
             <button className="sidenav__close"></button>
             <div className="sidenav">
-                <Link href="/">
-                    <a className="sidenav__logo">{config.branding.logo.square}</a>
+                <Link href="/" className="sidenav__logo">
+                    {config.branding.logo.square}
                 </Link>
                 <h4 className="sidenav__list-title">Content</h4>
                 <ul className="sidenav__list">
                     {config.links.internal.map(({ url, label, fill, icon }) => (
                         <li key={label} className="sidenav__item">
-                            <Link href={url}>
-                                <a className="sidenav__link">
-                                    {icon}
-                                    {label}
-                                </a>
+                            <Link href={url} className="sidenav__link">
+                                {icon}
+                                {label}
                             </Link>
                         </li>
                     ))}

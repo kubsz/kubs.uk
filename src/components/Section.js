@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Wave from '../assets/svg/wave.svg';
 
 const Section = ({ children, className, modifiers = [], innerModifiers = [] }) => {

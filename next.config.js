@@ -1,14 +1,26 @@
-const withReactSvg = require('next-react-svg');
-const path = require('path');
+const config = {
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ['@svgr/webpack']
+        });
 
-module.exports = withReactSvg({
-    include: path.resolve(__dirname, 'src/assets'),
-    webpack(config, options) {
-        config.experiments = { topLevelAwait: true };
         return config;
     },
     images: {
-        domains: ['picsum.photos']
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: '127.0.0.1',
+                port: '1337',
+                pathname: '/uploads/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.kubs.uk',
+                pathname: '/uploads/**'
+            }
+        ]
     },
     reactStrictMode: true,
     eslint: {
@@ -16,4 +28,6 @@ module.exports = withReactSvg({
         // your project has ESLint errors.
         ignoreDuringBuilds: true
     }
-});
+};
+
+module.exports = config;

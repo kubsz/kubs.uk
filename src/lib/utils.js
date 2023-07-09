@@ -34,3 +34,22 @@ export const formatDate = (date, distance = false) => {
         return format(new Date(date), 'd LLLL, yyyy');
     }
 };
+
+const formatOrder = ['extralarge', 'large', 'medium', 'small', 'thumbnail'];
+export const strapiImage = (image, size = 'thumbnail') => {
+    let formatIndex = formatOrder.indexOf(size);
+
+    if (!image.formats) return process.env.NEXT_PUBLIC_STRAPI_URL + image.url;
+
+    if (image.formats[size]) return process.env.NEXT_PUBLIC_STRAPI_URL + image.formats[size].url;
+
+    while (true) {
+        formatIndex++;
+        if (formatIndex >= formatOrder.length) break;
+
+        if (image.formats[formatOrder[formatIndex]])
+            return process.env.NEXT_PUBLIC_STRAPI_URL + image.formats[formatOrder[formatIndex]].url;
+    }
+
+    return process.env.NEXT_PUBLIC_STRAPI_URL + image.url;
+};

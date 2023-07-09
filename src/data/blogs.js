@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import WebIcon from '../assets/svg/blog/web.svg';
 import CSSLabIcon from '../assets/svg/blog/csslab.svg';
 import HytaleGuideIcon from '../assets/svg/blog/hytaleguide.svg';
