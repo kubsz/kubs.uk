@@ -1,18 +1,3 @@
-import ReactIcon from '../assets/svg/technologies/react-logo.svg';
-import JavascriptLogo from '../assets/svg/technologies/js.svg';
-import NodeLogo from '../assets/svg/technologies/node.svg';
-import NextJSLogo from '../assets/svg/technologies/next.svg';
-import VercelLogo from '../assets/svg/technologies/vercel.svg';
-import PugLogo from '../assets/svg/technologies/pug.svg';
-import EJSLogo from '../assets/svg/technologies/ejs.svg';
-import MongoDBLogo from '../assets/svg/technologies/mongodb.svg';
-import PHPLogo from '../assets/svg/technologies/php.svg';
-import SQLLogo from '../assets/svg/technologies/sql.svg';
-import VueJSLogo from '../assets/svg/technologies/vue.svg';
-import SCSSLogo from '../assets/svg/technologies/scss.svg';
-import JQueryLogo from '../assets/svg/technologies/jquery.svg';
-import StrapiLogo from '../assets/svg/technologies/strapi.svg';
-
 export default [];
 // export default [
 //     {

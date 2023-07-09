@@ -1,10 +1,3 @@
-import technologies from './technologies';
-
-import HytaleGuideLogo from '../assets/svg/sites/hytaleguide.svg';
-import CSSLabLogo from '../assets/svg/sites/csslab.svg';
-import RobloxDenLogo from '../assets/svg/sites/robloxden.svg';
-import DantooLogo from '../assets/svg/sites/dantoo.svg';
-
 // export default [
 //     {
 //         name: 'HytaleGuide',

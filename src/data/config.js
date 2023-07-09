@@ -91,8 +91,9 @@ export default {
         biography: (
             <>
                 <p>
-                    I have a profound passion for web development, specialising in react.js, UI/UX principles & SEO optimization. Dismissing
-                    the boring nerdy stuff, I also love music, travelling, and lifting weights! Get in touch with me at me@kubs.uk.
+                    I have a profound passion for web development, specialising in react.js, UI/UX principles and SEO optimization.
+                    Dismissing the boring nerdy stuff, I also love music, travelling, and lifting weights! Get in touch with me via the{' '}
+                    <Link href="/contact">contact</Link> panel.
                 </p>
                 <p>
                     Since entering the world of web development{' '}

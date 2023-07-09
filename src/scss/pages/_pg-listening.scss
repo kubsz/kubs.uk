@@ -126,6 +126,8 @@
         left: 0;
         top: 0;
         background-color: $col-primary;
+
+        transition: 0.15s ease;
     }
 
     &__header-timeline-time {

@@ -23,6 +23,19 @@ class MyDocument extends Document {
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
                     <meta name="theme-color" content="#ffffff" />
+
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH2YYR7Q1J" />
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+
+                                gtag('config', 'G-KH2YYR7Q1J');
+                            `
+                        }}
+                    />
                 </Head>
                 <body>
                     <Main />
