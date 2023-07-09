@@ -8,6 +8,7 @@ import Button from './Button';
 import { formatDate, strapiImage } from '../lib/utils';
 
 const BlogCard = ({ data, horizontal, hideLinks }) => {
+    console.log(data);
     return (
         <li className={`blog-card${horizontal ? ' blog-card--horizontal' : ''}`}>
             {hideLinks ? (
@@ -19,7 +20,7 @@ const BlogCard = ({ data, horizontal, hideLinks }) => {
                             .join(', ')})`
                     }}
                 >
-                    <Image src={strapiImage(data.graphic, 'thumbnail')} width={100} height={100} />
+                    {data.graphic && <Image src={strapiImage(data.graphic, 'thumbnail')} width={100} height={100} />}
                 </div>
             ) : (
                 <Link
@@ -31,16 +32,19 @@ const BlogCard = ({ data, horizontal, hideLinks }) => {
                             .join(', ')})`
                     }}
                 >
-                    <Image src={strapiImage(data.graphic, 'thumbnail')} width={100} height={100} />
+                    {data.graphic && <Image src={strapiImage(data.graphic, 'thumbnail')} width={100} height={100} />}
                 </Link>
             )}
             <div className="blog-card__main">
-                {data.categories && data.categories.length ? (
+                {data.articleCategories && data.articleCategories.length ? (
                     <ul className="blog-card__tag-list">
-                        {data.categories.map(({ category }) => (
+                        {data.articleCategories.map((category) => (
                             <li key={category.name} className="blog-card__tag-item">
                                 <Badge
-                                    style={{ backgroundColor: `rgb(${category.background_color})`, color: `rgb(${category.text_color})` }}
+                                    style={{
+                                        backgroundColor: `${category.backgroundHexColor}`,
+                                        color: `${category.textHexColor}`
+                                    }}
                                 >
                                     {category.name}
                                 </Badge>

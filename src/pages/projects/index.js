@@ -1,19 +1,22 @@
+import { useEffect } from 'react';
+
 import Masonry from 'react-masonry-css';
 
 import Layout from '../../components/Layout';
 import Section from '../../components/Section';
 
-import technologies from '../../data/technologies';
 import FeaturedProject from '../../components/FeaturedProject';
 import ProjectCard from '../../components/ProjectCard';
 import TagFilter from '../../components/TagFilter';
 import useTagFilter from '../../hooks/useTagFilter';
 
 import { findAllProjects } from '../../lib/api/projects';
+import { findAllTechnologies } from '../../lib/api/technologies';
 
-const ProjectIndex = ({ projects }) => {
+const ProjectIndex = ({ projects, technologies }) => {
     const [filters, toggleFilter] = useTagFilter();
 
+    useEffect(() => console.log(filters), []);
     return (
         <Layout crumbs={[{ label: 'Projects', link: '/project' }]}>
             <Section>
@@ -26,7 +29,7 @@ const ProjectIndex = ({ projects }) => {
                 </div>
 
                 <TagFilter
-                    items={technologies.map(({ name, color, image }) => ({ name, color, image }))}
+                    items={technologies.map(({ name, hexColor, image }) => ({ name, color: hexColor, image, value: name }))}
                     filters={filters}
                     toggleFilter={toggleFilter}
                     filterMessage="Only showing projects that utilized "
@@ -52,8 +55,7 @@ const ProjectIndex = ({ projects }) => {
                     columnClassName="masonry__column"
                 >
                     {(filters.length
-                        ? // ? projects.filter((proj) => proj.technologies.some((el) => filters.findIndex((x) => x === el.name) > -1))
-                          projects
+                        ? projects.filter((proj) => proj.technologies.some((el) => filters.findIndex((x) => x === el.name) > -1))
                         : projects
                     ).map((project, i) => (
                         <ProjectCard key={i} project={project} />
@@ -65,10 +67,11 @@ const ProjectIndex = ({ projects }) => {
 };
 
 export const getStaticProps = async () => {
-    const projects = await findAllProjects();
+    const [projects, technologies] = await Promise.all([findAllProjects(), findAllTechnologies()]);
     return {
         props: {
-            projects
+            projects,
+            technologies
         },
         revalidate: 60
     };

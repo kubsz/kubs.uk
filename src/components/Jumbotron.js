@@ -6,7 +6,6 @@ import Link from 'next/link';
 import useSWRFetcher from '../hooks/useSWRFetcher';
 
 import randomNumbers from '../data/randomNumbers';
-import projects from '../data/projects';
 
 import GitCommitGraph from './GitCommitGraph';
 import Spinner from './Spinner';

@@ -23,10 +23,10 @@ const Blog = ({ posts, categories }) => {
                 </div>
 
                 <TagFilter
-                    items={categories.map(({ name, backgroundHexColor, value: slug }) => ({
+                    items={categories.map(({ name, backgroundHexColor }) => ({
                         name,
                         color: backgroundHexColor,
-                        value: slug
+                        value: name
                     }))}
                     filters={filters}
                     toggleFilter={toggleFilter}
@@ -54,6 +54,7 @@ export const getStaticProps = async () => {
         props: {
             posts,
             categories
-        }
+        },
+        revalidate: 60
     };
 };

@@ -14,7 +14,6 @@ const ProjectCard = ({ project }) => {
             <div className="project-card__header">
                 <div className="project-card__logo-container">
                     {project.logo ? <img src={strapiImage(project.logo, 'thumbnail')} width={32} height={32} /> : <FaRegFolder />}
-                    {strapiImage(project.logo, 'thumbnail')}
                 </div>
                 <ul className="project-card__link-list">
                     <li className="project-card__link-item">

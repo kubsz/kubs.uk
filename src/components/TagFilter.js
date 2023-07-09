@@ -14,18 +14,20 @@ const TagFilter = ({ items, filters, toggleFilter, filterMessage = 'Showing resu
 
         return dark ? colDark : col;
     };
+
+    console.log(items);
     return (
         <>
             <ul className="tag-filter__list">
-                {items.map(({ name, color, image }, i) => {
-                    const active = filters.findIndex((x) => x === name) > -1;
+                {items.map(({ name, color, image, value }) => {
+                    const active = filters.findIndex((x) => x === value) > -1;
                     const filtersExist = filters.length > 0;
 
                     return (
-                        <li key={i} className="tag-filter__item">
+                        <li key={value} className="tag-filter__item">
                             <button
                                 className={`tag-filter${filtersExist ? (active ? ' tag-filter--active' : ' tag-filter--inactive') : ''}`}
-                                onClick={() => toggleFilter(name)}
+                                onClick={() => toggleFilter(value)}
                                 style={
                                     active
                                         ? {

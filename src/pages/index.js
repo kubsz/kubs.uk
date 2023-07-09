@@ -18,7 +18,6 @@ import { BsFileEarmarkCode } from 'react-icons/bs';
 import { AiOutlinePartition, AiOutlineBarChart } from 'react-icons/ai';
 
 const Index = ({ githubContribitons, technologies }) => {
-    console.log(githubContribitons);
     return (
         <Layout harshFooterShadow={true}>
             <Section innerModifiers={['perspective']}>
@@ -98,6 +97,7 @@ export const getStaticProps = async () => {
         props: {
             githubContribitons,
             technologies
-        }
+        },
+        revalidate: 60
     };
 };
