@@ -11,7 +11,7 @@ import GitCommitGraph from './GitCommitGraph';
 import Spinner from './Spinner';
 import TooltipTrigger from './TooltipTrigger';
 
-const Jumbotron = ({ githubContribitons }) => {
+const Jumbotron = ({ githubContribitons, projectCount }) => {
     const { data: github_contributions } = useSWRFetcher('/api/github-contributions', { data: githubContribitons });
 
     const imageContainerRef = useRef(null);
@@ -68,8 +68,8 @@ const Jumbotron = ({ githubContribitons }) => {
                     width={433}
                     height={410}
                 />
-                <div className="jumbotron__info-box">
-                    <span>{projects.length}</span>
+                <div className="jumbotron__info-box jumbotron__info-box--fixed">
+                    <span>{projectCount}</span>
                     <p>Projects Completed</p>
                 </div>
                 <div className="jumbotron__info-box jumbotron__info-box--fixed">

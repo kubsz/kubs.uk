@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { findAllTechnologies } from '../lib/api/technologies.js';
+import { findAllProjects } from '../lib/api/projects.js';
 import { getGithubContributions } from '../lib/api/getGithubContributions';
 
 import config from '../data/config';
@@ -17,11 +18,11 @@ import { RiUserSearchLine } from 'react-icons/ri';
 import { BsFileEarmarkCode } from 'react-icons/bs';
 import { AiOutlinePartition, AiOutlineBarChart } from 'react-icons/ai';
 
-const Index = ({ githubContribitons, technologies }) => {
+const Index = ({ githubContribitons, technologies, projectCount }) => {
     return (
         <Layout harshFooterShadow={true}>
             <Section innerModifiers={['perspective']}>
-                <Jumbotron githubContribitons={githubContribitons} />
+                <Jumbotron githubContribitons={githubContribitons} projectCount={projectCount} />
             </Section>
             <Section modifiers={['double-padding', 'dark', 'wave']}>
                 <div className="pg-index__section pg-index__section--dark">
@@ -91,12 +92,17 @@ const Index = ({ githubContribitons, technologies }) => {
 export default Index;
 
 export const getStaticProps = async () => {
-    const [technologies, githubContribitons] = await Promise.all([findAllTechnologies(), getGithubContributions()]);
+    const [technologies, githubContribitons, projects] = await Promise.all([
+        findAllTechnologies(),
+        getGithubContributions(),
+        findAllProjects()
+    ]);
 
     return {
         props: {
             githubContribitons,
-            technologies
+            technologies,
+            projectCount: projects.length
         },
         revalidate: 60
     };
